@@ -9,7 +9,7 @@ escreve dist_stats.md (E, desvio, banda 90% por item e total).
 Modelo: V_i^b ~ sum_m w_{i,m} F_hat_{i,m}^b  (escolhe modelo por peso, sorteia preço da amostra).
         V^b = sum_i sum_{k=1..N_i} V_{i,k}^b.
 
-Uso: python scripts/gerar_distribuicoes.py
+Uso: /home/otavio/Documents/vscode/.venv/bin/python scripts/gerar_distribuicoes.py
 """
 import argparse
 import json
@@ -20,6 +20,7 @@ import numpy as np
 from scipy.stats import gaussian_kde
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter
 
 mpl.rcParams.update({
     "font.family": "DejaVu Sans",
@@ -144,23 +145,44 @@ def main():
         seen.add(lab)
         models = norm_models[key]
         ax = axes.flat[panel]; panel += 1
+        # cordão tem cauda muito pesada: escala log no eixo x mostra o corpo
+        # (folheado, R$15-250) E a cauda (ouro, ate R$5 mil) na mesma figura.
+        is_cord = norm(key) in ("cordao", "cordão")
         for base, col, name in (("used", COL_REV, "revenda"), ("new", COL_REP, "reposição")):
             s = unit_sample(models, base, 200_000)
             s = s[np.isfinite(s)]
             hi = np.percentile(s, 99.5)
-            ax.hist(s, bins=45, range=(s.min(), hi), density=True, color=col, alpha=0.30)
-            try:  # curva KDE suave (cara de distribuição de probabilidade)
-                kde = gaussian_kde(RNG.choice(s, size=min(s.size, 20_000), replace=False))
-                xs = np.linspace(s.min(), hi, 400)
-                ax.plot(xs, kde(xs), color=col, lw=1.9, label=name)
-            except Exception:
-                ax.plot([], [], color=col, lw=1.9, label=name)
+            if is_cord:
+                lo = max(float(s.min()), 1.0)
+                bins = np.logspace(np.log10(lo), np.log10(hi), 40)
+                ax.hist(s, bins=bins, density=True, color=col, alpha=0.30)
+                try:  # KDE em log10(x) com Jacobiano -> densidade correta em x
+                    L = np.log10(s[s > 0])
+                    kde = gaussian_kde(RNG.choice(L, size=min(L.size, 20_000), replace=False))
+                    xs = np.logspace(np.log10(lo), np.log10(hi), 400)
+                    ax.plot(xs, kde(np.log10(xs)) / (xs * np.log(10.0)), color=col, lw=1.9, label=name)
+                except Exception:
+                    ax.plot([], [], color=col, lw=1.9, label=name)
+            else:
+                ax.hist(s, bins=45, range=(s.min(), hi), density=True, color=col, alpha=0.30)
+                try:  # curva KDE suave (cara de distribuição de probabilidade)
+                    kde = gaussian_kde(RNG.choice(s, size=min(s.size, 20_000), replace=False))
+                    xs = np.linspace(s.min(), hi, 400)
+                    ax.plot(xs, kde(xs), color=col, lw=1.9, label=name)
+                except Exception:
+                    ax.plot([], [], color=col, lw=1.9, label=name)
             stats_lines.append(f"| {lab} | {name} | {fmt(s.mean())} | {fmt(s.std())} | {fmt(np.percentile(s,5))} | {fmt(np.percentile(s,95))} |")
         ax.set_title(lab, fontsize=12, fontweight="bold", color="#2C3E50")
-        ax.set_xlabel("valor de uma unidade (R$)", fontsize=9)
+        ax.set_xlabel("valor de uma unidade (R$)" + (" — escala log" if is_cord else ""), fontsize=9)
         ax.set_ylabel("densidade", fontsize=9)
         ax.legend(fontsize=8, frameon=False)
-        ax.ticklabel_format(style="plain", axis="x")
+        if is_cord:
+            ax.set_xscale("log")
+            ax.set_xticks([20, 50, 100, 250, 500, 1000, 2500, 5000])
+            ax.xaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{int(v)}"))
+            ax.minorticks_off()
+        else:
+            ax.ticklabel_format(style="plain", axis="x")
     for k in range(panel, 4):
         axes.flat[k].axis("off")
     fig.suptitle("Distribuição de probabilidade do valor por item recuperado",

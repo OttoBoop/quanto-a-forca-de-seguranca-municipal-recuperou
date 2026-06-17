@@ -141,20 +141,24 @@ vem ampliando o roubo dirigido (alianças em SP mais que dobraram entre 2023 e 2
 fração de ouro entra como \emph{sensibilidade}, não como número cravado.
 
 \textbf{Sensibilidade à fração de ouro $f$.} Como a composição é premissa, reportamos o efeito de
-variar $f$ entre os cordões:
+variar $f$. O caso-base da Tabela~\ref{tab:itens} ($\mathbb{E}[V_{\text{cord}}]=\reais{462}$ em
+revenda) corresponde a $f\approx30\%$: cerca de um terço das faixas de preço amostradas ($n=23$)
+são peças de ouro (as faixas acima de \reais{250}), o restante é folheado/semijoia. Variando $f$ em
+torno desse caso-base:
 \begin{center}\small
 \begin{tabular}{lccc}
 \toprule
-$f$ (fração de ouro) & 15\% & 25\% & 40\% \\
+$f$ (fração de ouro) & 15\% & $\approx$30\% (base) & 40\% \\
 \midrule
-$\mathbb{E}[V_{\text{cord}}]$ (revenda) & \reais{260} & \reais{391} & \reais{588} \\
-Total $V^{\text{rev}}$ & \reais{160} mil & \reais{162} mil & \reais{165} mil \\
+$\mathbb{E}[V_{\text{cord}}]$ (revenda) & \reais{260} & \reais{462} & \reais{588} \\
+Total $V^{\text{rev}}$ & \reais{160} mil & \reais{163} mil & \reais{165} mil \\
 \bottomrule
 \end{tabular}
 \end{center}
-A conclusão é robusta: como os cordões são $\approx$4\% do patrimônio, o total varia menos de 3\%
-mesmo dobrando $f$. As cifras de preço (folheado \reais{8}--\reais{250}; ouro 18k
-$\approx$\reais{530}/g) seguem documentadas no inventário.
+A conclusão é robusta: como os cordões são $\approx$4\% do patrimônio (Tabela~\ref{tab:contrib}), o
+total varia cerca de 3\% mesmo dobrando $f$. As cifras de preço (folheado \reais{15}--\reais{250};
+cordões de ouro 18k de \reais{280} a \reais{3.000}, à cotação $\approx$\reais{530}/g) seguem
+documentadas no inventário.
 
 
 % =====================================================================
@@ -164,14 +168,17 @@ $\approx$\reais{530}/g) seguem documentadas no inventário.
 \subsection{Distribuição de valor por item}
 A Figura~\ref{fig:itens} mostra a distribuição de valor de uma unidade recuperada de cada
 categoria, nas duas bases. As formas são informativas: o celular é fortemente assimétrico à
-direita (massa em aparelhos de entrada, cauda nos \emph{flagships}); o cordão é praticamente
-bimodal (folheados de baixo valor e peças de ouro). A Tabela~\ref{tab:itens} resume os momentos.
+direita (massa em aparelhos de entrada, cauda nos \emph{flagships}); o cordão é o mais assimétrico
+--- a massa fica no folheado de baixo valor, com cauda longa e fina nas peças de ouro (média bem
+acima da mediana). A Tabela~\ref{tab:itens} resume os momentos.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{dist_itens}
   \caption{Distribuição de probabilidade do valor de uma unidade recuperada, por categoria
-  (azul: revenda/usado; laranja: reposição/novo). Histograma das amostras com densidade KDE.}
+  (azul: revenda/usado; laranja: reposição/novo). Histograma das amostras com densidade KDE.
+  O painel dos cordões usa escala logarítmica no eixo $x$ para exibir o corpo (folheado) e a
+  cauda (ouro) simultaneamente.}
   \label{fig:itens}
 \end{figure}
 
@@ -196,9 +203,9 @@ bimodal (folheados de baixo valor e peças de ouro). A Tabela~\ref{tab:itens} re
 
 \subsection{Valor total recuperado}
 Agregando (Eq.~\eqref{eq:total}), o valor esperado do patrimônio recuperado é de
-\textbf{\reais{186} mil} a preços de revenda e \textbf{\reais{312} mil} a preços de reposição. A
+\textbf{\reais{163} mil} a preços de revenda e \textbf{\reais{267} mil} a preços de reposição. A
 Figura~\ref{fig:total} mostra as duas distribuições com suas bandas de 90\%
-(\reais{163}--\reais{211} mil e \reais{271}--\reais{357} mil). A Tabela~\ref{tab:contrib} detalha a
+(\reais{145}--\reais{181} mil e \reais{237}--\reais{299} mil). A Tabela~\ref{tab:contrib} detalha a
 contribuição por categoria: os \textbf{celulares} respondem por cerca de \textbf{88\%} do total.
 
 \begin{figure}[H]
