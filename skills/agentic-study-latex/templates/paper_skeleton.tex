@@ -1,10 +1,10 @@
 % ===================================================================
-% TEMPLATE de paper para agentic-study-latex — V2 (distribuicao de modelos).
-% Substitua {{...}} e preencha \tbd{} a partir do inventario_fontes.md.
-% Compile: latexmk -pdf <arquivo>.tex  |  Pronto quando grep "\tbd{" == 0.
+% TEMPLATE de paper acadêmico (agentic-study-latex) — versão probabilística.
+% Estrutura: Abstract · Introdução · Metodologia · Resultados · Conclusões · Limitações · Fontes.
+% Substitua {{...}} e preencha \tbd{} a partir de dist_stats.md + inventario_fontes.md.
+% ANTES de compilar: gere as figuras com monte_carlo_dist.py (dist_itens.png, dist_total.png).
+% Compile: latexmk -pdf <arquivo>.tex   |   Pronto quando grep "\tbd{" == 0.
 % NAO dependa de siunitx: use \reais{}.
-% MODELO V2: distribuicao real de modelos x dois precos (usado/revenda, novo/reposicao).
-%   NAO use preco unico x fator de depreciacao delta (duplo desconto).
 % ===================================================================
 \documentclass[11pt,a4paper]{article}
 \usepackage[T1]{fontenc}
@@ -12,10 +12,15 @@
 \usepackage[brazilian]{babel}
 \usepackage{amsmath, amssymb}
 \usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{float}
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{microtype}
 \usepackage{xcolor}
 \usepackage[hidelinks]{hyperref}
+\usepackage{setspace}
+\onehalfspacing
+\graphicspath{{figuras/}}
 
 \newcommand{\reais}[1]{R\$\,#1}
 \newcommand{\tbd}[1]{\textcolor{red}{\textbf{[A PESQUISAR: #1]}}}
@@ -28,50 +33,78 @@
 \maketitle
 
 \begin{abstract}
-\noindent {{RESUMO: 1 paragrafo. Termine com o bracket de 4 na versao final: \tbd{V_min, V_rev, V_rep, V_max}.}}
+\noindent {{RESUMO: o que se estima, o método (distribuição de modelos $\times$ preços de mercado,
+Monte Carlo), e o resultado: \tbd{E[V] revenda e reposição + banda 90\% + envelope}.}}
 \end{abstract}
 
-\section{Introdução e modelo}
-{{Contexto.}} Para cada categoria $i$, modelamos a distribuicao de modelos representativos $m$,
-com peso $w_{i,m}$ (de FONTE DE FREQUENCIA, $\sum_m w_{i,m}=1$) e dois precos: revenda/usado
-$p^{\text{rev}}_{i,m}$ e reposicao/novo $p^{\text{rep}}_{i,m}$:
+\section{Introdução}
+{{Contexto: o que foi recuperado e por quê medir.}} A resposta não é um número único: estima-se a
+\emph{distribuição} de valores plausíveis de cada item. Por \emph{revenda} entende-se a compra do
+bem \emph{usado}; por \emph{reposição}, a compra do equivalente \emph{novo} (o custo de repô-lo).
+
+\section{Metodologia}
+\subsection{Modelo probabilístico}
+O valor de uma unidade da categoria $i$ na base $b\in\{\text{rev},\text{rep}\}$ é a v.a.\ de mistura
 \begin{equation}
-  \bar v_i^{\,b}=\sum_{m} w_{i,m}\,p^{\,b}_{i,m},\qquad
-  V^{\,b}=\sum_i N_i\,\bar v_i^{\,b},\qquad b\in\{\text{rev},\text{rep}\}.
+  V_i^{\,b}\sim\sum_{m\in\mathcal{M}_i} w_{i,m}\,\hat F_{i,m}^{\,b},\qquad
+  \mathbb{E}[V_i^{b}]=\sum_m w_{i,m}\,\bar p_{i,m}^{\,b},
+  \label{eq:mix}
+\end{equation}
+com peso $w_{i,m}$ ($\sum_m w_{i,m}=1$) e $\hat F_{i,m}^{\,b}$ a distribuição empírica dos preços
+coletados. O total e seus momentos:
+\begin{equation}
+  V^{\,b}=\sum_i\sum_{k=1}^{N_i} V_{i,k}^{\,b},\quad
+  \mathbb{E}[V^{b}]=\sum_i N_i\,\mathbb{E}[V_i^{b}],\quad
+  \mathrm{Var}(V^{b})=\sum_i N_i\,\mathrm{Var}(V_i^{b}).
   \label{eq:total}
 \end{equation}
-O intervalo completo vai do modelo usado mais barato ao novo mais caro:
-\begin{equation}
-  V\in\big[\,V^{\min},\,V^{\text{rev}},\,V^{\text{rep}},\,V^{\max}\,\big].
-  \label{eq:bracket}
-\end{equation}
-NAO se aplica fator de depreciacao generico sobre o usado (o mercado ja precifica o desgaste).
-O estado entra so como haircut factual nomeado, na base revenda; incertezas viram sensibilidade.
+Nenhum fator de depreciação arbitrário: a base de revenda já é preço de usado; a de reposição, de novo.
 
-\section{Dados de quantidade}
-\begin{table}[h]\centering\begin{tabular}{lr}\toprule Item & $N_i$ \\ \midrule {{ITEM 1}} & {{N1}} \\ \bottomrule\end{tabular}
-\caption{Quantidades (fonte: {{FONTE}}).}\end{table}
+\subsection{Distribuição de modelos por frequência}
+{{Pesos $w$ de fonte de FREQUÊNCIA (roubo/vendas/frota) por categoria; declarar ouro (recorte
+local) vs proxy.}}
 
-\section{Estimação: distribuição de modelos}
-\subsection{{{Categoria 1}}}
-% matriz modelo x w x usado x novo (preencher do inventario F-T.N)
-\begin{table}[h]\centering\small\begin{tabular}{lrrr}\toprule
-Modelo & $w$ & usado (R\$) & novo (R\$) \\ \midrule
-\tbd{modelo} & \tbd{w} & \tbd{usado} & \tbd{novo} \\ \midrule
-\textbf{Ponderado} & & \tbd{$\bar v^{rev}$} & \tbd{$\bar v^{rep}$} \\ \bottomrule
-\end{tabular}\caption{{{Categoria}}: piso \tbd{}, teto \tbd{}.}\end{table}
+\subsection{Coleta de preços e distribuições empíricas}
+{{n observações por modelo (usado e novo); fontes; amostra $\neq$ censo.}}
 
-\section{Agregação e intervalo total}
-\begin{table}[h]\centering\small\begin{tabular}{lrrrrr}\toprule
-Item & $N$ & $V^{\min}$ & $V^{\text{rev}}$ & $V^{\text{rep}}$ & $V^{\max}$ \\ \midrule
-{{item dominante}} & & \tbd{} & \tbd{} & \tbd{} & \tbd{} \\ \midrule
-\textbf{Total} & — & \tbd{} & \tbd{} & \tbd{} & \tbd{} \\ \bottomrule
-\end{tabular}\caption{Contribuicao por categoria e total.}\end{table}
-% + tabela de sensibilidade para a incerteza dominante (ex.: rho)
+\subsection{Agregação por Monte Carlo}
+Sorteiam-se $N_i$ unidades por categoria (Eq.~\eqref{eq:mix}), somam-se, e repete-se $\sim$50.000
+vezes (semente fixa). Reporta-se a média e a banda de 90\%.
 
-\section{Limitações}
-\begin{itemize}\item {{caveat}} \end{itemize}
+\section{Resultados}
+\subsection{Distribuição de valor por item}
+\begin{figure}[H]\centering
+  \includegraphics[width=\linewidth]{dist_itens}
+  \caption{Distribuição de probabilidade do valor por unidade, por categoria.}\label{fig:itens}
+\end{figure}
+\begin{table}[H]\centering\small\begin{tabular}{llrrr}\toprule
+Item & base & $\mathbb{E}[V_i]$ & desvio & p5--p95 \\ \midrule
+\tbd{item} & revenda & \tbd{} & \tbd{} & \tbd{} \\
+           & reposição & \tbd{} & \tbd{} & \tbd{} \\ \bottomrule
+\end{tabular}\caption{Momentos da distribuição de valor por unidade (R\$). Fonte: dist\_stats.md.}\end{table}
+
+\subsection{Valor total recuperado}
+\begin{figure}[H]\centering
+  \includegraphics[width=0.92\linewidth]{dist_total}
+  \caption{Distribuição do valor total (Monte Carlo); linha = média, faixa = banda de 90\%.}\label{fig:total}
+\end{figure}
+\begin{table}[H]\centering\small\begin{tabular}{lrrrr}\toprule
+Item & $N_i$ & Contrib.\ revenda & Contrib.\ reposição & \% \\ \midrule
+{{item dominante}} & \tbd{} & \tbd{} & \tbd{} & \tbd{} \\ \midrule
+\textbf{Total} & — & \tbd{$V^{rev}$} & \tbd{$V^{rep}$} & 100\% \\ \bottomrule
+\end{tabular}\caption{Contribuição por categoria ($N_i\cdot\mathbb{E}[V_i]$) e total (R\$).}\end{table}
+\noindent A banda de 90\% é incerteza de amostragem; a incerteza estrutural está no envelope
+\tbd{[piso, teto]} e na sensibilidade da maior incógnita.
+
+\section{Conclusões}
+{{Síntese: intervalo, item dominante, leitura.}}
+
+\section*{Limitações}
+\begin{itemize}\setlength\itemsep{0.1em}
+  \item {{distribuição é proxy}} \item {{amostras $\neq$ censo}} \item {{caveat específico do caso}}
+\end{itemize}
 
 \section*{Fontes}
-\small\noindent {{lista (SOBRENOME/ÓRGÃO. ``Título'', Veículo, Ano) do inventario_fontes.md}}
+\small\noindent Inventário (F-T.N) em \texttt{inventario\_fontes.md}; amostras em
+\texttt{dados\_distribuicao.json}. {{lista (SOBRENOME/ÓRGÃO. ``Título'', Veículo, Ano)}}
 \end{document}

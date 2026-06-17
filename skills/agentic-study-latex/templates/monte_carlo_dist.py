@@ -1,17 +1,29 @@
 #!/usr/bin/env python3
-"""TEMPLATE (skill agentic-study-latex) — distribuições de valor + Monte Carlo.
+"""TEMPLATE GENÉRICO (agentic-study-latex) — distribuições + Monte Carlo de um total.
 
-ADAPTE por caso: N_BY (quantidades por item), LABEL e as cores. O resto é genérico.
-Lê dados_distribuicao.json (amostras de preço brutas por modelo, FASE 3b/4*),
-constrói a distribuição de mistura de valor por item e a distribuição do valor
-TOTAL recuperado por Monte Carlo, gera os gráficos (paper/figuras/*.png) e
-escreve dist_stats.md (E, desvio, banda 90% por item e total).
+Domínio-agnóstico: dado um JSON de "componentes" (cada um com uma contagem e amostras
+de valor por base), constrói a distribuição de valor por componente e a distribuição do
+TOTAL por simulação de Monte Carlo, e gera os gráficos + estatísticas.
 
-Modelo: V_i^b ~ sum_m w_{i,m} F_hat_{i,m}^b  (escolhe modelo por peso, sorteia preço da amostra).
-        V^b = sum_i sum_{k=1..N_i} V_{i,k}^b.
+Modelo: para cada base b, V^b = sum_c sum_{k=1..count_c} draw(samples_c^b).
+(Caso "valor de bens": componente = categoria de item, count = N_i, bases = revenda/reposição.
+ Mas serve para qualquer estudo: count=1 e uma única base, se for o caso.)
 
-Uso: python scripts/gerar_distribuicoes.py
+INPUT JSON (--input, default agg_input.json):
+{
+  "title": "Distribuição de valor ...",
+  "bases":  [{"key":"rev","label":"revenda"}, {"key":"rep","label":"reposição"}],
+  "components": [
+     {"label":"Celulares", "count":118, "samples":{"rev":[...], "rep":[...]}},
+     {"label":"Bicicletas","count":19,  "samples":{"rev":[...], "rep":[...]}}
+  ]
+}
+(count default = 1; use 1 base se o estudo não tiver duas. Monte o JSON a partir da
+saída da FASE 3 — a combinação componente↔contagem é específica do seu modelo.)
+
+Uso: python monte_carlo_dist.py --input agg_input.json [--figdir figuras] [--stats dist_stats.md]
 """
+import argparse
 import json
 import sys
 from pathlib import Path
@@ -22,170 +34,119 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 
 mpl.rcParams.update({
-    "font.family": "DejaVu Sans",
-    "axes.edgecolor": "#888888",
-    "axes.linewidth": 0.6,
-    "axes.spines.top": False,
-    "axes.spines.right": False,
+    "font.family": "DejaVu Sans", "axes.edgecolor": "#888888", "axes.linewidth": 0.6,
+    "axes.spines.top": False, "axes.spines.right": False,
 })
 
 SEED = 20260616
 RNG = np.random.default_rng(SEED)
 N_ITER = 50_000
+PALETTE = ["#2C6E9B", "#C9772E", "#3F8F5B", "#9B4DA0", "#777777"]
 
-CASE = Path(__file__).resolve().parent.parent
-FIG = CASE / "paper" / "figuras"
+ap = argparse.ArgumentParser()
+ap.add_argument("--input", default="agg_input.json")
+ap.add_argument("--figdir", default="figuras")
+ap.add_argument("--stats", default="dist_stats.md")
+ap.add_argument("--exclude", nargs="*", default=[], help="labels de componente a excluir")
+ARGS = ap.parse_args()
+
+BASE = Path(__file__).resolve().parent
+FIG = BASE / ARGS.figdir
 FIG.mkdir(parents=True, exist_ok=True)
-DATA = CASE / "dados_distribuicao.json"
-
-# N_i (slide SEGUR) por chave normalizada de item
-N_BY = {"celular": 118, "moto": 113, "bicicleta": 19, "bike": 19, "cordao": 15, "cordão": 15}
-LABEL = {"celular": "Celulares", "moto": "Motocicletas", "bicicleta": "Bicicletas",
-         "bike": "Bicicletas", "cordao": "Cordões", "cordão": "Cordões"}
-COL_REV, COL_REP = "#2C6E9B", "#C9772E"  # revenda (azul), reposição (laranja)
-
-
-def norm(s):
-    return s.strip().lower().replace("ç", "c").replace("ã", "a")
-
-
-def model_prices(m, base):
-    """Array de preços de um modelo na base ('used'/'new'); fallback se vazio."""
-    used = np.array(m.get("prices_used") or [], dtype=float)
-    new = np.array(m.get("prices_new") or [], dtype=float)
-    arr = used if base == "used" else new
-    arr = arr[arr > 0]
-    if arr.size == 0:  # fallback para a outra base se faltar
-        other = new if base == "used" else used
-        other = other[other > 0]
-        arr = other if other.size else np.array([np.nan])
-    return arr
-
-
-def unit_sample(models, base, size):
-    """Amostra de valor de UMA unidade (mistura: peso -> modelo -> preço da amostra)."""
-    w = np.array([m["weight"] for m in models], dtype=float)
-    w = w / w.sum()
-    pools = [model_prices(m, base) for m in models]
-    idx = RNG.choice(len(models), size=size, p=w)
-    out = np.empty(size, dtype=float)
-    for j in range(len(models)):
-        sel = idx == j
-        k = int(sel.sum())
-        if k:
-            out[sel] = RNG.choice(pools[j], size=k, replace=True)
-    return out
-
-
-def total_sample(item_models, base, n_iter=N_ITER):
-    """Distribuição do valor TOTAL: soma de N_i unidades por item, por iteração."""
-    total = np.zeros(n_iter, dtype=float)
-    for key, models in item_models.items():
-        n = N_BY[norm(key)]
-        draws = unit_sample(models, base, n * n_iter).reshape(n_iter, n)
-        total += draws.sum(axis=1)
-    return total
 
 
 def fmt(v):
     if abs(v) >= 1e6:
-        return f"R$ {v/1e6:.2f} mi".replace(".", ",")
-    return ("R$ " + f"{v:,.0f}").replace(",", ".")
+        return f"{v/1e6:.2f} mi".replace(".", ",")
+    if abs(v) >= 1e3:
+        return f"{v:,.0f}".replace(",", ".")
+    return f"{v:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+
+
+def pool(comp, bkey):
+    arr = np.array((comp.get("samples") or {}).get(bkey) or [], dtype=float)
+    return arr[arr > 0]
+
+
+def unit_sample(comp, bkey, size):
+    p = pool(comp, bkey)
+    return RNG.choice(p, size=size, replace=True) if p.size else np.array([])
+
+
+def total_sample(comps, bkey, n_iter=N_ITER):
+    total = np.zeros(n_iter)
+    for c in comps:
+        p = pool(c, bkey)
+        if not p.size:
+            continue
+        n = int(c.get("count", 1))
+        total += RNG.choice(p, size=n * n_iter, replace=True).reshape(n_iter, n).sum(axis=1)
+    return total
 
 
 def main():
-    if not DATA.exists():
-        sys.exit(f"ERRO: {DATA} nao encontrado (rode a FASE 3b primeiro).")
-    raw = json.loads(DATA.read_text(encoding="utf-8"))
-    items = raw["result"] if isinstance(raw, dict) and "result" in raw else raw
-    item_models = {}
-    for entry in items:
-        res = entry.get("research", entry)
-        if not res or "models" not in res:
-            continue
-        item_models[res["item"] if "item" in res else entry.get("item")] = res["models"]
+    f = Path(ARGS.input)
+    if not f.exists():
+        sys.exit(f"ERRO: {f} não encontrado. Monte o JSON de agregação (ver docstring).")
+    cfg = json.loads(f.read_text(encoding="utf-8"))
+    bases = cfg.get("bases") or [{"key": "v", "label": "valor"}]
+    comps = [c for c in cfg["components"] if c["label"] not in ARGS.exclude]
+    title = cfg.get("title", "Distribuição de valor")
+    out = [f"# {ARGS.stats} — Monte Carlo (seed {SEED}, {N_ITER} iter)\n"]
 
-    # chaves normalizadas -> usar o label do item bruto
-    norm_models = {}
-    for k, v in item_models.items():
-        nk = norm(k.split()[0]) if k else k
-        for cand in ("celular", "moto", "bicicleta", "bike", "cordao", "cordão"):
-            if cand in norm(k):
-                nk = cand
-                break
-        norm_models[nk] = v
-
-    stats_lines = ["# dist_stats.md — distribuições de valor (Monte Carlo, seed %d)\n" % SEED]
-
-    # ---- Figura 1: distribuição de valor por item (2x2) ----
-    fig, axes = plt.subplots(2, 2, figsize=(11, 7.5), facecolor="white")
-    order = [k for k in ("celular", "moto", "bicicleta", "cordao", "cordão", "bike") if k in norm_models]
-    seen = set()
-    panel = 0
-    stats_lines.append("## Por item (valor de UMA unidade)\n")
-    stats_lines.append("| Item | base | E[V_i] | desvio | p5 | p95 |")
-    stats_lines.append("|---|---|--:|--:|--:|--:|")
-    for key in order:
-        lab = LABEL[norm(key)]
-        if lab in seen:
-            continue
-        seen.add(lab)
-        models = norm_models[key]
-        ax = axes.flat[panel]; panel += 1
-        for base, col, name in (("used", COL_REV, "revenda"), ("new", COL_REP, "reposição")):
-            s = unit_sample(models, base, 200_000)
-            s = s[np.isfinite(s)]
+    # ---- por componente ----
+    n = len(comps)
+    cols = 2 if n > 1 else 1
+    rows = (n + cols - 1) // cols
+    fig, axes = plt.subplots(rows, cols, figsize=(5.5 * cols, 3.6 * rows), facecolor="white", squeeze=False)
+    out.append("## Por componente (valor de UMA unidade)\n\n| Componente | base | E | desvio | p5 | p95 |\n|---|---|--:|--:|--:|--:|")
+    for i, c in enumerate(comps):
+        ax = axes.flat[i]
+        for j, b in enumerate(bases):
+            s = unit_sample(c, b["key"], 200_000)
+            if not s.size:
+                continue
+            col = PALETTE[j % len(PALETTE)]
             hi = np.percentile(s, 99.5)
-            ax.hist(s, bins=45, range=(s.min(), hi), density=True, color=col, alpha=0.30)
-            try:  # curva KDE suave (cara de distribuição de probabilidade)
+            ax.hist(s, bins=40, range=(s.min(), hi), density=True, color=col, alpha=0.30)
+            try:
                 kde = gaussian_kde(RNG.choice(s, size=min(s.size, 20_000), replace=False))
                 xs = np.linspace(s.min(), hi, 400)
-                ax.plot(xs, kde(xs), color=col, lw=1.9, label=name)
+                ax.plot(xs, kde(xs), color=col, lw=1.9, label=b["label"])
             except Exception:
-                ax.plot([], [], color=col, lw=1.9, label=name)
-            stats_lines.append(f"| {lab} | {name} | {fmt(s.mean())} | {fmt(s.std())} | {fmt(np.percentile(s,5))} | {fmt(np.percentile(s,95))} |")
-        ax.set_title(lab, fontsize=12, fontweight="bold", color="#2C3E50")
-        ax.set_xlabel("valor de uma unidade (R$)", fontsize=9)
-        ax.set_ylabel("densidade", fontsize=9)
-        ax.legend(fontsize=8, frameon=False)
-        ax.ticklabel_format(style="plain", axis="x")
-    for k in range(panel, 4):
+                ax.plot([], [], color=col, label=b["label"])
+            out.append(f"| {c['label']} | {b['label']} | {fmt(s.mean())} | {fmt(s.std())} | {fmt(np.percentile(s,5))} | {fmt(np.percentile(s,95))} |")
+        ax.set_title(c["label"], fontsize=12, fontweight="bold", color="#2C3E50")
+        ax.set_xlabel("valor de uma unidade"); ax.set_ylabel("densidade"); ax.legend(fontsize=8, frameon=False)
+    for k in range(n, rows * cols):
         axes.flat[k].axis("off")
-    fig.suptitle("Distribuição de probabilidade do valor por item recuperado",
-                 fontsize=14, fontweight="bold", color="#2C3E50")
-    fig.text(0.5, 0.01, "Fonte: amostras de preço de mercado por modelo (usado/novo). Elaboração própria.",
-             ha="center", fontsize=8, color="#888", style="italic")
-    fig.tight_layout(rect=[0, 0.03, 1, 0.96])
-    fig.savefig(FIG / "dist_itens.png", dpi=200, bbox_inches="tight", facecolor="white")
-    plt.close(fig)
+    fig.suptitle(title + " — por componente", fontsize=14, fontweight="bold", color="#2C3E50")
+    fig.tight_layout(rect=[0, 0, 1, 0.96])
+    fig.savefig(FIG / "dist_itens.png", dpi=200, bbox_inches="tight", facecolor="white"); plt.close(fig)
     print("  ✓ dist_itens.png")
 
-    # ---- Figura 2: distribuição do valor TOTAL (Monte Carlo) com banda 90% ----
+    # ---- total (Monte Carlo) ----
     fig, ax = plt.subplots(figsize=(11, 6), facecolor="white")
-    stats_lines.append("\n## Valor TOTAL recuperado (Monte Carlo, %d iter)\n" % N_ITER)
-    stats_lines.append("| base | E[V] | p5 | p95 |")
-    stats_lines.append("|---|--:|--:|--:|")
-    for base, col, name in (("used", COL_REV, "revenda"), ("new", COL_REP, "reposição")):
-        tot = total_sample(norm_models, base)
+    out.append(f"\n## Total (Monte Carlo, {N_ITER} iter)\n\n| base | E | p5 | p95 |\n|---|--:|--:|--:|")
+    scale = 1e6 if any(total_sample(comps, b["key"]).mean() >= 1e6 for b in bases) else 1
+    unit_lbl = "milhões" if scale == 1e6 else "unidades"
+    for j, b in enumerate(bases):
+        tot = total_sample(comps, b["key"])
+        if not tot.size:
+            continue
+        col = PALETTE[j % len(PALETTE)]
         mean, p5, p95 = tot.mean(), np.percentile(tot, 5), np.percentile(tot, 95)
-        ax.hist(tot / 1e6, bins=70, density=True, color=col, alpha=0.5, label=f"{name} (E={fmt(mean)})")
-        ax.axvline(mean / 1e6, color=col, lw=1.6)
-        ax.axvspan(p5 / 1e6, p95 / 1e6, color=col, alpha=0.10)
-        stats_lines.append(f"| {name} | {fmt(mean)} | {fmt(p5)} | {fmt(p95)} |")
-    ax.set_title("Distribuição do valor total recuperado — banda de 90% (Monte Carlo)",
-                 fontsize=13, fontweight="bold", color="#2C3E50")
-    ax.set_xlabel("valor total (R$ milhões)", fontsize=10)
-    ax.set_ylabel("densidade", fontsize=10)
-    ax.legend(fontsize=9, frameon=False)
-    fig.text(0.5, 0.005, "Soma de N_i unidades por item; %d iterações; seed %d. Elaboração própria." % (N_ITER, SEED),
-             ha="center", fontsize=8, color="#888", style="italic")
-    fig.tight_layout(rect=[0, 0.03, 1, 1])
-    fig.savefig(FIG / "dist_total.png", dpi=200, bbox_inches="tight", facecolor="white")
-    plt.close(fig)
+        ax.hist(tot / scale, bins=70, density=True, color=col, alpha=0.5, label=f"{b['label']} (E={fmt(mean)})")
+        ax.axvline(mean / scale, color=col, lw=1.6); ax.axvspan(p5 / scale, p95 / scale, color=col, alpha=0.10)
+        out.append(f"| {b['label']} | {fmt(mean)} | {fmt(p5)} | {fmt(p95)} |")
+    ax.set_title(title + " — total, banda de 90%", fontsize=13, fontweight="bold", color="#2C3E50")
+    ax.set_xlabel(f"valor total ({unit_lbl})"); ax.set_ylabel("densidade"); ax.legend(fontsize=9, frameon=False)
+    fig.tight_layout()
+    fig.savefig(FIG / "dist_total.png", dpi=200, bbox_inches="tight", facecolor="white"); plt.close(fig)
     print("  ✓ dist_total.png")
 
-    (CASE / "dist_stats.md").write_text("\n".join(stats_lines) + "\n", encoding="utf-8")
-    print("  ✓ dist_stats.md")
+    (BASE / ARGS.stats).write_text("\n".join(out) + "\n", encoding="utf-8")
+    print(f"  ✓ {ARGS.stats}")
 
 
 if __name__ == "__main__":
