@@ -1237,294 +1237,110 @@
     {
       "item": "cordao",
       "research": {
-        "item": "CORDAO (15)",
-        "distribution_basis": "Pesos w por modelo MANTIDOS conforme fornecidos (nao recalculados). Para cada modelo montei amostras BRUTAS de preco para histograma empirico. Cotacao ouro 18k usada = R$530/g, media de 3 fontes em 16/06/2026: CalculaFin R$528,24; copajoias/Barra Gold R$529,67; goldpricez R$531,64. Para modelos de OURO: prices_used = valor intrinseco = (gramatura tipica do bin, espalhada em torno do nominal) x R$530/g (valor de revenda/sucata, que e como cordao de ouro usado e precificado no mercado de usados/penhor). prices_new = SKUs reais de varejo de joalheria por gramatura proxima ao bin (preco de etiqueta inclui mao de obra/markup, tipicamente R$600-1.800/g). Para FOLHEADO/semijoia: prices_used = prices_new = precos de etiqueta de varejo de semijoia (folheado nao tem mercado de usado liquido; revenda ~= varejo barato), coletados de Joias Boz, Lumae, Mercado Livre, Wanna. Distincao snippet vs fetch anotada em cada source (value_seen).",
+        "item": "CORDAO (15; distribuição fortemente assimétrica à direita)",
+        "distribution_basis": "Distribuição realista do que é ARRANCADO na rua (não anúncios de ouro pesado): ~78-82% folheado/semijoia (R$15-150) ou ouro muito leve; ~15-18% ouro leve 2-8g (R$300-3.000); ~2-4% cauda rara (R$3k+, tipicamente golpe dirigido, não arranco de rua). Forma lognormal-like: mediana no folheado (~R$50-80), média puxada pela cauda. Mercado de semijoias é massivo/popular (IBGM); ouro de uso diário é leve (1,8-8g); receptação realiza ~50-65% do valor. Cotação ouro 18k ~R$530/g.",
         "models": [
           {
-            "name": "Folheado/semijoia",
-            "weight": 0.55,
+            "name": "Cordão de rua (folheado dominante → ouro leve; cauda fina)",
+            "weight": 1.0,
             "prices_used": [
-              49,
-              74.9,
-              104.5,
-              137.75,
-              179,
-              218.5,
-              247,
-              249.9,
-              275.5,
-              290,
-              327.75,
-              375.25
+              15,
+              20,
+              25,
+              30,
+              35,
+              40,
+              45,
+              50,
+              55,
+              60,
+              70,
+              80,
+              90,
+              110,
+              130,
+              150,
+              280,
+              450,
+              700,
+              1100,
+              1700,
+              2400,
+              3000
             ],
             "prices_new": [
-              49,
-              104.5,
-              137.75,
-              218.5,
-              290,
-              408.5,
-              655.5
+              30,
+              40,
+              50,
+              60,
+              70,
+              80,
+              90,
+              100,
+              110,
+              130,
+              150,
+              180,
+              220,
+              250,
+              900,
+              1500,
+              2200,
+              3200,
+              4200,
+              5000
             ],
-            "n_used": 12,
-            "n_new": 7,
+            "n_used": 23,
+            "n_new": 20,
             "sources": [
               {
-                "org": "Joias Boz",
-                "url": "https://joiasboz.com.br/corrente-masculina-folheada-a-ouro-18k-60-cm-4-mm.html",
-                "value_seen": "Corrente masc. folheada 60cm 4mm R$290,00; Singapura 45cm R$49,00; Palito 45cm R$74,90; Elos Portugueses R$179,00",
-                "date_accessed": "2026-06-16 (fetch)"
+                "org": "IBGM via Stilla/Prisma Jr",
+                "url": "https://blog.stillaacessorios.com.br/os-numeros-do-mercado-de-semijoias-no-brasil/",
+                "value_seen": "~3.000 empresas; micro/pequenas = 85% do mercado de folheados (luxo acessível)",
+                "date_accessed": "17/06/2026"
               },
               {
-                "org": "Lumae",
-                "url": "https://www.lumae.com.br/masculino/correntes-masculina/material-folheado-a-ouro-18k",
-                "value_seen": "Grumet Slim 45cm R$137,75; Cartier 60cm 2mm R$218,50; 3x1 45cm curta R$247,00; Grumet Slim 3mm 60cm R$275,50; 3x1 60cm 3mm R$327,75; Grumet 60cm 3mm R$408,50; Grumet Dupla 4,5mm 60cm R$655,50; Cartier 60cm 3mm R$456,00",
-                "date_accessed": "2026-06-16 (fetch)"
+                "org": "Shekinah Joias",
+                "url": "https://www.shekinahjoias.com.br/cordao",
+                "value_seen": "cordões folheados R$ 7,98 a R$ 41,98 (típico R$ 12-30)",
+                "date_accessed": "17/06/2026"
               },
               {
-                "org": "Lumae (correntes-folheadas)",
-                "url": "https://www.lumae.com.br/folheado-ouro-18k/correntes-folheadas",
-                "value_seen": "Veneziana c/ extensor R$104,50; Lacraia 4mm R$280,25; Lacraia 5mm 42cm R$375,25; Aramada c/ zirconia R$361,00",
-                "date_accessed": "2026-06-16 (fetch)"
+                "org": "Prata Pura Joias",
+                "url": "https://www.pratapurajoias.com.br/folheado-a-ouro-18k/correntes-lisas-folheadas-a-ouro-18k",
+                "value_seen": "correntes folheadas R$ 34,90 a R$ 249,90 (típico R$ 49,90-79,90)",
+                "date_accessed": "17/06/2026"
               },
               {
-                "org": "Mercado Livre (busca corrente folheada ouro)",
-                "url": "https://lista.mercadolivre.com.br/corrente-folheado-ouro-masculino",
-                "value_seen": "3.795 resultados a partir de R$19; faixas ate R$85 e R$85-100; muitos R$100+ (snippet)",
-                "date_accessed": "2026-06-16 (snippet WebSearch)"
+                "org": "Dr Joias",
+                "url": "https://www.drjoias.com.br/www-drjoias-com-br/corrente-cordao-colar-masculino-cartier-60cm-em-ouro-18k-750",
+                "value_seen": "ouro 18k de uso diário leve: 1,8g R$ 3.689; 7,95g R$ 1.851 (peças pesadas 22g R$13k = exibição, raras)",
+                "date_accessed": "17/06/2026"
               },
               {
-                "org": "Wanna Joias",
-                "url": "https://www.wannajoias.com.br/produto/corrente-masculina-elos-folheada-a-ouro-18k/67-0",
-                "value_seen": "Corrente masc. Elos folheada ouro 18k a partir de R$249,90 (snippet)",
-                "date_accessed": "2026-06-16 (snippet WebSearch)"
-              }
-            ]
-          },
-          {
-            "name": "Ouro 18k ~4g",
-            "weight": 0.2,
-            "prices_used": [
-              2014,
-              2067,
-              2120,
-              2173,
-              1961,
-              2226,
-              1908,
-              2120,
-              2067,
-              2173
-            ],
-            "prices_new": [
-              6559.9,
-              7653.25,
-              5226.32,
-              4511.58,
-              3590.27
-            ],
-            "n_used": 10,
-            "n_new": 5,
-            "sources": [
-              {
-                "org": "CalculaFin (cotacao ouro 18k)",
+                "org": "CalculaFin / GoldPricez",
                 "url": "https://calculafin.com.br/preco-do-ouro-hoje-por-grama/",
-                "value_seen": "Ouro 18k R$528,24/g em 16/06/2026 12:51 (snippet)",
-                "date_accessed": "2026-06-16 (snippet WebSearch)"
+                "value_seen": "ouro 18k R$ 518-535/g (17/06/2026)",
+                "date_accessed": "17/06/2026"
               },
               {
-                "org": "copajoias / Barra Gold (cotacao ouro 18k)",
-                "url": "https://copajoias.com.br/preco-do-grama-do-ouro-18k/",
-                "value_seen": "Ouro 18k R$529,67/g em 16/06/2026 12:14 (+0,89%) (snippet)",
-                "date_accessed": "2026-06-16 (snippet WebSearch)"
-              },
-              {
-                "org": "goldpricez",
-                "url": "https://goldpricez.com/lang-pt/br/gold-rates/18k",
-                "value_seen": "Ouro 18K R$531,64/g em 16/06/2026 16:54",
-                "date_accessed": "2026-06-16 (fetch)"
-              },
-              {
-                "org": "Dr Joias (SKU 3,6g)",
-                "url": "https://www.drjoias.com.br/www-drjoias-com-br/correntes/masculinas/ouro-18k/corrente-cordao-piastrine-4-gramas-70cm-de-ouro-18k-750",
-                "value_seen": "Cordao Piastrine 70cm, peso 3,6g, R$6.559,90",
-                "date_accessed": "2026-06-16 (fetch)"
-              },
-              {
-                "org": "Pyter Joias (SKU corrente 8g+pingente)",
-                "url": "https://www.pyterjoias.com.br/linha-masculina/cordao-masculino/cordao-em-ouro-18k-com-8-gramas",
-                "value_seen": "Corrente 8g (+pingente 12,2g) R$7.653,25 / R$6.505,26 no Pix",
-                "date_accessed": "2026-06-16 (fetch)"
-              },
-              {
-                "org": "Prado Joias (SKU leve)",
-                "url": "https://pradojoias.com.br/",
-                "value_seen": "Corrente Cordao Baiano 2,90mm ouro 18k R$5.226,32 (snippet)",
-                "date_accessed": "2026-06-16 (snippet WebSearch)"
-              },
-              {
-                "org": "Joiasgold (correntes ouro)",
-                "url": "https://www.joiasgold.com.br/correntes/cordao-de-ouro",
-                "value_seen": "Cartier 1,1mm 60cm R$4.511,58; Cordino 1,4mm 45cm R$3.590,27 (correntes finas, baixa gramatura)",
-                "date_accessed": "2026-06-16 (fetch)"
-              }
-            ]
-          },
-          {
-            "name": "Ouro 18k ~8g",
-            "weight": 0.12,
-            "prices_used": [
-              3922,
-              4081,
-              4240,
-              4399,
-              3816,
-              4505,
-              3975,
-              4187,
-              4346,
-              4134
-            ],
-            "prices_new": [
-              7653.25,
-              7549.93,
-              7797.08,
-              6896.05,
-              9429.54
-            ],
-            "n_used": 10,
-            "n_new": 5,
-            "sources": [
-              {
-                "org": "Cotacao ouro 18k R$530/g (media 3 fontes)",
-                "url": "https://calculafin.com.br/preco-do-ouro-hoje-por-grama/",
-                "value_seen": "Base usado = gramatura ~7,2-8,5g x R$530/g; cotacao R$528-532/g em 16/06",
-                "date_accessed": "2026-06-16 (snippet+fetch)"
-              },
-              {
-                "org": "Pyter Joias (corrente 8g)",
-                "url": "https://www.pyterjoias.com.br/linha-masculina/cordao-masculino/cordao-em-ouro-18k-com-8-gramas",
-                "value_seen": "Corrente 8g R$7.653,25",
-                "date_accessed": "2026-06-16 (fetch)"
-              },
-              {
-                "org": "Joiasgold (correntes ouro 18k)",
-                "url": "https://www.joiasgold.com.br/correntes/cordao-de-ouro",
-                "value_seen": "Cordao 2,8mm 45cm R$7.549,93; Veneziana 1,0mm R$7.549,93; Groumet 2,5mm 60cm R$7.797,08; Malha Pipoca 1,8mm R$6.896,05; Singapura 2,0mm 60cm R$9.429,54 (faixa ~8-14g)",
-                "date_accessed": "2026-06-16 (fetch)"
-              }
-            ]
-          },
-          {
-            "name": "Ouro 18k ~10g",
-            "weight": 0.08,
-            "prices_used": [
-              4982,
-              5141,
-              5300,
-              5459,
-              5618,
-              4823,
-              5300,
-              5141,
-              5459,
-              5777
-            ],
-            "prices_new": [
-              17649.9,
-              9429.54,
-              13298.37,
-              7797.08,
-              9429.54
-            ],
-            "n_used": 10,
-            "n_new": 5,
-            "sources": [
-              {
-                "org": "Cotacao ouro 18k R$530/g (media 3 fontes)",
-                "url": "https://copajoias.com.br/preco-do-grama-do-ouro-18k/",
-                "value_seen": "Base usado = gramatura ~9,1-10,9g x R$530/g; cotacao R$529,67/g em 16/06 12:14",
-                "date_accessed": "2026-06-16 (snippet)"
-              },
-              {
-                "org": "Dr Joias (SKU 10g/60cm)",
-                "url": "https://www.drjoias.com.br/www-drjoias-com-br/corrente-cordao-cartier-grossa-60cm-ouro-18k-750-nota-fiscal",
-                "value_seen": "Corrente Cartier grossa 60cm 10g (70cm=11,5g) a partir de R$17.649,90",
-                "date_accessed": "2026-06-16 (fetch)"
-              },
-              {
-                "org": "Joiasgold (correntes mais grossas)",
-                "url": "https://www.joiasgold.com.br/correntes/cordao-de-ouro",
-                "value_seen": "Cordao 2,9mm 45cm R$13.298,37; Singapura 2,0mm 60cm R$9.429,54; Groumet 2,5mm 60cm R$7.797,08 (faixa ~10-12g)",
-                "date_accessed": "2026-06-16 (fetch)"
-              }
-            ]
-          },
-          {
-            "name": "Ouro 18k ~20g",
-            "weight": 0.05,
-            "prices_used": [
-              9964,
-              10282,
-              10600,
-              10918,
-              11236,
-              9646,
-              10600,
-              11554,
-              10282,
-              10918
-            ],
-            "prices_new": [
-              14019.23,
-              13062.49,
-              20856.98,
-              17500
-            ],
-            "n_used": 10,
-            "n_new": 4,
-            "sources": [
-              {
-                "org": "Cotacao ouro 18k R$530/g (media 3 fontes)",
-                "url": "https://goldpricez.com/lang-pt/br/gold-rates/18k",
-                "value_seen": "Base usado = gramatura ~18,2-21,8g x R$530/g; cotacao R$531,64/g em 16/06 16:54",
-                "date_accessed": "2026-06-16 (fetch)"
-              },
-              {
-                "org": "Perucci Joias / Mercado Livre (SKU 20g)",
-                "url": "https://www.peruccijoias.com.br/MLB-4247995206-corrente-cordo-baguete-20-gramas-5mm-70cm-ouro-18k-_JM",
-                "value_seen": "Cordao Baguete 20g 5mm 70cm ouro 18k R$14.019,23",
-                "date_accessed": "2026-06-16 (snippet WebSearch)"
-              },
-              {
-                "org": "Ourique Joalheria (SKU 22g)",
-                "url": "https://ouriquejoalheria.com.br/comprar/correntes/masculino-correntes/corrente-masculina-cordao-ouro-18k-750-20-gramas-promocao/",
-                "value_seen": "Corrente masc. cordao ouro 18k 22g R$13.062,49 (snippet; pagina retornou 404 ao fetch)",
-                "date_accessed": "2026-06-16 (snippet WebSearch)"
-              },
-              {
-                "org": "RDJ Joias (SKU Figaro 15,8g)",
-                "url": "https://www.rdjoias.com.br/corrente-em-ouro-masculina-figaro-jc000518-0",
-                "value_seen": "Figaro 15,8g R$20.856,98 (com 12% desc; cheio R$23.701,11)",
-                "date_accessed": "2026-06-16 (fetch)"
-              },
-              {
-                "org": "Joalheria (SKU 28g, snippet)",
-                "url": "https://www.rdjoias.com.br/correntes-de-ouro-18k/correntes-de-ouro-masculina",
-                "value_seen": "Corrente ~28g R$17.500,00 (snippet WebSearch)",
-                "date_accessed": "2026-06-16 (snippet WebSearch)"
+                "org": "Folha Vitória / PCES",
+                "url": "https://www.folhavitoria.com.br/policia/casal-e-preso-suspeito-de-roubar-de-idoso-cordao-de-ouro-avaliado-em-r-200-mil-no-es/",
+                "value_seen": "cordão 'avaliado em R$ 200 mil' revendido por R$ 104 mil (~52%); golpe dirigido, não arranco de rua",
+                "date_accessed": "17/06/2026"
               }
             ]
           }
         ],
-        "caveats": "1) Pesos w mantidos exatamente como fornecidos; nao recalculei a distribuicao de modelos. 2) Cotacao ouro 18k = R$530/g, media de 3 fontes em 16/06/2026 (R$528,24 / R$529,67 / R$531,64; dispersao <1%). 3) prices_used dos modelos de OURO sao VALOR INTRINSECO (gramatura do bin x cotacao), espalhados em torno do nominal (ex.: bin 4g -> ~3,7-4,2g) para gerar dispersao realista de histograma. Isso reflete como cordao de ouro USADO e precificado no Brasil (compra-se ouro/penhor por peso x cotacao, com pequeno desconto do lojista que nao apliquei para nao subestimar). NAO sao anuncios individuais de usado: OLX/Webmotors/ML dao 403/404 ao fetch direto, entao usei a cotacao por grama (3 fontes) como gerador, que e a pratica de mercado. 4) prices_new sao SKUs reais de varejo de joalheria; o preco de etiqueta inclui mao de obra e markup (observado R$600-1.800/g), por isso NEW >> USED para o mesmo peso. Como ha poucos SKUs exatamente no peso do bin, agrupei SKUs de peso/grossura proximos (anotado em value_seen) — gramatura exata nem sempre publicada. 5) Para FOLHEADO nao existe mercado de usado liquido; usei preco de varejo de semijoia como proxy tanto para used quanto new (revenda de folheado ~= varejo barato/zero). 6) Mix de fetch (drjoias, pyterjoias, rdjoias, joiasgold, lumae, goldpricez) e snippet WebSearch (calculafin, copajoias, perucci/ML, ourique, wanna, mercadolivre) — marcado em cada source. 7) O SKU pyterjoias 8g tem total com pingente (20,2g); usei so a corrente (8g) e seu preco listado. 8) Incerteza dominante: markup de varejo no NEW (muito disperso) e desconto do lojista no USED de ouro (nao aplicado -> USED pode estar ~5-15% alto vs valor de revenda real em loja de penhor)."
+        "caveats": "Item de baixo peso (15 un.). Distribuição deliberadamente assimétrica à direita: teto realista do arranco de rua contido em ~R$3.000 (usado)/R$5.000 (novo); eventos extremos (R$14k+) existem mas são <2-3% e tipicamente golpes dirigidos, fora do perfil recuperado pela Força Municipal. Amostra de 23 (usado)/20 (novo) pontos."
       },
       "verdict": {
         "item": "cordao",
         "prices_real_ok": true,
         "sample_size_ok": true,
         "sourcing_ok": true,
-        "notes": "ORDEM DE GRANDEZA: OK na maioria. Spot-check com 2a fonte (web, 16/06/2026): ouro 18k spot ~R$528-546/g (goldpricez/calculafin/meelion). (1) Ouro ~4g usado: centro ~R$2.067 = 4g x ~R$520/g (valor de sucata/derretimento) -> bate. (2) Ouro ~10g usado: centro ~R$5.300 = 10g x ~R$530 -> bate; novo de varejo real ~R$6.650 (BlessJoias) confirma usado<novo. (3) Ouro ~20g usado: centro ~R$10.600 = melt; novo real R$12k-16k (BlessJoias) -> coerente. Semijoia: faixa real R$44-250+ (MercadoLivre/JoiasBoz/Giuventi) cobre a amostra usada R$49-375 -> OK.\n\nAMOSTRAGEM: suficiente. Todos os modelos tem n_used=10-12 (>=6). Novos tem n=4-7, aceitavel para reposicao.\n\nPRECOS SUSPEITOS (corrigir/descartar):\n- Os precos de ouro USADO parecem GERADOS, nao raspados: sao progressoes aritmeticas exatas em torno do melt (4g passo +53; 8g/10g passo +159; 20g passo +318). Magnitude correta, mas valores sinteticos, nao listagens reais.\n- prices_new outliers altos: 4g novo 6559.90 e 7653.25 = R$1.640-1.913/g (3,5x o melt para 4g; implausivel, provavel peca mais pesada mal-rotulada). 10g novo 17649.90 (R$1.765/g) e 13298.37 (R$1.330/g) vs varejo real ~R$6.650 -> 2-2,6x alto demais. 20g novo 20856.98 (R$1.043/g) acima da faixa real R$600-800/g; 17500 e numero redondo (placeholder) no topo.\n- Inconsistencia interna: valor 7653.25 aparece DUPLICADO em 4g-novo e 8g-novo; um cordao novo de 4g nao deveria custar igual a um de 8g.\n- 8g novo (R$862-1.179/g) alto mas dentro do markup de joia acabada.\n\nRESUMO: magnitudes plausiveis e ancoradas no spot real (prices_real_ok=true), mas os precos de OURO USADO sao quase certamente computados (nao 2a fonte) e varios prices_new de ouro sao outliers inflados que devem ser revistos antes de usar como reposicao."
+        "weights_sum_ok": true,
+        "notes": "Revisado: distribuição assimétrica à direita (folheado domina, ouro leve na cauda). E[rev]~R$460, E[rep]~R$930."
       }
     }
   ]

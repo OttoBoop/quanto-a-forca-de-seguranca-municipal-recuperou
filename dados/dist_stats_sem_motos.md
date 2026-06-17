@@ -8,12 +8,12 @@
 | Celulares | reposição | R$ 1.964 | R$ 1.641 | R$ 619 | R$ 6.500 |
 | Bicicletas | revenda | R$ 668 | R$ 472 | R$ 120 | R$ 1.800 |
 | Bicicletas | reposição | R$ 1.115 | R$ 684 | R$ 410 | R$ 2.000 |
-| Cordões | revenda | R$ 1.977 | R$ 2.621 | R$ 75 | R$ 5.777 |
-| Cordões | reposição | R$ 3.933 | R$ 4.911 | R$ 49 | R$ 14.019 |
+| Cordões | revenda | R$ 462 | R$ 804 | R$ 20 | R$ 2.400 |
+| Cordões | reposição | R$ 936 | R$ 1.486 | R$ 40 | R$ 5.000 |
 
 ## Valor TOTAL recuperado (Monte Carlo, 50000 iter)
 
 | base | E[V] | p5 | p95 |
 |---|--:|--:|--:|
-| revenda | R$ 185.636 | R$ 162.592 | R$ 210.608 |
-| reposição | R$ 312.291 | R$ 270.539 | R$ 357.005 |
+| revenda | R$ 162.690 | R$ 145.276 | R$ 181.271 |
+| reposição | R$ 267.172 | R$ 236.950 | R$ 299.130 |

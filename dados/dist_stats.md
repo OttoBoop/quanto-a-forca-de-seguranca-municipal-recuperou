@@ -10,12 +10,12 @@
 | Motocicletas | reposição | R$ 19.161 | R$ 5.306 | R$ 12.126 | R$ 30.385 |
 | Bicicletas | revenda | R$ 669 | R$ 472 | R$ 120 | R$ 1.800 |
 | Bicicletas | reposição | R$ 1.117 | R$ 688 | R$ 410 | R$ 2.000 |
-| Cordões | revenda | R$ 1.980 | R$ 2.626 | R$ 75 | R$ 5.777 |
-| Cordões | reposição | R$ 3.945 | R$ 4.915 | R$ 49 | R$ 14.019 |
+| Cordões | revenda | R$ 464 | R$ 805 | R$ 20 | R$ 2.400 |
+| Cordões | reposição | R$ 929 | R$ 1.479 | R$ 40 | R$ 4.200 |
 
 ## Valor TOTAL recuperado (Monte Carlo, 50000 iter)
 
 | base | E[V] | p5 | p95 |
 |---|--:|--:|--:|
-| revenda | R$ 1,96 mi | R$ 1,88 mi | R$ 2,04 mi |
-| reposição | R$ 2,48 mi | R$ 2,38 mi | R$ 2,58 mi |
+| revenda | R$ 1,94 mi | R$ 1,86 mi | R$ 2,01 mi |
+| reposição | R$ 2,43 mi | R$ 2,34 mi | R$ 2,53 mi |

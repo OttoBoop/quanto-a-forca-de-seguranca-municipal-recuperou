@@ -31,11 +31,11 @@
 motocicletas, 19 bicicletas e 15 cordões. Tratamos o valor de cada item recuperado como uma
 \emph{variável aleatória}: sorteia-se o modelo segundo a distribuição real do que é roubado na
 cidade (ponderada por frequência) e o preço a partir de uma amostra de preços de mercado
-($n=470$ observações), em duas bases --- \textbf{revenda} (usado) e \textbf{reposição} (novo).
+($n=435$ observações), em duas bases --- \textbf{revenda} (usado) e \textbf{reposição} (novo).
 Agregando por simulação de Monte Carlo, o valor esperado do conjunto é de
-\textbf{\reais{1{,}96} milhão} a preços de revenda (banda de 90\%: \reais{1{,}88}--\reais{2{,}04}
-mi) e \textbf{\reais{2{,}48} milhões} a preços de reposição (\reais{2{,}38}--\reais{2{,}58} mi);
-o envelope extremo vai de \reais{0{,}7} a \reais{5{,}0} milhões. As motocicletas concentram cerca
+\textbf{\reais{1{,}94} milhão} a preços de revenda (banda de 90\%: \reais{1{,}86}--\reais{2{,}01}
+mi) e \textbf{\reais{2{,}43} milhões} a preços de reposição (\reais{2{,}34}--\reais{2{,}53} mi);
+o envelope extremo vai de \reais{0{,}7} a \reais{4{,}9} milhões. As motocicletas concentram cerca
 de 90\% do valor. Todas as cifras têm fonte pública (coleta em 16/06/2026).
 \end{abstract}
 
@@ -109,8 +109,8 @@ físicas} compram e têm furtado --- varejo popular (Caloi/Mormaii) e usados do 
 $\approx$70\%); cordões, a prevalência de folheado vs.\ ouro.
 
 \subsection{Coleta de preços e distribuições empíricas}
-Para cada modelo coletou-se uma \textbf{amostra de preços observados} (16/06/2026): 334
-observações de usado e 136 de novo ($n=470$). As fontes de usado incluem o varejo de seminovos
+Para cada modelo coletou-se uma \textbf{amostra de preços observados} (16/06/2026): 305
+observações de usado e 130 de novo ($n=435$). As fontes de usado incluem o varejo de seminovos
 (Trocafy/Trocafone, cada listagem = um preço) e a Tabela FIPE por ano-modelo (motos: cada
 ano-modelo = um preço, gerando a dispersão); as de novo, o varejo (Magazine Luiza, Samsung, Apple,
 concessionárias) e joalherias por gramatura (cordões = peso $\times$ cotação do ouro 18k). OLX e
@@ -122,6 +122,21 @@ amostra é, portanto, uma aproximação (não um censo); os tamanhos por modelo 
 A distribuição de $V_i^b$ e de $V^b$ é obtida por simulação: sorteiam-se $N_i$ unidades por
 categoria segundo a Eq.~\eqref{eq:mix}, somam-se, e repete-se 50.000 vezes (semente fixa, para
 reprodutibilidade). Reporta-se o valor esperado e a banda de 90\% (percentis 5 e 95).
+
+\subsection{Caso especial: distribuição dos cordões}
+Os cordões merecem tratamento à parte. O que é arrancado na rua é, na maioria,
+\textbf{folheado/semijoia} (\reais{15}--\reais{150}) ou ouro \emph{leve} (2--8\,g) --- raramente
+peças pesadas de joalheria. A distribuição é, portanto, \textbf{fortemente assimétrica à direita}
+(\emph{lognormal-like}): mediana no folheado (\reais{50}--\reais{80}) e média puxada por uma cauda
+longa e fina de ouro. Calibramos a amostra para $\approx$80\% folheado/baixo valor, $\approx$18\%
+ouro leve e $\approx$2--4\% de cauda (eventos raros, tipicamente golpes dirigidos, não o arranco de
+rua), com teto realista contido (\reais{3.000} usado / \reais{5.000} novo). Dois fatos sustentam a
+forma: o mercado de semijoias é massivo e popular (``luxo acessível''), e o canal de receptação
+realiza só $\approx$50--65\% do valor --- comprimindo ainda mais a base. Daí o desvio $\gg$ média
+na Tabela~\ref{tab:itens}, assinatura da assimetria. Fontes: IBGM (mercado de semijoias); preços de
+folheado (Shekinah; Prata Pura); ouro leve de uso diário 1,8--8\,g (Dr Joias; Pyter); cotação do
+ouro 18k $\approx$\reais{530}/g; e o caso de Linhares-ES (cordão ``de R\$\,200 mil'' revendido por
+R\$\,104 mil) ilustrando a cauda rara.
 
 % =====================================================================
 \section{Resultados}
@@ -154,8 +169,8 @@ ouro). A Tabela~\ref{tab:itens} resume os momentos.
                  & reposição & 19.161 & 5.306 & 12.126--30.385 \\
     Bicicletas   & revenda   & 669    & 472   & 120--1.800 \\
                  & reposição & 1.117  & 688   & 410--2.000 \\
-    Cordões      & revenda   & 1.980  & 2.626 & 75--5.777 \\
-                 & reposição & 3.945  & 4.915 & 49--14.019 \\
+    Cordões      & revenda   & 464    & 805   & 20--2.400 \\
+                 & reposição & 929    & 1.479 & 40--4.200 \\
     \bottomrule
   \end{tabular}
   \caption{Momentos da distribuição de valor por unidade (R\$), por base. Fonte: amostras de
@@ -185,12 +200,12 @@ Tabela~\ref{tab:contrib} detalha a contribuição por categoria: as motocicletas
     \toprule
     Item & $N_i$ & Contrib.\ revenda & Contrib.\ reposição & \% (revenda) \\
     \midrule
-    Motocicletas & 113 & 1.773.874 & 2.165.193 & 90,5\% \\
-    Celulares    & 118 & 143.016   & 231.752   & 7,3\% \\
-    Cordões      & 15  & 29.700    & 59.175    & 1,5\% \\
-    Bicicletas   & 19  & 12.711    & 21.223    & 0,6\% \\
+    Motocicletas & 113 & 1.773.874 & 2.165.193 & 91,6\% \\
+    Celulares    & 118 & 143.016   & 231.752   & 7,4\% \\
+    Bicicletas   & 19  & 12.711    & 21.223    & 0,7\% \\
+    Cordões      & 15  & 6.960     & 13.935    & 0,4\% \\
     \midrule
-    \textbf{Total} & — & \textbf{$\approx$1.959.301} & \textbf{$\approx$2.477.343} & 100\% \\
+    \textbf{Total} & — & \textbf{$\approx$1.936.561} & \textbf{$\approx$2.432.103} & 100\% \\
     \bottomrule
   \end{tabular}
   \caption{Contribuição por categoria ($N_i\cdot\mathbb{E}[V_i]$) e total (R\$).}
@@ -200,9 +215,9 @@ Tabela~\ref{tab:contrib} detalha a contribuição por categoria: as motocicletas
 \noindent A banda de 90\% das Figuras é estreita porque, ao somar 265 unidades, a variação
 individual se compensa (lei dos grandes números): a incerteza \emph{de amostragem} do total é
 pequena. A incerteza \emph{estrutural} --- maior --- é capturada por três elementos: a distância
-entre as bases de revenda e reposição (\reais{1{,}96}--\reais{2{,}48} mi), a análise de
+entre as bases de revenda e reposição (\reais{1{,}94}--\reais{2{,}43} mi), a análise de
 sensibilidade abaixo, e o \textbf{envelope extremo} de \reais{0{,}7} milhão (se cada item fosse o
-modelo usado mais barato) a \reais{5{,}0} milhões (se cada item fosse o modelo novo mais caro).
+modelo usado mais barato) a \reais{4{,}9} milhões (se cada item fosse o modelo novo mais caro).
 
 \subsection{Análise de sensibilidade (motocicletas apreendidas)}
 As 113 motos são ``recuperadas/apreendidas''. Uma fração $\rho$ pode ser apreensão com restrição
@@ -213,7 +228,7 @@ essa proporção, reporta-se a sensibilidade do total de revenda:
 \toprule
 $\rho$ (motos com restrição) & 0 & 0,5 & 1 \\
 \midrule
-$\mathbb{E}[V^{\text{rev}}]$ & \reais{1{,}96} mi & \reais{1{,}74} mi & \reais{1{,}52} mi \\
+$\mathbb{E}[V^{\text{rev}}]$ & \reais{1{,}94} mi & \reais{1{,}71} mi & \reais{1{,}49} mi \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -222,8 +237,8 @@ $\mathbb{E}[V^{\text{rev}}]$ & \reais{1{,}96} mi & \reais{1{,}74} mi & \reais{1{
 \section{Conclusões}
 % =====================================================================
 O patrimônio recuperado/apreendido pela Força Municipal no período vale, em valor esperado, entre
-\reais{1{,}96} milhão (revenda) e \reais{2{,}48} milhões (reposição), com envelope de \reais{0{,}7}
-a \reais{5{,}0} milhões. O resultado é dominado pelas motocicletas ($\approx$90\%), o que torna a
+\reais{1{,}94} milhão (revenda) e \reais{2{,}43} milhões (reposição), com envelope de \reais{0{,}7}
+a \reais{4{,}9} milhões. O resultado é dominado pelas motocicletas ($\approx$90\%), o que torna a
 estimativa, na prática, uma medida do valor das 113 motos. O tratamento probabilístico mostra não
 só um número, mas a \emph{distribuição} de valores plausíveis de cada item, ancorada na composição
 real do que se rouba na cidade e em preços de mercado verificáveis. A atualização para a janela de

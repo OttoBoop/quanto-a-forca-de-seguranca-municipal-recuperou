@@ -6,25 +6,24 @@ Estudo quantitativo: **Prefeitura do Rio — Secretaria Municipal de Desenvolvim
 
 ## A pergunta
 
-No período, a Força Municipal recuperou/apreendeu **118 celulares, 113 motocicletas, 19 bicicletas e 15 cordões**. Quanto vale, em reais, esse patrimônio?
-
-A resposta não é um número único: um celular recuperado pode ser um aparelho de entrada usado ou um *flagship* novo. Por isso o estudo estima a **distribuição** de valores plausíveis de cada item, não apenas uma média.
+No período, a Força Municipal recuperou/apreendeu **118 celulares, 113 motocicletas, 19 bicicletas e 15 cordões**. Quanto vale, em reais, esse patrimônio? A resposta não é um número único: estima-se a **distribuição** de valores plausíveis de cada item.
 
 ## Duas versões (mesmo modelo, conjuntos de itens diferentes)
 
 | PDF | Itens | Valor esperado | Envelope | Item dominante |
 |---|---|---|---|---|
-| [`paper/recuperacoes.pdf`](paper/recuperacoes.pdf) | celular, **moto**, bicicleta, cordão | **R$ 1,96 mi** (revenda) → **R$ 2,48 mi** (reposição) | R$ 0,7 – 5,0 mi | motocicletas (~90%) |
-| [`paper/recuperacoes_sem_motos.pdf`](paper/recuperacoes_sem_motos.pdf) | celular, bicicleta, cordão | **R$ 186 mil** (revenda) → **R$ 312 mil** (reposição) | R$ 44 mil – 1,37 mi | celulares (~77%) |
+| [`paper/recuperacoes.pdf`](paper/recuperacoes.pdf) | celular, **moto**, bicicleta, cordão | **R$ 1,94 mi** (revenda) → **R$ 2,43 mi** (reposição) | R$ 0,7 – 4,9 mi | motocicletas (~90%) |
+| [`paper/recuperacoes_sem_motos.pdf`](paper/recuperacoes_sem_motos.pdf) | celular, bicicleta, cordão | **R$ 163 mil** (revenda) → **R$ 267 mil** (reposição) | R$ 44 mil – 1,24 mi | celulares (~88%) |
 
-A **metodologia é idêntica** nas duas; a única diferença é o conjunto de itens considerado.
+A **metodologia é idêntica** nas duas; a única diferença é o conjunto de itens.
 
 ## Metodologia (resumo)
 
-O valor de uma unidade recuperada é tratado como uma **variável aleatória de mistura**: sorteia-se o modelo segundo a **frequência** com que é roubado na cidade, e o preço a partir de uma **amostra de preços de mercado** daquele modelo — em duas bases: **revenda** (usado) e **reposição** (novo). O total é agregado por **simulação de Monte Carlo** (50 mil iterações, semente fixa), produzindo o valor esperado e uma **banda de 90%**.
+O valor de uma unidade recuperada é uma **variável aleatória de mistura**: sorteia-se o modelo segundo a **frequência** com que é roubado na cidade, e o preço a partir de uma **amostra de preços de mercado** daquele modelo — em duas bases: **revenda** (usado) e **reposição** (novo). O total é agregado por **Monte Carlo** (50 mil iterações, semente fixa) → valor esperado + **banda de 90%**.
 
-- **Distribuição de modelos:** marca mais roubada (Anuário do Fórum Brasileiro de Segurança Pública) + perfil socioeconômico (TIC Domicílios); motocicletas pelo ranking de roubo do Rio (Polícia Civil-RJ); bicicletas **de uso pessoal** (compradas por pessoas físicas); cordões pela prevalência folheado vs. ouro.
-- **Preços:** 470 observações de mercado coletadas por modelo (usado e novo), em 16/06/2026.
+- **Distribuição de modelos:** marca mais roubada (Anuário FBSP) + perfil socioeconômico (TIC); motos pelo ranking de roubo do Rio (Polícia Civil-RJ); bicicletas **de uso pessoal**; cordões pela prevalência folheado vs. ouro.
+- **Cordões — atenção especial:** distribuição **fortemente assimétrica à direita** (folheado/semijoia domina; ouro leve; cauda fina de ouro). Mediana no folheado (~R$ 50–80), média puxada pela cauda. Ver a **seção dedicada** em cada paper.
+- **Preços:** ~435 observações de mercado coletadas por modelo (usado e novo), em 16/06/2026.
 - **Fontes:** toda cifra é referenciada — ver [`dados/inventario_fontes.md`](dados/inventario_fontes.md) e [`dados/dados_distribuicao.json`](dados/dados_distribuicao.json).
 
 ## Estrutura do repositório
@@ -41,11 +40,9 @@ skills/    método reutilizável (pesquisa→paper, paper→release)
 ## Reproduzir
 
 ```bash
-# distribuições + Monte Carlo + figuras (Python com matplotlib/numpy/scipy)
 python scripts/gerar_distribuicoes.py                       # versão com motos
 python scripts/gerar_distribuicoes.py --exclude moto \
        --figdir figuras_sem_motos --stats dist_stats_sem_motos.md   # sem motos
-# compilar os papers
 latexmk -pdf paper/recuperacoes.tex
 latexmk -pdf paper/recuperacoes_sem_motos.tex
 ```

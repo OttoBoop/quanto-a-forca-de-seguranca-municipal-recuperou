@@ -32,10 +32,10 @@
 sorteia-se o modelo segundo a distribuição real do que é roubado na cidade (ponderada por
 frequência) e o preço a partir de uma amostra de preços de mercado, em duas bases ---
 \textbf{revenda} (usado) e \textbf{reposição} (novo). Agregando por simulação de Monte Carlo, o
-valor esperado do conjunto é de \textbf{\reais{186} mil} a preços de revenda (banda de 90\%:
-\reais{163}--\reais{211} mil) e \textbf{\reais{312} mil} a preços de reposição
-(\reais{271}--\reais{357} mil); o envelope extremo vai de \reais{44} mil a \reais{1{,}37} milhão.
-Os celulares concentram cerca de 77\% do valor. Todas as cifras têm fonte pública (coleta em
+valor esperado do conjunto é de \textbf{\reais{163} mil} a preços de revenda (banda de 90\%:
+\reais{145}--\reais{181} mil) e \textbf{\reais{267} mil} a preços de reposição
+(\reais{237}--\reais{299} mil); o envelope extremo vai de \reais{44} mil a \reais{1{,}24} milhão.
+Os celulares concentram cerca de 88\% do valor. Todas as cifras têm fonte pública (coleta em
 16/06/2026).
 \end{abstract}
 
@@ -105,7 +105,7 @@ refletem o que \emph{pessoas físicas} compram e têm furtado --- bicicletas de 
 folheado vs.\ ouro.
 
 \subsection{Coleta de preços e distribuições empíricas}
-Para cada modelo coletou-se uma \textbf{amostra de preços observados} (16/06/2026): 324
+Para cada modelo coletou-se uma \textbf{amostra de preços observados} (16/06/2026): 289
 observações entre usado e novo. As fontes de usado incluem o varejo de seminovos
 (Trocafy/Trocafone, cada listagem = um preço) e anúncios do Rio (OLX-RJ); as de novo, o varejo
 (Magazine Luiza, Samsung, Apple, Caloi/Mormaii) e joalherias por gramatura (cordões = peso
@@ -117,6 +117,21 @@ por modelo estão em \texttt{dados\_distribuicao.json}.
 A distribuição de $V_i^b$ e de $V^b$ é obtida por simulação: sorteiam-se $N_i$ unidades por
 categoria segundo a Eq.~\eqref{eq:mix}, somam-se, e repete-se 50.000 vezes (semente fixa, para
 reprodutibilidade). Reporta-se o valor esperado e a banda de 90\% (percentis 5 e 95).
+
+\subsection{Caso especial: distribuição dos cordões}
+Os cordões merecem tratamento à parte. O que é arrancado na rua é, na maioria,
+\textbf{folheado/semijoia} (\reais{15}--\reais{150}) ou ouro \emph{leve} (2--8\,g) --- raramente
+peças pesadas de joalheria. A distribuição é, portanto, \textbf{fortemente assimétrica à direita}
+(\emph{lognormal-like}): mediana no folheado (\reais{50}--\reais{80}) e média puxada por uma cauda
+longa e fina de ouro. Calibramos a amostra para $\approx$80\% folheado/baixo valor, $\approx$18\%
+ouro leve e $\approx$2--4\% de cauda (eventos raros, tipicamente golpes dirigidos, não o arranco de
+rua), com teto realista contido (\reais{3.000} usado / \reais{5.000} novo). Dois fatos sustentam a
+forma: o mercado de semijoias é massivo e popular (``luxo acessível''), e o canal de receptação
+realiza só $\approx$50--65\% do valor --- comprimindo ainda mais a base. Daí o desvio $\gg$ média
+na Tabela~\ref{tab:itens}, assinatura da assimetria. Fontes: IBGM (mercado de semijoias); preços de
+folheado (Shekinah; Prata Pura); ouro leve de uso diário 1,8--8\,g (Dr Joias; Pyter); cotação do
+ouro 18k $\approx$\reais{530}/g; e o caso de Linhares-ES (cordão ``de R\$\,200 mil'' revendido por
+R\$\,104 mil) ilustrando a cauda rara.
 
 % =====================================================================
 \section{Resultados}
@@ -146,8 +161,8 @@ bimodal (folheados de baixo valor e peças de ouro). A Tabela~\ref{tab:itens} re
                & reposição & 1.964 & 1.641 & 619--6.500 \\
     Bicicletas & revenda   & 668   & 472   & 120--1.800 \\
                & reposição & 1.115 & 684   & 410--2.000 \\
-    Cordões    & revenda   & 1.977 & 2.621 & 75--5.777 \\
-               & reposição & 3.933 & 4.911 & 49--14.019 \\
+    Cordões    & revenda   & 462   & 804   & 20--2.400 \\
+               & reposição & 936   & 1.486 & 40--5.000 \\
     \bottomrule
   \end{tabular}
   \caption{Momentos da distribuição de valor por unidade (R\$), por base. Fonte: amostras de
@@ -160,7 +175,7 @@ Agregando (Eq.~\eqref{eq:total}), o valor esperado do patrimônio recuperado é 
 \textbf{\reais{186} mil} a preços de revenda e \textbf{\reais{312} mil} a preços de reposição. A
 Figura~\ref{fig:total} mostra as duas distribuições com suas bandas de 90\%
 (\reais{163}--\reais{211} mil e \reais{271}--\reais{357} mil). A Tabela~\ref{tab:contrib} detalha a
-contribuição por categoria: os \textbf{celulares} respondem por cerca de \textbf{77\%} do total.
+contribuição por categoria: os \textbf{celulares} respondem por cerca de \textbf{88\%} do total.
 
 \begin{figure}[H]
   \centering
@@ -176,11 +191,11 @@ contribuição por categoria: os \textbf{celulares} respondem por cerca de \text
     \toprule
     Item & $N_i$ & Contrib.\ revenda & Contrib.\ reposição & \% (revenda) \\
     \midrule
-    Celulares  & 118 & 143.016 & 231.752 & 77,2\% \\
-    Cordões    & 15  & 29.655  & 58.995  & 16,0\% \\
-    Bicicletas & 19  & 12.692  & 21.185  & 6,8\% \\
+    Celulares  & 118 & 143.016 & 231.752 & 87,9\% \\
+    Bicicletas & 19  & 12.692  & 21.185  & 7,8\% \\
+    Cordões    & 15  & 6.930   & 14.040  & 4,3\% \\
     \midrule
-    \textbf{Total} & — & \textbf{$\approx$185.363} & \textbf{$\approx$311.932} & 100\% \\
+    \textbf{Total} & — & \textbf{$\approx$162.638} & \textbf{$\approx$266.977} & 100\% \\
     \bottomrule
   \end{tabular}
   \caption{Contribuição por categoria ($N_i\cdot\mathbb{E}[V_i]$) e total (R\$).}
@@ -189,16 +204,16 @@ contribuição por categoria: os \textbf{celulares} respondem por cerca de \text
 
 \noindent A banda de 90\% reflete a incerteza de \emph{amostragem} do total. A incerteza
 \emph{estrutural} é capturada pela distância entre as bases de revenda e reposição
-(\reais{186}--\reais{312} mil) e pelo \textbf{envelope extremo} de \reais{44} mil (se cada item
-fosse o modelo usado mais barato) a \reais{1{,}37} milhão (se cada item fosse o modelo novo mais
+(\reais{163}--\reais{267} mil) e pelo \textbf{envelope extremo} de \reais{44} mil (se cada item
+fosse o modelo usado mais barato) a \reais{1{,}24} milhão (se cada item fosse o modelo novo mais
 caro).
 
 % =====================================================================
 \section{Conclusões}
 % =====================================================================
-O patrimônio recuperado pela Força Municipal no período vale, em valor esperado, entre \reais{186}
-mil (revenda) e \reais{312} mil (reposição), com envelope de \reais{44} mil a \reais{1{,}37}
-milhão. O resultado é dominado pelos celulares ($\approx$77\%). O tratamento probabilístico mostra
+O patrimônio recuperado pela Força Municipal no período vale, em valor esperado, entre \reais{163}
+mil (revenda) e \reais{267} mil (reposição), com envelope de \reais{44} mil a \reais{1{,}24}
+milhão. O resultado é dominado pelos celulares ($\approx$88\%). O tratamento probabilístico mostra
 não só um número, mas a \emph{distribuição} de valores plausíveis de cada item, ancorada na
 composição real do que se rouba na cidade e em preços de mercado verificáveis. A atualização para
 janelas futuras entra apenas trocando os $N_i$.

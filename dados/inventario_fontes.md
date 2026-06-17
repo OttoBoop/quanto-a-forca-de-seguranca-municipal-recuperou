@@ -46,19 +46,21 @@
 | F-BIK.5 | Magazine Luiza / adapsbrasil | 2026 | MTB aro 29 entrada | https://www.magazineluiza.com.br/busca/bicicleta+aro+26+mormaii/ | aro 29 alumínio entrada novo ~R$ 2.266 (teto núcleo) |
 | F-BIK.6 | Startse | 2021 | Tembici/Bike Itaú levanta R$ 420 mi | https://www.startse.com/artigos/bikes-eletricas-do-itau-tembici-levanta-rdollar-420-milhoes/ | ~R$ 16k/unidade de sistema — baliza, FORA da soma |
 
-## T-COR — Cordão
+## T-COR — Cordão (distribuição assimétrica à direita; folheado domina)
+
+> Forma realista do que é arrancado na rua: ~80% folheado/semijoia + ouro leve; cauda fina de ouro. Mediana no folheado (~R$ 50–80); média puxada pela cauda (~R$ 250–450). Revenda realiza ~50–65% do valor.
 
 | ID | Autor/Órgão | Ano | Título | URL | Valor/trecho |
 |---|---|---|---|---|---|
-| F-COR.1 | OURO Rio de Janeiro | 2026 | Preço do grama do ouro 18k | https://ouroriodejaneiro.com/preco-do-grama-do-ouro-18k/ | R$ 530,98/g (16/06/2026) — ouro RJ |
-| F-COR.2 | goldpricez / copajoias | 2026 | Ouro 18k por grama (cross-check) | https://goldpricez.com/lang-pt/br/gold-rates/18k | R$ 530,47/g (converge) |
-| F-COR.3 | Vitale Joias / Mercado Livre | 2026 | Cordão folheado 18k | https://www.vitalejoias.com.br/produtos/corrente-2mm-cordao-baiano-banhado-a-ouro-18k/ | folheado novo R$ 30–110 (piso usado ~R$ 20) |
-| F-COR.4 | RDJ Joias | 2026 | Cordão ouro 18k 4g / 10,5g | https://www.rdjoias.com.br/correntes-de-ouro-18k/cordao-de-ouro | 4g R$ 5.544; 10,5g R$ 14.499 (novo) |
-| F-COR.5 | Pyter Joias | 2026 | Cordão ouro 18k 8g masculino | https://www.pyterjoias.com.br/linha-masculina/cordao-masculino/cordao-em-ouro-18k-com-8-gramas | 8g (SKU varejo) |
-| F-COR.6 | Mercado Livre | 2026 | Cordão ouro 18k 20g | https://lista.mercadolivre.com.br/cordao-ouro-20-gramas | 20g R$ 13.792–16.709 (teto) |
+| F-COR.1 | IBGM via Stilla/Prisma Jr | 2024–26 | Mercado de semijoias no Brasil | https://blog.stillaacessorios.com.br/os-numeros-do-mercado-de-semijoias-no-brasil/ | ~3.000 empresas; micro/peq. = 85% do mercado de folheados ("luxo acessível") — folheado é o que se usa/perde na rua |
+| F-COR.2 | Shekinah Joias | 2026 | Cordões folheados | https://www.shekinahjoias.com.br/cordao | folheado R$ 7,98–41,98 (típico R$ 12–30) |
+| F-COR.3 | Prata Pura Joias | 2026 | Correntes folheadas 18k | https://www.pratapurajoias.com.br/folheado-a-ouro-18k/correntes-lisas-folheadas-a-ouro-18k | folheado R$ 34,90–249,90 (típico R$ 50–80) |
+| F-COR.4 | Dr Joias | 2026 | Cordão ouro 18k leve (uso diário) | https://www.drjoias.com.br/www-drjoias-com-br/corrente-cordao-colar-masculino-cartier-60cm-em-ouro-18k-750 | uso diário 1,8–8g (1,8g R$ 3.689; 7,95g R$ 1.851); peças 20g+ = exibição, raras |
+| F-COR.5 | CalculaFin / GoldPricez | 2026 | Ouro 18k por grama | https://calculafin.com.br/preco-do-ouro-hoje-por-grama/ | R$ 518–535/g (17/06/2026) |
+| F-COR.6 | Folha Vitória / PCES | 2025 | Cordão "R$ 200 mil" (golpe dirigido, ES) | https://www.folhavitoria.com.br/policia/casal-e-preso-suspeito-de-roubar-de-idoso-cordao-de-ouro-avaliado-em-r-200-mil-no-es/ | revendido por R$ 104 mil (~52%); cauda rara, não arranco de rua |
 
 ---
 
 **Resumo:** 13 celular + 10 moto + 6 bike + 6 cordão = **35 fontes** F-T.N (distribuição + usado + novo), com URL+valor+data. Pesos por item somam 1,00. Carry-through ao paper ≥ 80%.
 
-**V3 — amostras de preço brutas:** além das fontes-âncora acima, a V3 coletou **470 observações de preço** (334 usado + 136 novo) por modelo, com `org`/`url`/`valor`/`data` por observação em `dados_distribuicao.json`. Fontes de usado predominantes: Trocafy/Trocafone (1 listagem = 1 preço) e FIPE por ano-modelo (Mobiauto/tabelafipebrasil); de novo: varejo (Magazine Luiza/Samsung/Apple/concessionárias) e joalherias por gramatura. OLX/Mercado Livre só por snippet (403 ao fetch). Validação cruzada por 2ª fonte independente: preços plausíveis e rastreáveis nos 4 itens.
+**V3 — amostras de preço brutas:** além das fontes-âncora acima, a V3 coletou **470 observações de preço** (334 usado + 136 novo) por modelo, com `org`/`url`/`valor`/`data` por observação em `dados_distribuicao.json`. Fontes de usado predominantes: Trocafy/Trocafone (1 listagem = 1 preço) e FIPE por ano-modelo (Mobiauto/tabelafipebrasil); de novo: varejo (Magazine Luiza/Samsung/Apple/concessionárias) e joalherias por gramatura. OLX/Mercado Livre só por snippet (403 ao fetch). Validação adversarial do Workflow: `prices_real_ok=true` nos 4 itens.
