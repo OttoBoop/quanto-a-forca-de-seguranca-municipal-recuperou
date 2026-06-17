@@ -1,0 +1,77 @@
+% ===================================================================
+% TEMPLATE de paper para agentic-study-latex — V2 (distribuicao de modelos).
+% Substitua {{...}} e preencha \tbd{} a partir do inventario_fontes.md.
+% Compile: latexmk -pdf <arquivo>.tex  |  Pronto quando grep "\tbd{" == 0.
+% NAO dependa de siunitx: use \reais{}.
+% MODELO V2: distribuicao real de modelos x dois precos (usado/revenda, novo/reposicao).
+%   NAO use preco unico x fator de depreciacao delta (duplo desconto).
+% ===================================================================
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+
+\newcommand{\reais}[1]{R\$\,#1}
+\newcommand{\tbd}[1]{\textcolor{red}{\textbf{[A PESQUISAR: #1]}}}
+
+\title{\textbf{{{TITULO}}}\\[0.3em]\large {{SUBTITULO}}}
+\author{{{AUTOR}}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent {{RESUMO: 1 paragrafo. Termine com o bracket de 4 na versao final: \tbd{V_min, V_rev, V_rep, V_max}.}}
+\end{abstract}
+
+\section{Introdução e modelo}
+{{Contexto.}} Para cada categoria $i$, modelamos a distribuicao de modelos representativos $m$,
+com peso $w_{i,m}$ (de FONTE DE FREQUENCIA, $\sum_m w_{i,m}=1$) e dois precos: revenda/usado
+$p^{\text{rev}}_{i,m}$ e reposicao/novo $p^{\text{rep}}_{i,m}$:
+\begin{equation}
+  \bar v_i^{\,b}=\sum_{m} w_{i,m}\,p^{\,b}_{i,m},\qquad
+  V^{\,b}=\sum_i N_i\,\bar v_i^{\,b},\qquad b\in\{\text{rev},\text{rep}\}.
+  \label{eq:total}
+\end{equation}
+O intervalo completo vai do modelo usado mais barato ao novo mais caro:
+\begin{equation}
+  V\in\big[\,V^{\min},\,V^{\text{rev}},\,V^{\text{rep}},\,V^{\max}\,\big].
+  \label{eq:bracket}
+\end{equation}
+NAO se aplica fator de depreciacao generico sobre o usado (o mercado ja precifica o desgaste).
+O estado entra so como haircut factual nomeado, na base revenda; incertezas viram sensibilidade.
+
+\section{Dados de quantidade}
+\begin{table}[h]\centering\begin{tabular}{lr}\toprule Item & $N_i$ \\ \midrule {{ITEM 1}} & {{N1}} \\ \bottomrule\end{tabular}
+\caption{Quantidades (fonte: {{FONTE}}).}\end{table}
+
+\section{Estimação: distribuição de modelos}
+\subsection{{{Categoria 1}}}
+% matriz modelo x w x usado x novo (preencher do inventario F-T.N)
+\begin{table}[h]\centering\small\begin{tabular}{lrrr}\toprule
+Modelo & $w$ & usado (R\$) & novo (R\$) \\ \midrule
+\tbd{modelo} & \tbd{w} & \tbd{usado} & \tbd{novo} \\ \midrule
+\textbf{Ponderado} & & \tbd{$\bar v^{rev}$} & \tbd{$\bar v^{rep}$} \\ \bottomrule
+\end{tabular}\caption{{{Categoria}}: piso \tbd{}, teto \tbd{}.}\end{table}
+
+\section{Agregação e intervalo total}
+\begin{table}[h]\centering\small\begin{tabular}{lrrrrr}\toprule
+Item & $N$ & $V^{\min}$ & $V^{\text{rev}}$ & $V^{\text{rep}}$ & $V^{\max}$ \\ \midrule
+{{item dominante}} & & \tbd{} & \tbd{} & \tbd{} & \tbd{} \\ \midrule
+\textbf{Total} & — & \tbd{} & \tbd{} & \tbd{} & \tbd{} \\ \bottomrule
+\end{tabular}\caption{Contribuicao por categoria e total.}\end{table}
+% + tabela de sensibilidade para a incerteza dominante (ex.: rho)
+
+\section{Limitações}
+\begin{itemize}\item {{caveat}} \end{itemize}
+
+\section*{Fontes}
+\small\noindent {{lista (SOBRENOME/ÓRGÃO. ``Título'', Veículo, Ano) do inventario_fontes.md}}
+\end{document}

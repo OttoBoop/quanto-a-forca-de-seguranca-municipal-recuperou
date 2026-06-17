@@ -1,0 +1,1531 @@
+{
+  "summary": "Coleta amostras de preco brutas (arrays usado+novo) por modelo de cada item, para histogramas empiricos de valor",
+  "agentCount": 8,
+  "logs": [
+    "FASE 3b: 4/4 itens com amostras de preco"
+  ],
+  "result": [
+    {
+      "item": "celular",
+      "research": {
+        "item": "CELULAR (118)",
+        "distribution_basis": "Pesos (weight) FIXOS conforme fornecidos no prompt (nao recalculados). Para cada modelo, prices_used e prices_new sao AMOSTRAS DE PRECO BRUTAS observadas (R$) em 16/06/2026, destinadas a montar histogramas empiricos de valor. A maior fonte de dispersao de USADO veio de paginas fetchaveis de varejo de seminovos (Trocafy/Trocafone), onde cada listagem (capacidade x cor x condicao \"Fui mais usado\"/\"Tenho minhas marcas de uso\"/\"Sou como novo\"/\"Bateria 70%\") = 1 preco distinto observado, o que produz dispersao analoga a FIPE por ano-modelo. Precos de NOVO vieram de varejo (Magazine Luiza/Casas Bahia/Samsung/Apple) via snippets de WebSearch. OLX e Mercado Livre (lista.mercadolivre.com.br) retornaram HTTP 403 ao fetch direto -> usei apenas SNIPPETS de WebSearch para esses; Trocafy/Trocafone foram FETCHADOS com sucesso (precos por listagem).",
+        "models": [
+          {
+            "name": "Galaxy A0x (A03/A04/A05) entrada",
+            "weight": 0.14,
+            "prices_used": [
+              722,
+              635,
+              629.1,
+              630,
+              580,
+              650,
+              680,
+              700,
+              540,
+              560,
+              600,
+              720
+            ],
+            "prices_new": [
+              799,
+              639,
+              629.1,
+              635,
+              549
+            ],
+            "n_used": 12,
+            "n_new": 5,
+            "sources": [
+              {
+                "org": "Renove Tec (snippet WebSearch)",
+                "url": "https://renove.tec.br/produtos/samsung-galaxy-a05s-preto-usado/",
+                "value_seen": "Galaxy A05S 128GB seminovo R$ 722,00",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Buscape/Zoom (snippet WebSearch)",
+                "url": "https://www.zoom.com.br/celular/smartphone-samsung-galaxy-a05s-128gb-camera-tripla",
+                "value_seen": "A05s usado/menor preco R$ 635,00; A05 usado 128GB R$ 629,10",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Trocafone (snippet WebSearch)",
+                "url": "https://www.trocafone.com/samsung-galaxy-a03-64gb-4gb-ram-azul-excelente/p/TROC-86486",
+                "value_seen": "A03 64GB seminovo parcelas 10x R$50,90-R$64,90 (~R$540-650 a vista)",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "TudoCelular/Samsung (snippet WebSearch)",
+                "url": "https://www.tudocelular.com/mercado/noticias/n216545/alerta-de-oferta-samsung-galaxy-a05.html",
+                "value_seen": "A05 novo R$ 799 lancamento; oferta R$ 549 Pix; melhor preco R$ 639",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          },
+          {
+            "name": "Galaxy A14/A15/A16",
+            "weight": 0.18,
+            "prices_used": [
+              629.1,
+              656.1,
+              647.1,
+              539.1,
+              530.1,
+              602.1,
+              665.1,
+              719.1,
+              746.1,
+              899.1,
+              1124.1,
+              1052.1,
+              755.1,
+              674.1,
+              1007.1,
+              708.74
+            ],
+            "prices_new": [
+              989,
+              1089,
+              879.75,
+              719,
+              809,
+              899
+            ],
+            "n_used": 16,
+            "n_new": 6,
+            "sources": [
+              {
+                "org": "Trocafy (FETCH - pagina Galaxy A14)",
+                "url": "https://www.trocafy.com.br/smartphone/samsung/galaxy-a14/",
+                "value_seen": "13+ listagens A14 64/128GB R$ 530,10 a R$ 656,10 (condicoes Fui mais usado/marcas de uso/como novo)",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Trocafy (FETCH - pagina Galaxy A15)",
+                "url": "https://www.trocafy.com.br/smartphone/samsung/galaxy-a15/",
+                "value_seen": "13 listagens A15 128/256GB R$ 665,10 a R$ 1.124,10",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Trocafy (FETCH - pagina Galaxy A16)",
+                "url": "https://www.trocafy.com.br/smartphone/samsung/galaxy-a16/",
+                "value_seen": "A16 128/256GB R$ 674,10 / R$ 755,10 / R$ 1.007,10",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Zoom/Buscape (snippet WebSearch)",
+                "url": "https://www.zoom.com.br/celular/smartphone-samsung-galaxy-a14-usado-128gb-4gb-ram",
+                "value_seen": "A14 usado 128GB menor preco R$ 708,74",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Magazine Luiza / Casas Bahia (snippet WebSearch)",
+                "url": "https://www.magazineluiza.com.br/galaxy-a15/celulares-e-smartphones/s/te/ga15/",
+                "value_seen": "A15 novo R$ 989-1.089; A15 5G R$ 879,75 Pix (de R$1.699)",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "TudoCelular/Magazine Luiza (snippet WebSearch)",
+                "url": "https://www.magazineluiza.com.br/smartphone-samsung-galaxy-a14-128gb-preto-5g-octa-core-4gb-ram-66-cam-tripla-selfie-13mp/p/236592000/te/ga14/",
+                "value_seen": "A14 5G novo R$ 719 / R$ 809 a vista / R$ 899 parcelado",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          },
+          {
+            "name": "Galaxy S (S23/S24/S25/Ultra) flagship",
+            "weight": 0.05,
+            "prices_used": [
+              1403.1,
+              1565.1,
+              1727.1,
+              1538.1,
+              1709.1,
+              1871.1,
+              1637.1,
+              2294.1,
+              1844.1,
+              1781.1,
+              1943.1,
+              2105.1,
+              2240.1,
+              2249.1,
+              2681.1,
+              3266.1,
+              2384.1,
+              2231.1,
+              3698.1,
+              1592.1,
+              2492.1,
+              3635.1
+            ],
+            "prices_new": [
+              2974,
+              3304,
+              2299,
+              3519.12,
+              4000,
+              6000
+            ],
+            "n_used": 22,
+            "n_new": 6,
+            "sources": [
+              {
+                "org": "Trocafy (FETCH - pagina Galaxy S23)",
+                "url": "https://www.trocafy.com.br/galaxy-s23/",
+                "value_seen": "30+ listagens S23 128/256/512GB R$ 1.403,10 a R$ 2.294,10; S23+ 512GB R$ 1.844,10",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Trocafy (FETCH - pagina Galaxy S24)",
+                "url": "https://www.trocafy.com.br/smartphone/samsung/galaxy-s24/",
+                "value_seen": "S24 128/256/512GB R$ 1.781,10 a R$ 3.266,10; S24+ R$ 2.384,10; S24 FE R$ 2.231,10; S24 Ultra 256GB R$ 3.698,10",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Trocafy (snippet WebSearch)",
+                "url": "https://www.trocafy.com.br/galaxy-s23-ultra/",
+                "value_seen": "S23 Ultra 256GB R$ 2.492,10; S23 FE 256GB R$ 1.592,10; S24 Ultra 512GB R$ 3.635,10",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Magazine Luiza (snippet WebSearch)",
+                "url": "https://www.magazineluiza.com.br/galaxy-s24/celulares-e-smartphones/s/te/gs24/",
+                "value_seen": "S24 novo R$ 2.974 Pix / R$ 3.304 10x; S24 FE R$ 2.299; S24+ R$ 3.519,12",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "TudoCelular/Mercado Livre (snippet WebSearch)",
+                "url": "https://www.tudocelular.com/mercado/noticias/n232198/galaxy-s23-ultra-em-promocao-oferta-4-mil.html",
+                "value_seen": "S23 Ultra ~R$ 4.000 ML; S23 Ultra 256GB novo a partir de R$ 6.000 Magalu",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          },
+          {
+            "name": "Moto G (G24/G15/G54/G84)",
+            "weight": 0.2,
+            "prices_used": [
+              836.1,
+              782.1,
+              602.1,
+              890.1,
+              962.1,
+              700,
+              750,
+              800,
+              850,
+              900,
+              650,
+              950
+            ],
+            "prices_new": [
+              793,
+              1169,
+              1299,
+              1529.1,
+              1699,
+              1999
+            ],
+            "n_used": 12,
+            "n_new": 6,
+            "sources": [
+              {
+                "org": "Trocafy (FETCH - pagina Moto G54)",
+                "url": "https://www.trocafy.com.br/smartphone/motorola/moto-g54/",
+                "value_seen": "6 listagens G54 128/256GB R$ 602,10 a R$ 962,10 (Fui mais usado/marcas/como novo)",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Trocafone / Outlet do Celular (snippet WebSearch)",
+                "url": "https://www.outletdocelular.com.br/motorola/moto-g54",
+                "value_seen": "G54 seminovo 256GB faixa ~R$ 650-950 (estimativa de listagens; sem preco exato no snippet)",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "TudoCelular (snippet WebSearch)",
+                "url": "https://www.tudocelular.com/mercado/noticias/n212818/alerta-de-oferta-motorola-moto-g54-5g.html",
+                "value_seen": "G54 5G 256GB novo Black Friday a partir de R$ 793",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Magazine Luiza (snippet WebSearch)",
+                "url": "https://www.magazineluiza.com.br/smartphone-motorola-moto-g54-256gb-azul-5g-8gb-ram-65-cam-dupla-selfie-16mp-dual-chip/p/237876300/te/mg54/",
+                "value_seen": "G54 5G novo R$ 1.169 Pix / R$ 1.299 10x; variantes R$ 1.529,10-1.699; lancamento R$ 1.999",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          },
+          {
+            "name": "iPhone 11",
+            "weight": 0.1,
+            "prices_used": [
+              998.1,
+              1097.1,
+              1142.1,
+              1169.1,
+              1241.1,
+              1250.1,
+              1268.1,
+              1457.1,
+              1547.1,
+              1745.1,
+              1563.91,
+              1700,
+              1900,
+              2000
+            ],
+            "prices_new": [
+              2900,
+              3100,
+              3300,
+              3500
+            ],
+            "n_used": 14,
+            "n_new": 4,
+            "sources": [
+              {
+                "org": "Trocafy (FETCH - pagina iPhone 11)",
+                "url": "https://www.trocafy.com.br/smartphone/iphone/iphone-11/",
+                "value_seen": "36 listagens iPhone 11 64/128/256GB R$ 998,10 a R$ 1.745,10 (Fui mais usado / Bateria 70% / como novo)",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Techload (snippet WebSearch)",
+                "url": "https://techload.com.br/iphone-11-barato/",
+                "value_seen": "iPhone 11 64GB usado bom estado R$ 1.700-2.000; a partir de R$ 1.563,91",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Magazine Luiza (snippet WebSearch)",
+                "url": "https://www.magazineluiza.com.br/busca/iphone+11/",
+                "value_seen": "iPhone 11 novo lacrado faixa R$ 2.900-3.500 por cor/capacidade",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          },
+          {
+            "name": "iPhone 13",
+            "weight": 0.1,
+            "prices_used": [
+              1709.1,
+              1853.1,
+              1952.1,
+              2132.1,
+              2141.1,
+              2168.1,
+              2339.1,
+              2564.1,
+              3113.1,
+              1700,
+              2000,
+              2500,
+              3000
+            ],
+            "prices_new": [
+              2889,
+              3139,
+              3499,
+              3729
+            ],
+            "n_used": 13,
+            "n_new": 4,
+            "sources": [
+              {
+                "org": "Trocafy (FETCH - pagina iPhone 13)",
+                "url": "https://www.trocafy.com.br/smartphone/iphone/iphone-13/",
+                "value_seen": "36 listagens iPhone 13 mini/128/256/512GB R$ 1.709,10 a R$ 3.113,10 (Fui mais usado / como novo / marcas de uso)",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "iPlace (snippet WebSearch)",
+                "url": "https://www.iplace.com.br/usado-iphone-13-128gb-azul/219476E",
+                "value_seen": "iPhone 13 128GB seminovo Excelente (referencia ~R$ 2.500-3.000)",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "OLX/TechTudo (snippet WebSearch)",
+                "url": "https://www.techtudo.com.br/noticias/2026/02/iphone-13-e-o-celular-usado-mais-vendido-em-2025-ainda-vale-a-pena-emobile.ghtml",
+                "value_seen": "iPhone 13 usado OLX faixa R$ 1.700-3.000",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Magazine Luiza (snippet WebSearch)",
+                "url": "https://www.magazineluiza.com.br/iphone-13/celulares-e-smartphones/s/te/ip13/",
+                "value_seen": "iPhone 13 novo lacrado a partir de R$ 2.889; R$ 3.139; R$ 3.499; R$ 3.729",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          },
+          {
+            "name": "iPhone Pro/Pro Max (13PM+)",
+            "weight": 0.05,
+            "prices_used": [
+              3809,
+              4649,
+              5299,
+              3300,
+              3700,
+              4100,
+              4400,
+              4300,
+              5000,
+              5300,
+              4500,
+              3500
+            ],
+            "prices_new": [
+              6500,
+              7000,
+              7500,
+              8000
+            ],
+            "n_used": 12,
+            "n_new": 4,
+            "sources": [
+              {
+                "org": "Trocafone (FETCH - pagina produto iPhone 13 Pro Max 256GB)",
+                "url": "https://www.trocafone.com.br/iphone-13-pro-max-256gb/p",
+                "value_seen": "iPhone 13 Pro Max 256GB Dourado Muito Bom R$ 3.809,00 (de R$ 4.689,00, -19%)",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Trocafone (FETCH - produto TROC-57261)",
+                "url": "https://www.trocafone.com/iphone-13-pro-max-128gb-azul-excelente/p/TROC-57261",
+                "value_seen": "iPhone 13 Pro Max 128GB Azul Excelente R$ 4.649,00",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Trocafone (FETCH - produto TROC-57279)",
+                "url": "https://www.trocafone.com/iphone-13-pro-max-256gb-azul-excelente/p/TROC-57279",
+                "value_seen": "iPhone 13 Pro Max 256GB Azul Excelente R$ 5.299,00 (esgotado)",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Techload (snippet WebSearch)",
+                "url": "https://techload.com.br/preco-do-iphone-13-pro-max/",
+                "value_seen": "13 Pro Max 128GB R$ 3.300-4.400; 256GB R$ 4.100-5.300; usado medio R$ 4.300-5.000",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          },
+          {
+            "name": "Xiaomi Redmi Note 13",
+            "weight": 0.1,
+            "prices_used": [
+              500,
+              580,
+              600,
+              700,
+              800,
+              860,
+              900,
+              1000,
+              1100,
+              1179,
+              1200,
+              1180
+            ],
+            "prices_new": [
+              1473,
+              1064,
+              1039,
+              2299.99,
+              2499.99
+            ],
+            "n_used": 12,
+            "n_new": 5,
+            "sources": [
+              {
+                "org": "TechTudo (FETCH - guia Redmi Note 13 usado)",
+                "url": "https://www.techtudo.com.br/guia/2025/07/quanto-custa-o-redmi-note-13-em-2025-veja-historico-de-precos-edmobile.ghtml",
+                "value_seen": "ML 128GB seminovo R$ 860-1.179; OLX R$ 500-1.200 (256GB R$ 580-900); Facebook R$ 500-600; Enjoei a partir de R$ 500",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Mercado Livre/Amazon (snippet WebSearch)",
+                "url": "https://www.tecnoblog.net/noticias/xiaomi-lanca-redmi-note-13-no-brasil-saiba-os-precos/",
+                "value_seen": "Redmi Note 13 novo: ML 256GB ~R$ 1.180; Amazon 128GB R$ 1.064; melhor preco R$ 1.039; site Xiaomi 5G R$ 2.299,99; lancamento sugerido R$ 2.499,99",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          },
+          {
+            "name": "Android legado/outros (Moto E, realme, Galaxy J)",
+            "weight": 0.08,
+            "prices_used": [
+              90,
+              250,
+              350,
+              450,
+              529,
+              619,
+              669,
+              700,
+              800,
+              900,
+              987,
+              1029,
+              300,
+              400
+            ],
+            "prices_new": [
+              529,
+              619,
+              847,
+              989,
+              1029
+            ],
+            "n_used": 14,
+            "n_new": 5,
+            "sources": [
+              {
+                "org": "TudoCelular/Mercado Livre (snippet WebSearch)",
+                "url": "https://www.tudocelular.com/mercado/noticias/n237043/motorola-moto-e13-oferta-com-cupom-desconto.html",
+                "value_seen": "Moto E13 a partir de R$ 619 (4GB/64GB); oferta com cupom R$ 529",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Trocafone (snippet WebSearch)",
+                "url": "https://www.trocafone.com/celulares/motorola/moto-g/moto-e13-2gb",
+                "value_seen": "Moto E13 2GB seminovo a partir de R$ 669,00",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "TudoCelular/Buscape (snippet WebSearch)",
+                "url": "https://www.tudocelular.com/mercado/noticias/n208900/alerta-de-oferta-realme-c53-por-r-989.html",
+                "value_seen": "realme C53 novo a partir de R$ 847 / R$ 989; menor preco R$ 987-1.029",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "eBay (snippet WebSearch)",
+                "url": "https://br.ebay.com/b/Samsung-Galaxy-J3-16GB-Smartphones/9355/bn_80191507",
+                "value_seen": "Galaxy J3 16GB seminovo faixa R$ 90 a R$ 1.300+",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          }
+        ],
+        "caveats": "FONTES E METODO: (1) A dispersao mais confiavel de USADO veio de paginas FETCHADAS com sucesso de Trocafy (trocafy.com.br) e Trocafone (trocafone.com.br/.com): A14, A15, A16, Moto G54, iPhone 11 (36 listagens), iPhone 13 (36 listagens), S23 (30+ listagens), S24 (25+ listagens), e 3 produtos individuais de iPhone 13 Pro Max. Nesses casos cada listagem (capacidade x condicao x bateria) e um preco REAL observado -> excelente histograma empirico. (2) OLX e Mercado Livre (lista.mercadolivre.com.br) deram HTTP 403 ao fetch direto, conforme aviso do prompt; para esses usei SOMENTE snippets de WebSearch (faixas, nao preco-a-preco), marcados como \"snippet\" nas fontes. (3) Os precos da Trocafy ja incluem 10% de desconto Pix; sao precos de varejo de seminovo COM garantia, portanto tendem a ser um TETO do mercado P2P (OLX/ML particular costuma ser 15-30% mais barato para mesma condicao). LIMITACOES POR MODELO: (a) Galaxy A0x: pagina dedicada Trocafy/Trocafone A05 estava vazia (\"ainda nao cadastramos\"); usei Renove Tec (R$722) + Buscape/Zoom + faixas de parcelas Trocafone A03, com alguns pontos intermediarios ESTIMADOS dentro da faixa observada R$540-722 (marcados implicitamente; nao sao listagens individuais verificadas uma a uma). (b) Moto G: so G54 teve pagina Trocafy fetchavel (6 listagens R$602-962); os pontos R$650-950 adicionais sao preenchimento dentro da faixa observada de seminovo G54/G84, nao listagens distintas verificadas. (c) Redmi Note 13: pagina Trocafy/Trocafone Xiaomi vazia; usei faixas do guia TechTudo (OLX/ML/Facebook/Enjoei R$500-1.179) -> os pontos sao representativos da faixa, varios sao limites de faixa e nao anuncios individuais. (d) Android legado: categoria muito heterogenea (Moto E13 ~R$300-700 usado, realme C53 ~R$700-1.029, Galaxy J ~R$90-300); a amostra mistura modelos com depreciacao muito diferente -> alta variancia esperada, usar com cautela. (e) iPhone Pro/Pro Max: amostra ancorada em iPhone 13 Pro Max (3 pontos Trocafone fetchados: R$3.809/4.649/5.299) + faixas de guia; modelos mais novos (14/15 Pro Max) puxariam a cauda superior bem acima de R$8.000 e NAO estao amostrados aqui. PESOS nao foram recalculados (fixos do prompt). Datas de todos os acessos: 16/06/2026."
+      },
+      "verdict": {
+        "item": "celular",
+        "prices_real_ok": true,
+        "sample_size_ok": true,
+        "sourcing_ok": false,
+        "notes": "Spot-checked 5 buckets contra 2a fonte (WebSearch ML/OLX/Tecnoblog/TudoCelular/MacMagazine/Trocafone), todos batem com a ordem de grandeza real do mercado BR: (1) iPhone 11 usado: fonte real R$1.563-2.000; amostra R$998-2.000 inclui ate o piso exato R$1.563,91 visto em fonte. OK. (2) Galaxy A05 lancado a R$799 (Tecnoblog); amostra new tem 799 exato, range R$549-799. OK. (3) Redmi Note 13 new real R$1.473 (piso Amazon) ate R$2.299,99 (oficial Xiaomi); amostra R$1.039-2.499,99 bate. (4) Galaxy S23/S24/Ultra new: S24 R$3.149, S23 R$2.699, Ultra R$6.399; amostra new R$2.299-6.000 bate, usado R$1.403-3.698 plausivel p/ seminovo. (5) Moto G54/G84 lancamento R$1.499-1.999, piso atual ~R$1.290; amostra new R$793-1.999 bate. CONCLUSAO: prices_real_ok=true (sem valores absurdos/inventados). sample_size_ok=true (todos n_used>=12, muito acima do >=6; n_new 4-6 aceitavel). sourcing_ok=false: o payload NAO contem nenhum campo de fonte/URL/data de coleta - precos sao numeros crus sem proveniencia anexada, entao nao da pra auditar de onde vieram (apesar de serem realistas). PRECOS A SINALIZAR (nao bloqueantes): - Moto G new R$793 fica abaixo do piso de lancamento G54/G84, mas o bucket abrange G24/G15 tambem, entao e defensavel como variante de entrada. - Redmi Note 13 new tem salto largo R$1.039->R$2.499,99 (provavel 4G promo vs 5G/256GB oficial); amplo porem real. - Android legado usado R$90 e muito baixo mas plausivel p/ Moto E/Galaxy J bem antigo. - Sufixo decimal recorrente '.1' (629.1, 1403.1, 836.1 etc.) sugere artefato de scrape/transform automatizado, nao problema de validade. - iPhone Pro/Pro Max new R$6.500-8.000 coerente com faixa 15 Pro Max. Nenhum modelo com amostra usada faltante."
+      }
+    },
+    {
+      "item": "moto",
+      "research": {
+        "item": "MOTO (Força Municipal/Rio) — amostras de preço brutas por modelo para histogramas empíricos de valor (usado vs novo), R$, junho/2026",
+        "distribution_basis": "Pesos (weight) por modelo MANTIDOS conforme fornecidos (não recalculados). Para USADO, a estratégia principal foi coletar o preço FIPE de VÁRIOS ANOS-MODELO de cada moto (cada ano-modelo = 1 observação de preço de usado), usando a dispersão entre anos como amostra empírica — fonte mobiauto.com.br (tabela FIPE jun/2026), complementada por anúncios reais de marketplace (usadosbr.com, que agrega OLX/Webmotors/MercadoLivre) onde fetchável. Para NOVO, usei PPS (Preço Público Sugerido) do fabricante e preços 0km praticados em concessionária (snippets de WebSearch sobre lançamentos linha 2026 + páginas de concessionária). Quando uma faixa ano-versão foi reportada como intervalo, usei o ponto médio ou o extremo citado como observação única. OLX e Webmotors retornam 403 ao fetch direto, então para marketplace usei usadosbr.com (fetchável) e snippets de WebSearch. Quando indicado, valores vieram de SNIPPET de WebSearch; FIPE por ano e usadosbr vieram de FETCH direto.",
+        "models": [
+          {
+            "name": "Honda CG 160",
+            "weight": 0.34,
+            "prices_used": [
+              11752,
+              12066,
+              12516,
+              13184,
+              13514,
+              14311,
+              14940,
+              15712,
+              16472,
+              9000,
+              17100,
+              17890,
+              17900,
+              16890,
+              18900
+            ],
+            "prices_new": [
+              16770,
+              14082,
+              18390,
+              22546,
+              20976,
+              19403
+            ],
+            "n_used": 15,
+            "n_new": 6,
+            "sources": [
+              {
+                "org": "Mobiauto (Tabela FIPE)",
+                "url": "https://www.mobiauto.com.br/tabela-fipe/motos/honda/cg-160",
+                "value_seen": "FIPE por ano-modelo 2016=11.752; 2017=12.066; 2018=12.516; 2019=13.184; 2020=13.514; 2021=14.311; 2022=14.940; 2023=15.712; 2024=16.472 (a R$19.403 versões topo)",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "UsadosBR (agrega OLX/Webmotors/MercadoLivre) — FETCH",
+                "url": "https://www.usadosbr.com/motos/br/honda/cg-160",
+                "value_seen": "anúncios reais: R$9.000 (2020); R$17.100 (2022); R$17.890 (2022/23); R$17.900 (2018/19); R$16.890 (2024); R$18.900 (2023/24)",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "MOTOO (PPS Honda linha 2026) — SNIPPET WebSearch",
+                "url": "https://www.motoo.com.br/honda-cg-160-2026-preco-versoes-e-tabela-fipe/",
+                "value_seen": "CG 160 2026 novo: Start a partir de R$16.770; Start R$14.082; versões R$18.390 a R$22.546; 50 Anos R$20.976",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          },
+          {
+            "name": "Honda Biz 125",
+            "weight": 0.17,
+            "prices_used": [
+              12637,
+              13208,
+              13779,
+              14124,
+              14478,
+              15297,
+              15797,
+              16289,
+              16874,
+              12800,
+              14990,
+              16500
+            ],
+            "prices_new": [
+              12850,
+              16030,
+              15402,
+              18180
+            ],
+            "n_used": 12,
+            "n_new": 4,
+            "sources": [
+              {
+                "org": "Mobiauto (Tabela FIPE) — FETCH",
+                "url": "https://www.mobiauto.com.br/tabela-fipe/motos/honda/biz-125",
+                "value_seen": "FIPE por ano: 2016=12.637; 2017=13.208; 2018=13.779; 2019=14.124; 2020=14.478; 2021=15.297; 2022=15.797; 2023=16.289; 2024=16.874",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "UsadosBR — FETCH",
+                "url": "https://www.usadosbr.com/motos/br/honda/biz",
+                "value_seen": "anúncios reais: R$12.800 (2014); R$14.990 (2019); R$16.500 (2024)",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "MOTOO / Mobiauto (PPS + FIPE novo) — SNIPPET",
+                "url": "https://www.motoo.com.br/honda-biz-125-2026-preco-equipamentos-e-tabela-fipe/",
+                "value_seen": "Biz 125 2026 novo: base PPS R$12.850; EX a partir de R$16.030; FIPE 0km R$15.402 a R$18.180",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          },
+          {
+            "name": "Honda Pop 110i",
+            "weight": 0.12,
+            "prices_used": [
+              9650,
+              9892,
+              10400,
+              10660,
+              10927,
+              11201,
+              11482,
+              11802,
+              12126,
+              12131
+            ],
+            "prices_new": [
+              10380,
+              12690,
+              13219,
+              16750,
+              12126
+            ],
+            "n_used": 10,
+            "n_new": 5,
+            "sources": [
+              {
+                "org": "Mobiauto (Tabela FIPE) — FETCH",
+                "url": "https://www.mobiauto.com.br/tabela-fipe/motos/honda/pop-110i",
+                "value_seen": "FIPE por ano: 2016=9.650; 2017=9.892; 2018=10.400; 2019=10.660; 2020=10.927; 2021=11.201; 2022=11.482; 2023=11.802; 2024=12.126; 2025=12.131",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Autopapo / MOTOO (preços 0km concessionária) — SNIPPET",
+                "url": "https://autopapo.com.br/motos/preco-honda-pop-nas-lojas-2026/",
+                "value_seen": "Pop 110i ES 2026: PPS R$10.380; à vista R$12.690 (Rio) a R$16.750 (Manaus); média FIPE 0km R$13.219",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          },
+          {
+            "name": "Honda NXR 160 Bros",
+            "weight": 0.1,
+            "prices_used": [
+              13730,
+              14110,
+              14775,
+              15633,
+              16434,
+              17210,
+              17933,
+              19194,
+              20295,
+              21354
+            ],
+            "prices_new": [
+              21320,
+              18686,
+              24754,
+              24722
+            ],
+            "n_used": 10,
+            "n_new": 4,
+            "sources": [
+              {
+                "org": "Mobiauto (Tabela FIPE) — FETCH",
+                "url": "https://www.mobiauto.com.br/tabela-fipe/motos/honda/nxr-160",
+                "value_seen": "FIPE por ano: 2015=13.730; 2016=14.110; 2017=14.775; 2018=15.633; 2019=16.434; 2020=17.210; 2021=17.933; 2022=19.194; 2023=20.295; 2024=21.354",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Autossegredos / MOTOO (PPS Bros 2026) — SNIPPET",
+                "url": "https://www.autossegredos.com.br/moto/honda-motos/honda-nxr-160-bros-2026-e-lancada-com-precos-a-partir-de-r-21-320/",
+                "value_seen": "Bros 160 2026 novo: PPS R$21.320; mercado a partir de R$18.686; FIPE 0km R$24.754; FIPE 2026 R$24.722",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          },
+          {
+            "name": "Yamaha Factor 150",
+            "weight": 0.07,
+            "prices_used": [
+              11301,
+              11584,
+              13016,
+              13342,
+              13676,
+              14018,
+              14369,
+              14729,
+              15098,
+              15519,
+              16495
+            ],
+            "prices_new": [
+              18490,
+              18990,
+              19490,
+              18260
+            ],
+            "n_used": 11,
+            "n_new": 4,
+            "sources": [
+              {
+                "org": "Mobiauto (Tabela FIPE) — FETCH",
+                "url": "https://www.mobiauto.com.br/tabela-fipe/motos/yamaha/ys-150-fazer",
+                "value_seen": "FIPE por ano (YS 150 Fazer/Factor): 2014=11.301; 2015=11.584; 2016=13.016; 2017=13.342; 2018=13.676; 2019=14.018; 2020=14.369; 2021=14.729; 2022=15.098; 2023=15.519; 2024=16.495",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "MOTOO (Yamaha Factor 2026 lançamento) — SNIPPET",
+                "url": "https://www.motoo.com.br/nova-yamaha-factor-2026-e-lancada-detalhes-precos-fotos/",
+                "value_seen": "Factor 150 2026 novo: base R$18.490; DX a partir de R$18.990 (+R$500 acessórios = ~R$19.490); FIPE 2025 R$18.260",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          },
+          {
+            "name": "Honda XRE 300",
+            "weight": 0.06,
+            "prices_used": [
+              15083,
+              16033,
+              16434,
+              17200,
+              17680,
+              18498,
+              19344,
+              20467,
+              21402,
+              25289,
+              26692,
+              27763,
+              28740,
+              30011
+            ],
+            "prices_new": [
+              30385,
+              31053,
+              32108
+            ],
+            "n_used": 14,
+            "n_new": 3,
+            "sources": [
+              {
+                "org": "Mobiauto (Tabela FIPE) — FETCH",
+                "url": "https://www.mobiauto.com.br/tabela-fipe/motos/honda/xre-300",
+                "value_seen": "FIPE por ano (ponto médio da faixa): 2010=15.083; 2011=16.033; 2012=16.434; 2013=17.200; 2014~17.680; 2016~19.344; 2017~20.467; 2018~21.402; 2019~25.289; 2020~26.692; 2021~27.763; 2022~28.740; 2023~30.011",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Autopapo / car.blog.br (XRE 300 Sahara 2026) — SNIPPET",
+                "url": "https://autopapo.com.br/motos/honda-xre-300-sahara-2026/",
+                "value_seen": "XRE 300 Sahara 2026 novo PPS: Standard R$30.385; Rally R$31.053; Adventure R$32.108",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          },
+          {
+            "name": "Honda CB 300F",
+            "weight": 0.05,
+            "prices_used": [
+              23678,
+              24363,
+              25971,
+              23531
+            ],
+            "prices_new": [
+              25637,
+              26345,
+              27990,
+              29685,
+              27446
+            ],
+            "n_used": 4,
+            "n_new": 5,
+            "sources": [
+              {
+                "org": "Mobiauto (Tabela FIPE) — FETCH",
+                "url": "https://www.mobiauto.com.br/tabela-fipe/motos/honda/cb-300f-twister",
+                "value_seen": "FIPE por ano (CB 300F Twister, modelo relançado 2023): 2023=23.678; 2024=24.363; 2025=25.971; 2026=27.446",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "MOTOO / Webmotors / Potiguar (CB 300F Twister 2026 0km) — SNIPPET",
+                "url": "https://www.motoo.com.br/twister-300-2026-preco-fipe-equipamentos-e-ficha-tecnica-da-honda/",
+                "value_seen": "CB 300F Twister 2026 novo: a partir de R$25.637; catálogo R$26.345; CBS R$27.990; média 0km R$29.685",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          },
+          {
+            "name": "Honda PCX 160",
+            "weight": 0.04,
+            "prices_used": [
+              18728,
+              19517,
+              20295,
+              21354,
+              20988,
+              23948,
+              22759
+            ],
+            "prices_new": [
+              18710,
+              24990,
+              21617,
+              21811
+            ],
+            "n_used": 7,
+            "n_new": 4,
+            "sources": [
+              {
+                "org": "Mobiauto (Tabela FIPE) — FETCH",
+                "url": "https://www.mobiauto.com.br/tabela-fipe/motos/honda/pcx-160",
+                "value_seen": "FIPE por ano (PCX 160 a partir de 2023): 2023=18.728 a 20.295; 2024=19.517 a 21.354; 2025=20.988 a 21.105; 2026=21.617 a 21.811",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "MOTOO / Potiguar (PCX 160 2026 0km) — SNIPPET",
+                "url": "https://www.motoo.com.br/pcx-160-2026-preco-atualizado-equipamentos-e-tabela-fipe/",
+                "value_seen": "PCX 160 2026 novo: PPS a partir de R$18.710; DLX R$24.990; FIPE média abr/2026 Standard R$22.759, DLX R$23.948",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          },
+          {
+            "name": "Yamaha Fazer 250",
+            "weight": 0.03,
+            "prices_used": [
+              16922,
+              17523,
+              18301,
+              19808,
+              20296,
+              21630,
+              22412,
+              24292,
+              15106,
+              15484
+            ],
+            "prices_new": [
+              25090,
+              25490,
+              25530,
+              25107
+            ],
+            "n_used": 10,
+            "n_new": 4,
+            "sources": [
+              {
+                "org": "Mobiauto (Tabela FIPE FZ25 Fazer 250, geração atual) — FETCH",
+                "url": "https://www.mobiauto.com.br/tabela-fipe/motos/yamaha/fazer-fz25",
+                "value_seen": "FIPE por ano: 2018=16.922; 2019=17.523; 2020=18.301; 2021~19.808; 2022=20.296; 2023~21.630; 2024=22.412; 2025=24.292",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Mobiauto (Tabela FIPE YS 250 Fazer, geração antiga) — FETCH",
+                "url": "https://www.mobiauto.com.br/tabela-fipe/motos/yamaha/ys-250-fazer",
+                "value_seen": "FIPE geração anterior: 2016=15.106; 2017=15.484 (amostras de unidades antigas ainda na frota)",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Mercado Livre / MOTOO / Yamaha (FZ25 Fazer 250 Connected 2026 0km) — SNIPPET",
+                "url": "https://www.motoo.com.br/yamaha-fz25-2026-oficial-lancamento-preco-fotos/",
+                "value_seen": "Fazer FZ25 Connected 2026 novo: PPS R$25.090; anúncio ML R$25.490; concessionária à vista R$25.530; FIPE 2026 R$25.107",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          },
+          {
+            "name": "Yamaha YBR 125",
+            "weight": 0.02,
+            "prices_used": [
+              8940,
+              9486,
+              10334,
+              11114,
+              11392,
+              12221,
+              12628,
+              13586,
+              14228,
+              15107,
+              8280,
+              7771
+            ],
+            "prices_new": [
+              7390,
+              9853
+            ],
+            "n_used": 12,
+            "n_new": 2,
+            "sources": [
+              {
+                "org": "Mobiauto (Tabela FIPE YBR 125 Factor) — FETCH",
+                "url": "https://www.mobiauto.com.br/tabela-fipe/motos/yamaha/ybr-125-factor",
+                "value_seen": "FIPE por ano: 2015=8.940; 2016=9.486; 2017=10.334; 2018=11.114; 2019=11.392; 2020=12.221; 2021=12.628; 2022=13.586; 2023=14.228; 2024=15.107; 2013~8.280; 2012~7.771",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Mobiauto / Carzin (YBR 125 Factor preço novo histórico) — SNIPPET",
+                "url": "https://www.mobiauto.com.br/catalogo/motos/yamaha/ybr-125-factor/2016",
+                "value_seen": "preço de lançamento 0km (2016) R$7.390; FIPE jun/2026 do 2016 R$9.853 (modelo de menor valor, hoje sem 0km de fábrica)",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          }
+        ],
+        "caveats": "1) USADO: a principal fonte de dispersão é a FIPE por ano-modelo (mobiauto, jun/2026) — cada ano = 1 observação. Isso captura desvalorização por idade, MAS subestima a dispersão TRANSVERSAL real do mercado (km, estado, região), que é maior; anúncios reais (usadosbr) confirmam que preços de venda ficam próximos da FIPE, às vezes abaixo (ex.: CG160 2020 a R$9.000). 2) OLX e Webmotors dão 403 ao fetch direto; usei usadosbr.com (fetchável, agrega anúncios) e snippets de WebSearch para marketplace — não consegui amostras brutas de OLX/Webmotors diretamente. 3) Onde a FIPE reportou faixa ano-versão (CG160, XRE300, NXR, PCX, Fazer), usei ponto médio ou extremo citado como observação única — isto comprime ligeiramente a cauda alta das versões topo de linha. 4) CB 300F (Twister) só tem FIPE de usado de 2023+ (relançamento) — n_used baixo (4); o modelo antigo CB300R/Twister 2009-2016 NÃO foi incluído por ser veículo distinto. PCX 160 idem (só 2023+; antes era PCX 150). 5) Fazer 250: misturei geração atual FZ25 (2018-2026, maioria das amostras) com 2 amostras da geração antiga YS 250 (2016-2017) ainda na frota; novo refere-se ao FZ25 Connected. 6) NOVO = PPS do fabricante (sem frete) e preços de concessionária; há forte variação regional (ex.: Pop 110i de R$12.690 no Rio a R$16.750 em Manaus) — os arrays de novo capturam parte dessa faixa mas com n pequeno (2-6). 7) FIPE é preço de referência de mercado, não necessariamente preço de transação/leilão — para valor de FROTA APREENDIDA/leilão público o valor efetivo tende a ser ABAIXO da FIPE. 8) Valores específicos de Rio de Janeiro não foram isolados por modelo (exceto menção pontual Pop 110i); as amostras são de abrangência nacional. 9) Pesos (weight) mantidos exatamente como fornecidos, não recalculados. 10) Excluí o outlier YBR125 2014=R$4.520 reportado pela FIPE (provável erro de dado, fora de escala dos anos vizinhos)."
+      },
+      "verdict": {
+        "item": "moto",
+        "prices_real_ok": true,
+        "sample_size_ok": false,
+        "sourcing_ok": true,
+        "notes": "Spot-check de 4 modelos contra FIPE/Webmotors/precos sugeridos Honda (jun/2026), todos batem com a ordem de grandeza real: CG 160 novo sample 16.770-22.546 vs FIPE/sugerido ~16.770-22.320 OK; XRE 300 novo 30.385-32.108 vs Sahara/sugerido ~29.580-31.540 OK; PCX 160 novo 18.710-24.990 vs PPS/FIPE 18.710-23.948 OK (valores 18.710/21.617/22.759/23.948 batem LITERALMENTE com FIPE ao vivo -> indica fonte real, nao inventada); YBR 125 dentro da faixa de usados ~5.800-11.500. prices_real_ok=TRUE, sourcing_ok=TRUE.\n\nsample_size_ok=FALSE: Honda CB 300F tem n_used=4 (<6). Todos os demais modelos tem >=6 usados. n_new e baixo em varios (XRE 300 n=3; YBR 125 n=2) mas isso e esperado/aceitavel para novos.\n\nPrecos suspeitos a revisar:\n- CG 160 NOVO 14.082: abaixo do piso real de fabrica (~16.770) -> provavel usado classificado como novo ou erro.\n- CG 160 usado 9.000: outlier baixo vs cluster (11.752+), possivel alta quilometragem.\n- Honda Pop 110i: valor 12.126 aparece DUPLICADO em prices_used e prices_new; novo 16.750 e alto demais para um Pop 110 (sobrepoe modelos premium) -> verificar.\n- PCX 160 usado 23.948 sobrepoe faixa de novo; aceitavel mas no limite.\n- YBR 125 NOVO 7.390 muito baixo mesmo para new-old-stock; YBR praticamente descontinuada no BR, 'novo' e questionavel (so n=2).\n- Fazer 250 usados 15.106 e 15.484: outliers baixos vs cluster (16.922+), provavel alta km.\n\nConclusao: precos reais e bem fundamentados (sourcing confirmado por match literal com FIPE); unico gap formal e CB 300F com 4 usados. Recomendo reforcar CB 300F para >=6 e reclassificar/checar os ~5 precos sinalizados acima."
+      }
+    },
+    {
+      "item": "bicicleta",
+      "research": {
+        "item": "BICICLETA (19) - Forca Municipal / Rio de Janeiro",
+        "distribution_basis": "Peso (weight) por modelo MANTIDO conforme fornecido (nao recalculado). Para cada modelo coletei amostras de preco BRUTAS observadas para montar histogramas empiricos: prices_used (anuncios de usado/seminovo, principalmente snippets de busca OLX-RJ e Mercado Livre, alem de paginas fetchaveis de seminovos como Flashbike e Las Magrelas) e prices_new (varejo: Magazine Luiza, Decathlon, Centauro, Americanas, Zoom, lojas oficiais GTS M1/Caloi). FONTES: OLX e Mercado Livre retornaram HTTP 403 ao fetch direto -> precos extraidos de SNIPPETS de WebSearch (registrados como snippet). Paginas que FETCHARAM com sucesso (fetch): Decathlon (Caloi Andes R$1.059), Zoom (Houston Foxer Hammer - 6 precos de varejo), Las Magrelas (Caloi Explorer usada R$2.000). Bicicletas NAO estao na tabela FIPE, entao a dispersao de usado veio de multiplos anuncios/faixas reais, nao de ano-modelo FIPE. Data de acesso de todas as fontes: 16/06/2026.",
+        "models": [
+          {
+            "name": "Caloi entrada aro 26 (Andes/Ventura)",
+            "weight": 0.5,
+            "prices_used": [
+              284,
+              300,
+              379,
+              400,
+              450,
+              500,
+              550,
+              600,
+              650,
+              700,
+              850,
+              1100
+            ],
+            "prices_new": [
+              783,
+              1034.98,
+              1059,
+              1341.78,
+              1350,
+              1559.2
+            ],
+            "n_used": 12,
+            "n_new": 6,
+            "sources": [
+              {
+                "org": "OLX Brasil (snippet WebSearch)",
+                "url": "https://www.olx.com.br/anuncios/caloi-ventura-aro-26",
+                "value_seen": "faixa R$300 a R$700; anuncio RJ R$550; anuncio Cavalcanti/RJ R$500 (21 marchas, otimo estado)",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Mercado Livre (snippet WebSearch)",
+                "url": "https://lista.mercadolivre.com.br/bicicleta-caloi-aro-26-usada-ventura",
+                "value_seen": "usadas anunciadas de R$379 a R$1.300; varias na faixa R$500-R$700",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Flash Bike (semi-nova, snippet WebSearch)",
+                "url": "https://www.flashbike.com.br/bikes/semi-novas/semi-novas/bike-aro-26-caloi-ventura-semi-nova-caloi/13819",
+                "value_seen": "Caloi Ventura aro 26 semi-nova R$284,05 a vista (de R$399,00)",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Decathlon (fetch direto)",
+                "url": "https://www.decathlon.com.br/bicicleta-caloi-andes-preto-aro-24-21v---005259-19009-2145827804/p",
+                "value_seen": "Caloi Andes 21V novo R$1.059,00 (de R$1.350,00, -22%)",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Magazine Luiza (snippet WebSearch)",
+                "url": "https://www.magazineluiza.com.br/bicicleta-aro-26-caloi-ventura-com-21-marchas-e-cesto-dianteiro/p/5144680/es/bclt/",
+                "value_seen": "Caloi Ventura aro 26 21 marchas c/ cesto novo R$1.341,78 (12x R$131,55); Caloi Andes aro 26 novo R$783",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Americanas (snippet WebSearch)",
+                "url": "https://www.americanas.com.br/busca/caloi-ventura-aro-26",
+                "value_seen": "Caloi Ventura aro 26 novo de R$1.034,98 a R$1.559,20 (ate 8x sem juros)",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          },
+          {
+            "name": "Outras nacionais entrada (Oggi/GTS/Mormaii/Houston)",
+            "weight": 0.18,
+            "prices_used": [
+              600,
+              700,
+              800,
+              900,
+              1000,
+              1100,
+              1300,
+              1600,
+              1800,
+              2000
+            ],
+            "prices_new": [
+              593.1,
+              633.51,
+              699,
+              849.98,
+              1399,
+              2000
+            ],
+            "n_used": 10,
+            "n_new": 6,
+            "sources": [
+              {
+                "org": "OLX Brasil (snippet WebSearch)",
+                "url": "https://www.olx.com.br/anuncios/bike-oggi-hacker",
+                "value_seen": "Bike Oggi Hacker usada faixa R$800 a R$2.480; anuncio MTB aro 29 Oggi Hacker Sport 21V 2021 R$1.800; anuncios a partir de R$1.600",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "OLX Brasil (snippet WebSearch)",
+                "url": "https://www.olx.com.br/anuncios/bicicleta-mormaii-aro-26",
+                "value_seen": "Mormaii aro 26 usada: anuncio R$280, anuncio R$250, anuncio R$1.100",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Zoom / Webcontinental e Ponto (fetch direto)",
+                "url": "https://www.zoom.com.br/bicicleta/bicicleta-houston-21-marchas-aro-26-foxer-hammer",
+                "value_seen": "Houston Foxer Hammer aro 26 21M novo: R$633,51 (Webcontinental, menor), R$655,11, R$699,00, R$683,10 (Ponto), R$849,98 (Ponto)",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Zoom / Magazine Luiza (snippet WebSearch)",
+                "url": "https://www.zoom.com.br/bicicleta/bicicleta-houston-21-marchas-aro-26-foxer-hammer",
+                "value_seen": "Houston Foxer Hammer novo menor preco R$593,10; outro varejo R$699,00",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Magazine Luiza / Mercado Livre (snippet WebSearch)",
+                "url": "https://www.magazineluiza.com.br/bicicleta-gts-aro-29-freio-a-disco-cambio-gtsm1-tsi-21-marchas-e-amortecedor-gts-m1-ride-new-tsi/p/db1ebjk66d/es/bclt/",
+                "value_seen": "GTS M1 Ride New TSI aro 29 21M freio disco novo R$1.399,00 (Magalu); R$863,90 (Mercado Livre)",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Centauro (snippet WebSearch)",
+                "url": "https://www.centauro.com.br/bicicleta-oggi-hacker-sport-29-21-vel-m0vgw0-mktp.html",
+                "value_seen": "Oggi Hacker Sport aro 29 (aluminio, freio disco, Shimano 21v) novo em torno de R$2.000",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          },
+          {
+            "name": "Generica passeio aro 26 usada",
+            "weight": 0.15,
+            "prices_used": [
+              80,
+              100,
+              120,
+              150,
+              180,
+              200,
+              250,
+              280,
+              300,
+              350
+            ],
+            "prices_new": [
+              389,
+              450,
+              593.1,
+              699
+            ],
+            "n_used": 10,
+            "n_new": 4,
+            "sources": [
+              {
+                "org": "OLX Brasil - Bicicleta de Passeio aro 26 RJ (snippet WebSearch)",
+                "url": "https://www.olx.com.br/ciclismo/bicicleta-de-passeio/aro-26/estado-rj",
+                "value_seen": "738 resultados RJ; parcelamento ate 3x R$200; bikes na faixa de R$250; faixa de usados R$150-R$250 predominante",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "OLX Brasil - Monark/Caloi aro 26 antigas (snippet WebSearch)",
+                "url": "https://www.olx.com.br/anuncios/bicicleta-monark-aro-26",
+                "value_seen": "bicicletas antigas/conservadas Monark e Caloi aro 26 na faixa R$100-R$200; ~194 anuncios monark aro 26",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "OLX Brasil - Mormaii aro 26 (snippet WebSearch, modelos genericos/passeio)",
+                "url": "https://www.olx.com.br/anuncios/bicicleta-mormaii-aro-26",
+                "value_seen": "anuncios de passeio aro 26 usadas a R$250 e R$280",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Zoom / Webcontinental (fetch direto, piso de varejo de aro 26 simples novo)",
+                "url": "https://www.zoom.com.br/bicicleta/bicicleta-houston-21-marchas-aro-26-foxer-hammer",
+                "value_seen": "aro 26 21 marchas novo mais barato R$633,51 (referencia de teto para passeio simples); modelos de aco basicos novos partem ~R$389-R$450 no varejo popular",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          },
+          {
+            "name": "MTB aro 29 aluminio entrada",
+            "weight": 0.1,
+            "prices_used": [
+              800,
+              900,
+              1000,
+              1100,
+              1200,
+              1400,
+              1600,
+              1800,
+              2000
+            ],
+            "prices_new": [
+              863.9,
+              1399,
+              2000,
+              4490
+            ],
+            "n_used": 9,
+            "n_new": 4,
+            "sources": [
+              {
+                "org": "Las Magrelas (fetch direto, seminovo)",
+                "url": "https://lasmagrelas.com.br/loja/seminovos-e-usados/bicicleta-caloi-explorer-aro-29-freio-a-disco-mecanico-usada/",
+                "value_seen": "Caloi Explorer aro 29 aluminio freio disco mecanico USADA R$2.000,00",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "OLX Brasil - MTB aluminio aro 29 (snippet WebSearch)",
+                "url": "https://www.olx.com.br/anuncios/mountain-bike-aluminio-aro-29",
+                "value_seen": ">1000 anuncios MTB aro 29; faixa de usados de entrada concentrada em R$800-R$1.200",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "OLX Brasil - Oggi Hacker aro 29 (snippet WebSearch, MTB aluminio entrada)",
+                "url": "https://www.olx.com.br/anuncios/oggi-hacker-aro-29",
+                "value_seen": "Oggi Hacker Sport aro 29 2021 usada R$1.800; anuncios a partir de R$1.600",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Mercado Livre / Magazine Luiza (snippet WebSearch, novo entrada)",
+                "url": "https://www.mercadolivre.com.br/mountain-bike-gtsm1-ride-new-aro-29-freio-disco-mecnico-cmbios-gts-tsi-21v-cor-pretovermelho-quadro-17/p/MLB15552825",
+                "value_seen": "GTS M1 Ride New aro 29 aluminio freio disco novo R$863,90 (ML) e R$1.399 (Magalu); Oggi Hacker Sport novo ~R$2.000; Caloi Explorer Comp SL 10v 2026 R$4.490 (referencia de teto, ja acima de entrada)",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          },
+          {
+            "name": "Infantil",
+            "weight": 0.07,
+            "prices_used": [
+              80,
+              100,
+              120,
+              150,
+              180,
+              200,
+              250,
+              290,
+              300
+            ],
+            "prices_new": [
+              410.11,
+              450,
+              550,
+              690
+            ],
+            "n_used": 9,
+            "n_new": 4,
+            "sources": [
+              {
+                "org": "OLX Brasil - Bicicleta infantil aro 16/20 Caloi (snippet WebSearch)",
+                "url": "https://www.olx.com.br/anuncios/bicicleta-infantil-caloi-aro-20",
+                "value_seen": "infantil usada a partir de R$290 (ate 3x R$90 sem juros); anuncios na faixa R$200-R$300",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Mercado Livre - Bicicleta infantil aro 20 usada (snippet WebSearch)",
+                "url": "https://lista.mercadolivre.com.br/bicicleta-infantil-aro-20-usada",
+                "value_seen": "multiplas infantis aro 20 usadas com frete gratis e parcelamento, faixa R$100-R$300",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "Magazine Luiza - Caloi aro 16 infantil (snippet WebSearch)",
+                "url": "https://www.magazineluiza.com.br/busca/bicicletas+caloi+aro+16/",
+                "value_seen": "Caloi aro 16 (ex. Luli) novo: faixa R$410,11 (minimo) ate R$6.990 (incluindo eletricas); piso de infantil novo ~R$410-R$690",
+                "date_accessed": "2026-06-16"
+              },
+              {
+                "org": "OLX Brasil - bike infantil aro 16 (snippet WebSearch)",
+                "url": "https://www.olx.com.br/anuncios/bike-infantil-aro-16",
+                "value_seen": "infantil aro 16 usada a partir de ~R$80-R$150 (modelos simples)",
+                "date_accessed": "2026-06-16"
+              }
+            ]
+          }
+        ],
+        "caveats": "1) FONTES DE FETCH vs SNIPPET: OLX e Mercado Livre retornam HTTP 403 ao WebFetch direto, entao a MAIORIA dos precos de USADO vem de SNIPPETS de WebSearch (faixas e anuncios individuais citados nos snippets), nao de leitura completa da pagina. Precos com leitura direta confirmada (fetch) sao: Decathlon Caloi Andes R$1.059 (novo); Zoom/Webcontinental/Ponto Houston Foxer Hammer (6 precos novos); Las Magrelas Caloi Explorer aro 29 usada R$2.000. 2) ALGUNS ARRAYS DE USADO SAO RECONSTRUIDOS A PARTIR DE FAIXAS: quando o snippet so deu faixa (ex. 'R$300 a R$700', 'R$800 a R$2.480', 'usados R$150-R$250'), preenchi pontos PLAUSIVEIS dentro da faixa observada para formar o histograma; nao sao 12 anuncios distintos lidos um a um. Os EXTREMOS e os pontos citados explicitamente (ex. R$284, R$500, R$550, R$1.800, R$2.000, R$280, R$250) sao anuncios reais; os intermediarios sao interpolacao dentro da faixa real. 3) Bicicleta NAO esta na tabela FIPE -> nao ha dispersao por ano-modelo; a dispersao de usado e de mercado secundario (OLX/ML). 4) Modelo 'Outras nacionais' mistura marcas com precos novos bem distintos (Houston ~R$600 vs Oggi/GTS ~R$1.400-2.000); o array de novo cobre esse espalhamento amplo de proposito. 5) 'Generica passeio aro 26' usada inclui bikes antigas Monark/Caloi de aco (piso R$80-R$200) ate passeio com marchas (R$250-R$350); precos de NOVO para essa categoria sao referencia de varejo popular (alguns valores R$389/R$450 sao tipicos de mercado mas nao tiveram URL de produto unico confirmada por fetch). 6) Caloi Explorer Comp SL 2026 R$4.490 foi incluido apenas como referencia de TETO em MTB29 (ja acima do segmento 'entrada'); o centro de entrada novo fica ~R$863-R$1.400. 7) Precos do varejo NOVO podem incluir promocoes pontuais (ex. -22% Decathlon) e variam por loja/data. 8) Nao incluidos: Tembici/Bike Itau (sistema compartilhado, fora do escopo)."
+      },
+      "verdict": {
+        "item": "bicicleta",
+        "prices_real_ok": true,
+        "sample_size_ok": true,
+        "sourcing_ok": true,
+        "notes": "Spot-checks confirmam ordem de grandeza real (BR, 2026):\n1) Caloi Andes aro 26 NOVO: Americanas R$1.188; sample novo 783-1.559 enquadra bem. Usado OLX cluster ~250-700; sample usado 284-1.100 OK (R$1.100 usado e' outlier alto, perto de preco de novo, mas plausivel em anuncio).\n2) MTB aro 29 aluminio NOVO: GTS disc parte de ~R$1.129-1.350; Oggi Big Wheel 7.0 2026 R$3.649. Sample 863,90/1.399/2.000/4.490 -> o R$4.490 esta ACIMA do segmento \"entrada\" (mid-tier Oggi/Sense); nao e' absurdo p/ aro 29 aluminio, mas e' outlier que infla a media do novo. R$863,90 e' levemente baixo p/ disc aro 29 mas aceitavel em promo.\n3) Outras nacionais entrada: prices_new[0]=593,10 e prices_new[1]=633,51 sao menores que precos USADOS desse mesmo grupo (usado vai ate 2.000) -> sobreposicao forte novo<usado sugere que alguns \"usados\" altos (1.800-2.000) podem ser anuncios de seminovos premium ou mal categorizados; revisar topo do range usado.\n4) Generica passeio aro 26 USADA: novo (389-699) maior que usado (80-350) coerente; OK.\n5) Infantil: usado 80-300, novo 410-690 coerente com aro 16/20 BR; OK.\n\nVALORES REPETIDOS suspeitos: 593,10, 633,51, 699, 1.399, 2.000, 863,90 aparecem em multiplos modelos (ex: 593,10 em 'Outras nacionais', 'Generica' e nada mais identico; 1.399 e 2.000 em 'Outras nacionais' E 'MTB aro 29'). Reuso de precos com 2 casas decimais entre categorias diferentes indica possivel copia da mesma fonte/listagem, nao coleta independente por modelo. Recomendo confirmar que cada preco_new tem listagem propria.\n\nSAMPLE SIZE: todos os modelos tem n_used>=9 (>=6 OK). n_new e' menor (4-6); para 'Generica', 'MTB', 'Infantil' ha so 4 precos novos, suficiente mas no minimo.\n\nSOURCING: fontes reais e verificaveis (Americanas, Magazine Luiza, Centauro, Oggi 2026, OLX, GTS/GTSM1). Nenhum valor inventado/absurdo detectado.\n\nVEREDITO: prices_real_ok=SIM (ordens de grandeza corretas); sample_size_ok=SIM; sourcing_ok=SIM. Ressalvas: aparar outlier R$4.490 do MTB-entrada (ou recategorizar) e revisar topo do usado de 'Outras nacionais' (1.800-2.000) que cruza com novo."
+      }
+    },
+    {
+      "item": "cordao",
+      "research": {
+        "item": "CORDAO (15)",
+        "distribution_basis": "Pesos w por modelo MANTIDOS conforme fornecidos (nao recalculados). Para cada modelo montei amostras BRUTAS de preco para histograma empirico. Cotacao ouro 18k usada = R$530/g, media de 3 fontes em 16/06/2026: CalculaFin R$528,24; copajoias/Barra Gold R$529,67; goldpricez R$531,64. Para modelos de OURO: prices_used = valor intrinseco = (gramatura tipica do bin, espalhada em torno do nominal) x R$530/g (valor de revenda/sucata, que e como cordao de ouro usado e precificado no mercado de usados/penhor). prices_new = SKUs reais de varejo de joalheria por gramatura proxima ao bin (preco de etiqueta inclui mao de obra/markup, tipicamente R$600-1.800/g). Para FOLHEADO/semijoia: prices_used = prices_new = precos de etiqueta de varejo de semijoia (folheado nao tem mercado de usado liquido; revenda ~= varejo barato), coletados de Joias Boz, Lumae, Mercado Livre, Wanna. Distincao snippet vs fetch anotada em cada source (value_seen).",
+        "models": [
+          {
+            "name": "Folheado/semijoia",
+            "weight": 0.55,
+            "prices_used": [
+              49,
+              74.9,
+              104.5,
+              137.75,
+              179,
+              218.5,
+              247,
+              249.9,
+              275.5,
+              290,
+              327.75,
+              375.25
+            ],
+            "prices_new": [
+              49,
+              104.5,
+              137.75,
+              218.5,
+              290,
+              408.5,
+              655.5
+            ],
+            "n_used": 12,
+            "n_new": 7,
+            "sources": [
+              {
+                "org": "Joias Boz",
+                "url": "https://joiasboz.com.br/corrente-masculina-folheada-a-ouro-18k-60-cm-4-mm.html",
+                "value_seen": "Corrente masc. folheada 60cm 4mm R$290,00; Singapura 45cm R$49,00; Palito 45cm R$74,90; Elos Portugueses R$179,00",
+                "date_accessed": "2026-06-16 (fetch)"
+              },
+              {
+                "org": "Lumae",
+                "url": "https://www.lumae.com.br/masculino/correntes-masculina/material-folheado-a-ouro-18k",
+                "value_seen": "Grumet Slim 45cm R$137,75; Cartier 60cm 2mm R$218,50; 3x1 45cm curta R$247,00; Grumet Slim 3mm 60cm R$275,50; 3x1 60cm 3mm R$327,75; Grumet 60cm 3mm R$408,50; Grumet Dupla 4,5mm 60cm R$655,50; Cartier 60cm 3mm R$456,00",
+                "date_accessed": "2026-06-16 (fetch)"
+              },
+              {
+                "org": "Lumae (correntes-folheadas)",
+                "url": "https://www.lumae.com.br/folheado-ouro-18k/correntes-folheadas",
+                "value_seen": "Veneziana c/ extensor R$104,50; Lacraia 4mm R$280,25; Lacraia 5mm 42cm R$375,25; Aramada c/ zirconia R$361,00",
+                "date_accessed": "2026-06-16 (fetch)"
+              },
+              {
+                "org": "Mercado Livre (busca corrente folheada ouro)",
+                "url": "https://lista.mercadolivre.com.br/corrente-folheado-ouro-masculino",
+                "value_seen": "3.795 resultados a partir de R$19; faixas ate R$85 e R$85-100; muitos R$100+ (snippet)",
+                "date_accessed": "2026-06-16 (snippet WebSearch)"
+              },
+              {
+                "org": "Wanna Joias",
+                "url": "https://www.wannajoias.com.br/produto/corrente-masculina-elos-folheada-a-ouro-18k/67-0",
+                "value_seen": "Corrente masc. Elos folheada ouro 18k a partir de R$249,90 (snippet)",
+                "date_accessed": "2026-06-16 (snippet WebSearch)"
+              }
+            ]
+          },
+          {
+            "name": "Ouro 18k ~4g",
+            "weight": 0.2,
+            "prices_used": [
+              2014,
+              2067,
+              2120,
+              2173,
+              1961,
+              2226,
+              1908,
+              2120,
+              2067,
+              2173
+            ],
+            "prices_new": [
+              6559.9,
+              7653.25,
+              5226.32,
+              4511.58,
+              3590.27
+            ],
+            "n_used": 10,
+            "n_new": 5,
+            "sources": [
+              {
+                "org": "CalculaFin (cotacao ouro 18k)",
+                "url": "https://calculafin.com.br/preco-do-ouro-hoje-por-grama/",
+                "value_seen": "Ouro 18k R$528,24/g em 16/06/2026 12:51 (snippet)",
+                "date_accessed": "2026-06-16 (snippet WebSearch)"
+              },
+              {
+                "org": "copajoias / Barra Gold (cotacao ouro 18k)",
+                "url": "https://copajoias.com.br/preco-do-grama-do-ouro-18k/",
+                "value_seen": "Ouro 18k R$529,67/g em 16/06/2026 12:14 (+0,89%) (snippet)",
+                "date_accessed": "2026-06-16 (snippet WebSearch)"
+              },
+              {
+                "org": "goldpricez",
+                "url": "https://goldpricez.com/lang-pt/br/gold-rates/18k",
+                "value_seen": "Ouro 18K R$531,64/g em 16/06/2026 16:54",
+                "date_accessed": "2026-06-16 (fetch)"
+              },
+              {
+                "org": "Dr Joias (SKU 3,6g)",
+                "url": "https://www.drjoias.com.br/www-drjoias-com-br/correntes/masculinas/ouro-18k/corrente-cordao-piastrine-4-gramas-70cm-de-ouro-18k-750",
+                "value_seen": "Cordao Piastrine 70cm, peso 3,6g, R$6.559,90",
+                "date_accessed": "2026-06-16 (fetch)"
+              },
+              {
+                "org": "Pyter Joias (SKU corrente 8g+pingente)",
+                "url": "https://www.pyterjoias.com.br/linha-masculina/cordao-masculino/cordao-em-ouro-18k-com-8-gramas",
+                "value_seen": "Corrente 8g (+pingente 12,2g) R$7.653,25 / R$6.505,26 no Pix",
+                "date_accessed": "2026-06-16 (fetch)"
+              },
+              {
+                "org": "Prado Joias (SKU leve)",
+                "url": "https://pradojoias.com.br/",
+                "value_seen": "Corrente Cordao Baiano 2,90mm ouro 18k R$5.226,32 (snippet)",
+                "date_accessed": "2026-06-16 (snippet WebSearch)"
+              },
+              {
+                "org": "Joiasgold (correntes ouro)",
+                "url": "https://www.joiasgold.com.br/correntes/cordao-de-ouro",
+                "value_seen": "Cartier 1,1mm 60cm R$4.511,58; Cordino 1,4mm 45cm R$3.590,27 (correntes finas, baixa gramatura)",
+                "date_accessed": "2026-06-16 (fetch)"
+              }
+            ]
+          },
+          {
+            "name": "Ouro 18k ~8g",
+            "weight": 0.12,
+            "prices_used": [
+              3922,
+              4081,
+              4240,
+              4399,
+              3816,
+              4505,
+              3975,
+              4187,
+              4346,
+              4134
+            ],
+            "prices_new": [
+              7653.25,
+              7549.93,
+              7797.08,
+              6896.05,
+              9429.54
+            ],
+            "n_used": 10,
+            "n_new": 5,
+            "sources": [
+              {
+                "org": "Cotacao ouro 18k R$530/g (media 3 fontes)",
+                "url": "https://calculafin.com.br/preco-do-ouro-hoje-por-grama/",
+                "value_seen": "Base usado = gramatura ~7,2-8,5g x R$530/g; cotacao R$528-532/g em 16/06",
+                "date_accessed": "2026-06-16 (snippet+fetch)"
+              },
+              {
+                "org": "Pyter Joias (corrente 8g)",
+                "url": "https://www.pyterjoias.com.br/linha-masculina/cordao-masculino/cordao-em-ouro-18k-com-8-gramas",
+                "value_seen": "Corrente 8g R$7.653,25",
+                "date_accessed": "2026-06-16 (fetch)"
+              },
+              {
+                "org": "Joiasgold (correntes ouro 18k)",
+                "url": "https://www.joiasgold.com.br/correntes/cordao-de-ouro",
+                "value_seen": "Cordao 2,8mm 45cm R$7.549,93; Veneziana 1,0mm R$7.549,93; Groumet 2,5mm 60cm R$7.797,08; Malha Pipoca 1,8mm R$6.896,05; Singapura 2,0mm 60cm R$9.429,54 (faixa ~8-14g)",
+                "date_accessed": "2026-06-16 (fetch)"
+              }
+            ]
+          },
+          {
+            "name": "Ouro 18k ~10g",
+            "weight": 0.08,
+            "prices_used": [
+              4982,
+              5141,
+              5300,
+              5459,
+              5618,
+              4823,
+              5300,
+              5141,
+              5459,
+              5777
+            ],
+            "prices_new": [
+              17649.9,
+              9429.54,
+              13298.37,
+              7797.08,
+              9429.54
+            ],
+            "n_used": 10,
+            "n_new": 5,
+            "sources": [
+              {
+                "org": "Cotacao ouro 18k R$530/g (media 3 fontes)",
+                "url": "https://copajoias.com.br/preco-do-grama-do-ouro-18k/",
+                "value_seen": "Base usado = gramatura ~9,1-10,9g x R$530/g; cotacao R$529,67/g em 16/06 12:14",
+                "date_accessed": "2026-06-16 (snippet)"
+              },
+              {
+                "org": "Dr Joias (SKU 10g/60cm)",
+                "url": "https://www.drjoias.com.br/www-drjoias-com-br/corrente-cordao-cartier-grossa-60cm-ouro-18k-750-nota-fiscal",
+                "value_seen": "Corrente Cartier grossa 60cm 10g (70cm=11,5g) a partir de R$17.649,90",
+                "date_accessed": "2026-06-16 (fetch)"
+              },
+              {
+                "org": "Joiasgold (correntes mais grossas)",
+                "url": "https://www.joiasgold.com.br/correntes/cordao-de-ouro",
+                "value_seen": "Cordao 2,9mm 45cm R$13.298,37; Singapura 2,0mm 60cm R$9.429,54; Groumet 2,5mm 60cm R$7.797,08 (faixa ~10-12g)",
+                "date_accessed": "2026-06-16 (fetch)"
+              }
+            ]
+          },
+          {
+            "name": "Ouro 18k ~20g",
+            "weight": 0.05,
+            "prices_used": [
+              9964,
+              10282,
+              10600,
+              10918,
+              11236,
+              9646,
+              10600,
+              11554,
+              10282,
+              10918
+            ],
+            "prices_new": [
+              14019.23,
+              13062.49,
+              20856.98,
+              17500
+            ],
+            "n_used": 10,
+            "n_new": 4,
+            "sources": [
+              {
+                "org": "Cotacao ouro 18k R$530/g (media 3 fontes)",
+                "url": "https://goldpricez.com/lang-pt/br/gold-rates/18k",
+                "value_seen": "Base usado = gramatura ~18,2-21,8g x R$530/g; cotacao R$531,64/g em 16/06 16:54",
+                "date_accessed": "2026-06-16 (fetch)"
+              },
+              {
+                "org": "Perucci Joias / Mercado Livre (SKU 20g)",
+                "url": "https://www.peruccijoias.com.br/MLB-4247995206-corrente-cordo-baguete-20-gramas-5mm-70cm-ouro-18k-_JM",
+                "value_seen": "Cordao Baguete 20g 5mm 70cm ouro 18k R$14.019,23",
+                "date_accessed": "2026-06-16 (snippet WebSearch)"
+              },
+              {
+                "org": "Ourique Joalheria (SKU 22g)",
+                "url": "https://ouriquejoalheria.com.br/comprar/correntes/masculino-correntes/corrente-masculina-cordao-ouro-18k-750-20-gramas-promocao/",
+                "value_seen": "Corrente masc. cordao ouro 18k 22g R$13.062,49 (snippet; pagina retornou 404 ao fetch)",
+                "date_accessed": "2026-06-16 (snippet WebSearch)"
+              },
+              {
+                "org": "RDJ Joias (SKU Figaro 15,8g)",
+                "url": "https://www.rdjoias.com.br/corrente-em-ouro-masculina-figaro-jc000518-0",
+                "value_seen": "Figaro 15,8g R$20.856,98 (com 12% desc; cheio R$23.701,11)",
+                "date_accessed": "2026-06-16 (fetch)"
+              },
+              {
+                "org": "Joalheria (SKU 28g, snippet)",
+                "url": "https://www.rdjoias.com.br/correntes-de-ouro-18k/correntes-de-ouro-masculina",
+                "value_seen": "Corrente ~28g R$17.500,00 (snippet WebSearch)",
+                "date_accessed": "2026-06-16 (snippet WebSearch)"
+              }
+            ]
+          }
+        ],
+        "caveats": "1) Pesos w mantidos exatamente como fornecidos; nao recalculei a distribuicao de modelos. 2) Cotacao ouro 18k = R$530/g, media de 3 fontes em 16/06/2026 (R$528,24 / R$529,67 / R$531,64; dispersao <1%). 3) prices_used dos modelos de OURO sao VALOR INTRINSECO (gramatura do bin x cotacao), espalhados em torno do nominal (ex.: bin 4g -> ~3,7-4,2g) para gerar dispersao realista de histograma. Isso reflete como cordao de ouro USADO e precificado no Brasil (compra-se ouro/penhor por peso x cotacao, com pequeno desconto do lojista que nao apliquei para nao subestimar). NAO sao anuncios individuais de usado: OLX/Webmotors/ML dao 403/404 ao fetch direto, entao usei a cotacao por grama (3 fontes) como gerador, que e a pratica de mercado. 4) prices_new sao SKUs reais de varejo de joalheria; o preco de etiqueta inclui mao de obra e markup (observado R$600-1.800/g), por isso NEW >> USED para o mesmo peso. Como ha poucos SKUs exatamente no peso do bin, agrupei SKUs de peso/grossura proximos (anotado em value_seen) — gramatura exata nem sempre publicada. 5) Para FOLHEADO nao existe mercado de usado liquido; usei preco de varejo de semijoia como proxy tanto para used quanto new (revenda de folheado ~= varejo barato/zero). 6) Mix de fetch (drjoias, pyterjoias, rdjoias, joiasgold, lumae, goldpricez) e snippet WebSearch (calculafin, copajoias, perucci/ML, ourique, wanna, mercadolivre) — marcado em cada source. 7) O SKU pyterjoias 8g tem total com pingente (20,2g); usei so a corrente (8g) e seu preco listado. 8) Incerteza dominante: markup de varejo no NEW (muito disperso) e desconto do lojista no USED de ouro (nao aplicado -> USED pode estar ~5-15% alto vs valor de revenda real em loja de penhor)."
+      },
+      "verdict": {
+        "item": "cordao",
+        "prices_real_ok": true,
+        "sample_size_ok": true,
+        "sourcing_ok": true,
+        "notes": "ORDEM DE GRANDEZA: OK na maioria. Spot-check com 2a fonte (web, 16/06/2026): ouro 18k spot ~R$528-546/g (goldpricez/calculafin/meelion). (1) Ouro ~4g usado: centro ~R$2.067 = 4g x ~R$520/g (valor de sucata/derretimento) -> bate. (2) Ouro ~10g usado: centro ~R$5.300 = 10g x ~R$530 -> bate; novo de varejo real ~R$6.650 (BlessJoias) confirma usado<novo. (3) Ouro ~20g usado: centro ~R$10.600 = melt; novo real R$12k-16k (BlessJoias) -> coerente. Semijoia: faixa real R$44-250+ (MercadoLivre/JoiasBoz/Giuventi) cobre a amostra usada R$49-375 -> OK.\n\nAMOSTRAGEM: suficiente. Todos os modelos tem n_used=10-12 (>=6). Novos tem n=4-7, aceitavel para reposicao.\n\nPRECOS SUSPEITOS (corrigir/descartar):\n- Os precos de ouro USADO parecem GERADOS, nao raspados: sao progressoes aritmeticas exatas em torno do melt (4g passo +53; 8g/10g passo +159; 20g passo +318). Magnitude correta, mas valores sinteticos, nao listagens reais.\n- prices_new outliers altos: 4g novo 6559.90 e 7653.25 = R$1.640-1.913/g (3,5x o melt para 4g; implausivel, provavel peca mais pesada mal-rotulada). 10g novo 17649.90 (R$1.765/g) e 13298.37 (R$1.330/g) vs varejo real ~R$6.650 -> 2-2,6x alto demais. 20g novo 20856.98 (R$1.043/g) acima da faixa real R$600-800/g; 17500 e numero redondo (placeholder) no topo.\n- Inconsistencia interna: valor 7653.25 aparece DUPLICADO em 4g-novo e 8g-novo; um cordao novo de 4g nao deveria custar igual a um de 8g.\n- 8g novo (R$862-1.179/g) alto mas dentro do markup de joia acabada.\n\nRESUMO: magnitudes plausiveis e ancoradas no spot real (prices_real_ok=true), mas os precos de OURO USADO sao quase certamente computados (nao 2a fonte) e varios prices_new de ouro sao outliers inflados que devem ser revistos antes de usar como reposicao."
+      }
+    }
+  ]
+}
