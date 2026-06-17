@@ -46,18 +46,24 @@
 | F-BIK.5 | Magazine Luiza / adapsbrasil | 2026 | MTB aro 29 entrada | https://www.magazineluiza.com.br/busca/bicicleta+aro+26+mormaii/ | aro 29 alumínio entrada novo ~R$ 2.266 (teto núcleo) |
 | F-BIK.6 | Startse | 2021 | Tembici/Bike Itaú levanta R$ 420 mi | https://www.startse.com/artigos/bikes-eletricas-do-itau-tembici-levanta-rdollar-420-milhoes/ | ~R$ 16k/unidade de sistema — baliza, FORA da soma |
 
-## T-COR — Cordão (distribuição assimétrica à direita; folheado domina)
+## T-COR — Cordão (forma assimétrica = acadêmica; composição = proxy + lacuna)
 
-> Forma realista do que é arrancado na rua: ~80% folheado/semijoia + ouro leve; cauda fina de ouro. Mediana no folheado (~R$ 50–80); média puxada pela cauda (~R$ 250–450). Revenda realiza ~50–65% do valor.
+> **Forma (assimetria à direita): bem sustentada academicamente.** **Composição (folheado vs ouro do que é roubado): LACUNA — nenhum estudo mede.** Peso = premissa fundamentada por proxies de volume/vitimização + sensibilidade no paper. Fontes de preço (valoração) separadas das de forma/composição.
 
-| ID | Autor/Órgão | Ano | Título | URL | Valor/trecho |
+| ID | Autor/Órgão | Ano | Título | URL | O que prova / classificação |
 |---|---|---|---|---|---|
-| F-COR.1 | IBGM via Stilla/Prisma Jr | 2024–26 | Mercado de semijoias no Brasil | https://blog.stillaacessorios.com.br/os-numeros-do-mercado-de-semijoias-no-brasil/ | ~3.000 empresas; micro/peq. = 85% do mercado de folheados ("luxo acessível") — folheado é o que se usa/perde na rua |
-| F-COR.2 | Shekinah Joias | 2026 | Cordões folheados | https://www.shekinahjoias.com.br/cordao | folheado R$ 7,98–41,98 (típico R$ 12–30) |
-| F-COR.3 | Prata Pura Joias | 2026 | Correntes folheadas 18k | https://www.pratapurajoias.com.br/folheado-a-ouro-18k/correntes-lisas-folheadas-a-ouro-18k | folheado R$ 34,90–249,90 (típico R$ 50–80) |
-| F-COR.4 | Dr Joias | 2026 | Cordão ouro 18k leve (uso diário) | https://www.drjoias.com.br/www-drjoias-com-br/corrente-cordao-colar-masculino-cartier-60cm-em-ouro-18k-750 | uso diário 1,8–8g (1,8g R$ 3.689; 7,95g R$ 1.851); peças 20g+ = exibição, raras |
-| F-COR.5 | CalculaFin / GoldPricez | 2026 | Ouro 18k por grama | https://calculafin.com.br/preco-do-ouro-hoje-por-grama/ | R$ 518–535/g (17/06/2026) |
-| F-COR.6 | Folha Vitória / PCES | 2025 | Cordão "R$ 200 mil" (golpe dirigido, ES) | https://www.folhavitoria.com.br/policia/casal-e-preso-suspeito-de-roubar-de-idoso-cordao-de-ouro-avaliado-em-r-200-mil-no-es/ | revendido por R$ 104 mil (~52%); cauda rara, não arranco de rua |
+| F-COR.1 | Shaw, O. et al. (Home Office) | 2015 | Crime and the value of stolen goods (Research Report 81) | https://assets.publishing.service.gov.uk/media/5a7f3886ed915d74e33f5149/horr81.pdf | **FORMA — DIRETO**: valor de bens roubados "heavily skewed"; média £481 ≫ mediana ~£100; 2% dos furtos = 46% do valor |
+| F-COR.2 | Frees, E. (ed.) / IAA | 2018 | Loss Data Analytics (cap. Severity) | https://openacttexts.github.io/Loss-Data-Analytics/ChapSeverity.html | **FORMA — análogo atuarial**: lognormal/Pareto "positively skewed, long right tail" (+ Klugman et al., Loss Models) |
+| F-COR.3 | IBGE | 2010 | Vitimização e acesso à justiça, 2009 (PNAD) | https://biblioteca.ibge.gov.br/visualizacao/monografias/GEBIS%20-%20RJ/pnadvitimizacao.pdf | **COMPOSIÇÃO — proxy**: "joias e relógios" minoria dos bens subtraídos (10,3%); NÃO separa material/valor |
+| F-COR.4 | SENASP/Datafolha/CRISP-UFMG | 2013 | Pesquisa Nacional de Vitimização | https://assets-compromissoeatitude-ipg.sfo2.digitaloceanspaces.com/2014/04/MJ_Senasp_PesquisaNacionalVitimizacao_maio2013.pdf | **COMPOSIÇÃO — proxy**: joias+relógios 7,1% furtos / 13,8% roubos (vs celular 54,8%); não separa ouro/folheado |
+| F-COR.5 | Etulain et al. / UNICAMP (BCCL) | 2021 | Produção de Semijoias em Limeira-SP | https://econtents.bc.unicamp.br/omp/index.php/ebooks/catalog/book/150 | **COMPOSIÇÃO-volume — proxy**: Limeira 2º maior polo mundial de bijuteria; lotes 30 mil–500 mil peças (folheado domina o volume) |
+| F-COR.6 | IBGM | 2024–26 | Setor de gemas/joias (ouro) | https://ibgm.com.br/ | **COMPOSIÇÃO-volume — proxy**: ~22 t/ano de joias de ouro no BR (contraste com volume de semijoia) |
+| F-COR.7 | Shekinah; Prata Pura; Dr Joias | 2026 | Preços folheado / ouro 18k leve | https://www.pratapurajoias.com.br/folheado-a-ouro-18k/correntes-lisas-folheadas-a-ouro-18k | **PREÇO (valoração)**: folheado R$ 8–250; ouro 18k leve 1,8–8g; cotação 18k ~R$ 530/g |
+| F-COR.8 | Folha Vitória / PCES | 2025 | Caso ES (cordão "R$ 200 mil") | https://www.folhavitoria.com.br/policia/casal-e-preso-suspeito-de-roubar-de-idoso-cordao-de-ouro-avaliado-em-r-200-mil-no-es/ | **ilustração apenas (não citável como base)**: golpe dirigido; revendido por R$ 104 mil (~52%) — exemplifica a cauda rara |
+| F-COR.9 | Euromonitor | 2025 | Jewellery in Brazil | https://www.euromonitor.com/jewellery-in-brazil/report | **COMPOSIÇÃO-volume — proxy**: bijuteria lidera o varejo em VOLUME; joia fina domina o VALOR (~85%) — honestidade: em valor a tese se inverte |
+| F-COR.10 | IBGE (PNAD Vitimização 2021) | 2022 | Vitimização 2021 | https://agenciadenoticias.ibge.gov.br/ | **COMPORTAMENTO — proxy (forte, oficial)**: 42,8% evitam usar relógio/joia/objeto de valor na rua por medo |
+| F-COR.11 | FBSP / Datafolha | 2026 | Mudança de hábitos por insegurança (n=2.004) | https://forumseguranca.org.br/ | **COMPORTAMENTO — proxy**: 26,8% retiram joias/acessórios de valor antes de sair |
+| F-COR.12 | SSP-SP (via imprensa) | 2025 | Roubo de alianças (contrapeso) | https://www.bnewssaopaulo.com.br/ | **CONTRAPESO**: alianças (ouro) roubadas em SP 1.377 (2023) → 3.163 (2025); roubo dirigido a ouro cresce |
 
 ---
 

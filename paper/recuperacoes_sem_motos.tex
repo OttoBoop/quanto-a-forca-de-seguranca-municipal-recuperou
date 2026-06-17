@@ -119,19 +119,43 @@ categoria segundo a Eq.~\eqref{eq:mix}, somam-se, e repete-se 50.000 vezes (seme
 reprodutibilidade). Reporta-se o valor esperado e a banda de 90\% (percentis 5 e 95).
 
 \subsection{Caso especial: distribuição dos cordões}
-Os cordões merecem tratamento à parte. O que é arrancado na rua é, na maioria,
-\textbf{folheado/semijoia} (\reais{15}--\reais{150}) ou ouro \emph{leve} (2--8\,g) --- raramente
-peças pesadas de joalheria. A distribuição é, portanto, \textbf{fortemente assimétrica à direita}
-(\emph{lognormal-like}): mediana no folheado (\reais{50}--\reais{80}) e média puxada por uma cauda
-longa e fina de ouro. Calibramos a amostra para $\approx$80\% folheado/baixo valor, $\approx$18\%
-ouro leve e $\approx$2--4\% de cauda (eventos raros, tipicamente golpes dirigidos, não o arranco de
-rua), com teto realista contido (\reais{3.000} usado / \reais{5.000} novo). Dois fatos sustentam a
-forma: o mercado de semijoias é massivo e popular (``luxo acessível''), e o canal de receptação
-realiza só $\approx$50--65\% do valor --- comprimindo ainda mais a base. Daí o desvio $\gg$ média
-na Tabela~\ref{tab:itens}, assinatura da assimetria. Fontes: IBGM (mercado de semijoias); preços de
-folheado (Shekinah; Prata Pura); ouro leve de uso diário 1,8--8\,g (Dr Joias; Pyter); cotação do
-ouro 18k $\approx$\reais{530}/g; e o caso de Linhares-ES (cordão ``de R\$\,200 mil'' revendido por
-R\$\,104 mil) ilustrando a cauda rara.
+\textbf{Forma (fundamentada empiricamente).} O valor de bens furtados é fortemente assimétrico à
+direita: no levantamento do Home Office britânico sobre bens roubados, a média (\pounds481) supera
+de longe a mediana ($\approx$\pounds100) e os 2\% de furtos mais valiosos concentram 46\% do valor
+total (SHAW \emph{et al.}, 2015) --- a mesma forma \emph{lognormal}/cauda-pesada canônica das
+distribuições de perda na literatura atuarial (FREES, 2018; KLUGMAN \emph{et al.}). Modelamos o
+cordão sob essa forma: massa no baixo valor e cauda longa e fina (teto contido em \reais{3.000}
+usado / \reais{5.000} novo). Daí o desvio $\gg$ média na Tabela~\ref{tab:itens}.
+
+\textbf{Composição (premissa de proxies + lacuna declarada).} A divisão folheado vs.\ ouro
+\emph{do que é efetivamente roubado} não é medida por nenhum estudo: ISP-RJ e SSP-SP registram só o
+tipo de crime (``roubo a transeunte''), e o IBGE agrega ``joia, bijuteria ou relógio'' numa
+categoria única (10\% dos bens roubados fora de casa em 2021), sem separar material nem valor. O
+peso do folheado é, portanto, \textbf{premissa fundamentada} --- não um dado medido --- apoiada em
+proxies de \emph{volume} (a bijuteria/semijoia lidera o varejo em unidades --- EUROMONITOR, 2025;
+Limeira é o segundo maior polo mundial, com lotes de 30 mil a 500 mil peças --- ETULAIN
+\emph{et al.}, 2021; IBGM) e de \emph{comportamento} (IBGE, 2021: 42,8\% evitam usar objetos de
+valor na rua; FBSP/Datafolha, 2026: 26,8\% retiram joias antes de sair). Ressalva honesta: em
+\emph{número de peças} o folheado domina, mas em \emph{valor} o ouro pesa mais --- e a alta do ouro
+vem ampliando o roubo dirigido (alianças em SP mais que dobraram entre 2023 e 2025). Por isso a
+fração de ouro entra como \emph{sensibilidade}, não como número cravado.
+
+\textbf{Sensibilidade à fração de ouro $f$.} Como a composição é premissa, reportamos o efeito de
+variar $f$ entre os cordões:
+\begin{center}\small
+\begin{tabular}{lccc}
+\toprule
+$f$ (fração de ouro) & 15\% & 25\% & 40\% \\
+\midrule
+$\mathbb{E}[V_{\text{cord}}]$ (revenda) & \reais{260} & \reais{391} & \reais{588} \\
+Total $V^{\text{rev}}$ & \reais{160} mil & \reais{162} mil & \reais{165} mil \\
+\bottomrule
+\end{tabular}
+\end{center}
+A conclusão é robusta: como os cordões são $\approx$4\% do patrimônio, o total varia menos de 3\%
+mesmo dobrando $f$. As cifras de preço (folheado \reais{8}--\reais{250}; ouro 18k
+$\approx$\reais{530}/g) seguem documentadas no inventário.
+
 
 % =====================================================================
 \section{Resultados}
@@ -244,6 +268,11 @@ amostras de preço por modelo (com $n$ e URL) em \texttt{dados\_distribuicao.jso
 (MAGAZINE LUIZA; SAMSUNG; APPLE; CALOI. ``Preços de varejo (novo)'', 2026) ·
 (OLX. ``Bicicletas e celulares usados, RJ'', 2024--2026) ·
 (OURO RIO DE JANEIRO. ``Cotação do ouro 18k'', 2026) ·
-(RDJ JOIAS; VITALE JOIAS. ``Cordões ouro 18k e folheados'', 2026).
+(SHEKINAH; PRATA PURA. ``Cordões folheados (preço)'', 2026; DR JOIAS. ``Ouro 18k leve 1,8--8\,g'', 2026) ·
+(SHAW, O.\ \emph{et al.} ``Crime and the value of stolen goods'', Home Office Research Report 81, 2015) ·
+(FREES, E.\ (ed.). ``Loss Data Analytics'', International Actuarial Association, 2018; KLUGMAN \emph{et al.} ``Loss Models'') ·
+(IBGE. ``Vitimização e acesso à justiça, 2009'', 2010; SENASP/CRISP-UFMG. ``Pesquisa Nacional de Vitimização'', Min.\ Justiça, 2013) ·
+(IBGE. ``PNAD Vitimização 2021'', 2022; FBSP/DATAFOLHA. ``Mudança de hábitos por insegurança'', 2026; EUROMONITOR. ``Jewellery in Brazil'', 2025) ·
+(ETULAIN, C.\ \emph{et al.} ``Produção de semijoias em Limeira'', UNICAMP, 2021; IBGM).
 
 \end{document}
