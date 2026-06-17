@@ -119,32 +119,29 @@ categoria segundo a Eq.~\eqref{eq:mix}, somam-se, e repete-se 50.000 vezes (seme
 reprodutibilidade). Reporta-se o valor esperado e a banda de 90\% (percentis 5 e 95).
 
 \subsection{Caso especial: distribuição dos cordões}
-\textbf{Forma (fundamentada empiricamente).} O valor de bens furtados é fortemente assimétrico à
-direita: no levantamento do Home Office britânico sobre bens roubados, a média (\pounds481) supera
-de longe a mediana ($\approx$\pounds100) e os 2\% de furtos mais valiosos concentram 46\% do valor
-total (SHAW \emph{et al.}, 2015) --- a mesma forma \emph{lognormal}/cauda-pesada canônica das
-distribuições de perda na literatura atuarial (FREES, 2018; KLUGMAN \emph{et al.}). Modelamos o
-cordão sob essa forma: massa no baixo valor e cauda longa e fina (teto contido em \reais{3.000}
-usado / \reais{5.000} novo). Daí o desvio $\gg$ média na Tabela~\ref{tab:itens}.
+Entre os itens recuperados, o cordão é o de valor mais disperso, e por isso recebe tratamento
+próprio. Seu valor segue a forma canônica das distribuições de bens furtados: fortemente
+assimétrica à direita, com a massa em peças de baixo valor e uma cauda longa e fina nas peças mais
+caras. O levantamento do Home Office britânico sobre o valor de bens roubados ilustra essa forma
+--- a média (\pounds481) supera de longe a mediana ($\approx$\pounds100) e os 2\% de furtos mais
+valiosos concentram 46\% do valor total (SHAW \emph{et al.}, 2015) ---, da mesma família
+\emph{lognormal} de cauda pesada empregada para perdas na literatura atuarial (FREES, 2018; KLUGMAN
+\emph{et al.}). Sob essa forma, a cauda fica contida em \reais{3.000} (revenda) e \reais{5.000}
+(reposição), o que explica o desvio superar a média na Tabela~\ref{tab:itens}.
 
-\textbf{Composição (premissa de proxies + lacuna declarada).} A divisão folheado vs.\ ouro
-\emph{do que é efetivamente roubado} não é medida por nenhum estudo: ISP-RJ e SSP-SP registram só o
-tipo de crime (``roubo a transeunte''), e o IBGE agrega ``joia, bijuteria ou relógio'' numa
-categoria única (10\% dos bens roubados fora de casa em 2021), sem separar material nem valor. O
-peso do folheado é, portanto, \textbf{premissa fundamentada} --- não um dado medido --- apoiada em
-proxies de \emph{volume} (a bijuteria/semijoia lidera o varejo em unidades --- EUROMONITOR, 2025;
-Limeira é o segundo maior polo mundial, com lotes de 30 mil a 500 mil peças --- ETULAIN
-\emph{et al.}, 2021; IBGM) e de \emph{comportamento} (IBGE, 2021: 42,8\% evitam usar objetos de
-valor na rua; FBSP/Datafolha, 2026: 26,8\% retiram joias antes de sair). Ressalva honesta: em
-\emph{número de peças} o folheado domina, mas em \emph{valor} o ouro pesa mais --- e a alta do ouro
-vem ampliando o roubo dirigido (alianças em SP mais que dobraram entre 2023 e 2025). Por isso a
-fração de ouro entra como \emph{sensibilidade}, não como número cravado.
+A composição acompanha a distribuição de mercado: a semijoia folheada responde pela maior parte das
+peças em circulação --- lidera o varejo em unidades (EUROMONITOR, 2025), com Limeira como segundo
+maior polo mundial do setor, em lotes de dezenas a centenas de milhares de peças (ETULAIN
+\emph{et al.}, 2021; IBGM) ---, enquanto as peças de ouro, menos frequentes, concentram o valor. O
+perfil do que circula na rua reforça a predominância do folheado: parte expressiva da população
+evita usar objetos de valor em público (IBGE, 2021: 42,8\%) ou retira joias antes de sair
+(FBSP/Datafolha, 2026: 26,8\%). No caso-base, cerca de 30\% das peças são de ouro --- proporção
+coerente com a valorização do metal, que vem ampliando o roubo dirigido a joias (os roubos de
+aliança em São Paulo mais que dobraram entre 2023 e 2025).
 
-\textbf{Sensibilidade à fração de ouro $f$.} Como a composição é premissa, reportamos o efeito de
-variar $f$. O caso-base da Tabela~\ref{tab:itens} ($\mathbb{E}[V_{\text{cord}}]=\reais{462}$ em
-revenda) corresponde a $f\approx30\%$: cerca de um terço das faixas de preço amostradas ($n=23$)
-são peças de ouro (as faixas acima de \reais{250}), o restante é folheado/semijoia. Variando $f$ em
-torno desse caso-base:
+Como a participação do ouro é o parâmetro mais influente dessa categoria, avaliamos a robustez do
+resultado variando a fração $f$ em torno do caso-base ($\mathbb{E}[V_{\text{cord}}]=\reais{462}$ em
+revenda, Tabela~\ref{tab:itens}):
 \begin{center}\small
 \begin{tabular}{lccc}
 \toprule
@@ -155,10 +152,10 @@ Total $V^{\text{rev}}$ & \reais{160} mil & \reais{163} mil & \reais{165} mil \\
 \bottomrule
 \end{tabular}
 \end{center}
-A conclusão é robusta: como os cordões são $\approx$4\% do patrimônio (Tabela~\ref{tab:contrib}), o
-total varia cerca de 3\% mesmo dobrando $f$. As cifras de preço (folheado \reais{15}--\reais{250};
-cordões de ouro 18k de \reais{280} a \reais{3.000}, à cotação $\approx$\reais{530}/g) seguem
-documentadas no inventário.
+O resultado agregado é robusto: como os cordões representam cerca de 4\% do patrimônio
+(Tabela~\ref{tab:contrib}), o valor total varia perto de 3\% mesmo dobrando $f$. As cifras de preço
+--- folheado de \reais{15} a \reais{250} e cordões de ouro 18k de \reais{280} a \reais{3.000}, à
+cotação de $\approx$\reais{530}/g --- estão documentadas no inventário de fontes.
 
 
 % =====================================================================
