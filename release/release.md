@@ -1,6 +1,6 @@
-# Release — Patrimônio recuperado pela Força Municipal (V3)
+# Release — Patrimônio recuperado pela Força Municipal
 
-> Derivado do paper V3 `paper/recuperacoes.tex` (auditado). As **motocicletas são sempre citadas à parte**, como componente adicional, separadas dos bens pessoais (celulares, bicicletas, cordões). Decisão de manchete (revenda vs reposição) é sua.
+> Derivado do paper `paper/recuperacoes.tex` (auditado). As **motocicletas são sempre citadas à parte**, como componente adicional, separadas dos bens pessoais (celulares, bicicletas, cordões). Decisão de manchete (revenda vs reposição) é sua.
 
 ---
 
@@ -19,6 +19,8 @@ Entre 15 de março e 8 de junho de 2026, a Força Municipal (SEGUR, Prefeitura d
 Entre os itens pessoais, o grosso está nos celulares: as 118 unidades respondem por cerca de 85%, valendo de R$ 143 mil a R$ 232 mil — de ~R$ 350 o aparelho usado mais barato a ~R$ 9.490 o flagship novo, com média de R$ 1.212 a R$ 1.964 por aparelho. A conta segue a distribuição das marcas mais roubadas no país (Samsung, Apple, Motorola, Xiaomi). As 19 bicicletas — agora incluindo as elétricas, que vão de R$ 1.400 a R$ 18 mil e puxam a cauda do valor — e os 15 cordões completam os itens pessoais.
 
 As motocicletas, tratadas à parte, são o maior componente isolado de todo o patrimônio recuperado. A conta parte da distribuição real do que mais se rouba no Rio (Honda CG 160 à frente, ranking da Polícia Civil-RJ) e da Tabela FIPE de cada modelo, do usado ao zero-quilômetro, com valor esperado de R$ 15,7 mil (revenda) a R$ 19,2 mil (reposição) por moto.
+
+**Ressalva.** O total é dominado pelas motocicletas, e parte delas pode ter sido apreendida com restrição (documento ou chassi remarcado), que vale menos na revenda; além disso, a composição exata dos bens recuperados não foi divulgada — o mix vem da frequência de roubo na cidade, e os valores podem oscilar conforme os modelos efetivamente apreendidos.
 
 Os valores são estimativas a preços de mercado, calculadas a partir de fontes públicas (FIPE, anúncios de usados, varejo, cotação do ouro) e um modelo probabilístico com 469 preços coletados. A metodologia completa está no estudo técnico que acompanha este material.
 
