@@ -100,8 +100,7 @@ uma escolha. O preço de cada modelo é uma \textbf{amostra de valores observado
 $n=323$: 216 de usado e 107 de novo), em duas bases --- revenda (usado) e reposição (novo) ---, com
 cada anúncio ou listagem contando como um preço. OLX e Mercado Livre, que bloqueiam acesso
 automatizado, entraram apenas por trechos de busca; os tamanhos por modelo estão em
-\texttt{dados\_distribuicao.json}. Celulares, bicicletas e cordões recebem tratamento próprio a
-seguir.
+\texttt{dados\_distribuicao.json}. Celulares, bicicletas e cordões são detalhados a seguir.
 
 \subsection{Agregação por Monte Carlo}\label{sec:mc}
 A distribuição de $V_i^b$ e de $V^b$ é obtida por simulação: sorteiam-se $N_i$ unidades por
@@ -155,8 +154,7 @@ Sem as motocicletas, a bicicleta responde por cerca de 11\% do patrimônio
 (Tabela~\ref{tab:contrib}); ainda assim, o total varia pouco com $f_e$ dentro dessa faixa.
 
 \subsection{Cordões}
-Entre os itens recuperados, o cordão é o de valor mais disperso, e por isso recebe tratamento
-próprio. Seu valor segue a forma canônica das distribuições de bens furtados: fortemente
+O valor do cordão segue a forma canônica das distribuições de bens furtados: fortemente
 assimétrica à direita, com a massa em peças de baixo valor e uma cauda longa e fina nas peças mais
 caras. O levantamento do Home Office britânico sobre o valor de bens roubados ilustra essa forma
 --- a média (\pounds481) supera de longe a mediana ($\approx$\pounds100) e os 2\% de furtos mais
@@ -202,8 +200,8 @@ cotação de $\approx$\reais{530}/g --- estão documentadas no inventário de fo
 A Figura~\ref{fig:itens} mostra a distribuição de valor de uma unidade recuperada de cada
 categoria, nas duas bases. As formas são informativas: o celular é fortemente assimétrico à
 direita (massa em aparelhos de entrada, cauda nos \emph{flagships}); a bicicleta tem corpo nas
-convencionais e cauda longa nas elétricas; o cordão é o mais assimétrico --- a massa fica no
-folheado de baixo valor, com cauda longa e fina nas peças de ouro (média bem acima da mediana). A
+convencionais e cauda longa nas elétricas; o cordão concentra a massa no folheado de baixo valor,
+com cauda longa e fina nas peças de ouro (média bem acima da mediana). A
 Tabela~\ref{tab:itens} resume os momentos.
 
 \begin{figure}[H]

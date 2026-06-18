@@ -22,7 +22,7 @@ A **metodologia é idêntica** nas duas; a única diferença é o conjunto de it
 O valor de uma unidade recuperada é uma **variável aleatória de mistura**: sorteia-se o modelo segundo a **frequência** com que é roubado na cidade, e o preço a partir de uma **amostra de preços de mercado** daquele modelo — em duas bases: **revenda** (usado) e **reposição** (novo). O total é agregado por **Monte Carlo** (50 mil iterações, semente fixa) → valor esperado + **banda de 90%**.
 
 - **Distribuição de modelos:** marca mais roubada (Anuário FBSP) + perfil socioeconômico (TIC); motos pelo ranking de roubo do Rio (Polícia Civil-RJ); bicicletas **de uso pessoal**, incluindo as **elétricas** (share estimado por proxies — Aliança Bike/Abraciclo — pois o ISP-RJ não separa o tipo); cordões pela prevalência folheado vs. ouro.
-- **Cordões — atenção especial:** distribuição **fortemente assimétrica à direita** (folheado/semijoia domina; ouro leve; cauda fina de ouro). Mediana no folheado (~R$ 50–80), média puxada pela cauda. Ver a **seção dedicada** em cada paper.
+- **Formas de cauda pesada:** bicicleta (convencionais + e-bikes) e cordão (folheado + ouro) têm distribuição **fortemente assimétrica à direita** — massa no baixo valor, cauda fina no caro; por isso seus painéis usam escala logarítmica. A média fica bem acima da mediana nesses dois itens.
 - **Preços:** 469 observações de mercado coletadas por modelo (usado e novo), em 16/06/2026.
 - **Fontes:** toda cifra é referenciada — ver [`dados/proveniencia_dados.md`](dados/proveniencia_dados.md) (como cada dado foi obtido, por item), [`dados/inventario_fontes.md`](dados/inventario_fontes.md) e [`dados/dados_distribuicao.json`](dados/dados_distribuicao.json).
 

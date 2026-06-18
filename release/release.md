@@ -5,10 +5,10 @@
 ---
 
 ## ⬚ Manchete — VARIANTE A (revenda, conservador)
-**Força Municipal recuperou cerca de R$ 1,94 milhão em bens em menos de três meses no Rio — R$ 169 mil em itens pessoais e R$ 1,8 milhão em motocicletas**
+**Força Municipal recuperou cerca de R$ 1,94 milhão em bens em menos de três meses no Rio — R$ 169 mil em itens pessoais e R$ 1,77 milhão em motocicletas**
 
 ## ⬚ Manchete — VARIANTE B (reposição, maior impacto)
-**Recuperações da Força Municipal somam cerca de R$ 2,44 milhões no Rio — R$ 275 mil em itens pessoais e R$ 2,2 milhões em motocicletas**
+**Recuperações da Força Municipal somam cerca de R$ 2,44 milhões no Rio — R$ 275 mil em itens pessoais e R$ 2,17 milhões em motocicletas**
 
 ---
 
