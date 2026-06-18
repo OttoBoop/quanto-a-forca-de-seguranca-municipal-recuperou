@@ -37,6 +37,8 @@
 
 ## T-BIK — Bicicleta
 
+> Inclui a **bicicleta elétrica (e-bike de consumidor)**: share no roubo/parque estimado por proxies (F-BIK.7–10; o ISP-RJ não separa elétrica de convencional — lacuna declarada) + preços novo/usado (F-BIK.11–12).
+
 | ID | Autor/Órgão | Ano | Título | URL | Valor/trecho |
 |---|---|---|---|---|---|
 | F-BIK.1 | OLX (via Diário do Rio) | 2024 | Usadas mais buscadas no RJ | https://diariodorio.com/aumenta-a-busca-por-bicicletas-usadas-no-rio-de-janeiro/ | RJ: Caloi 70,1%, Oggi 8,3%, GTS 5,4% (peso ouro RJ) |
@@ -45,6 +47,12 @@
 | F-BIK.4 | OLX-RJ | 2026 | Bicicleta passeio aro 26 usada RJ | https://www.olx.com.br/ciclismo/bicicleta-de-passeio/aro-26/estado-rj | usada R$ 150–430 (piso R$ 150) |
 | F-BIK.5 | Magazine Luiza / adapsbrasil | 2026 | MTB aro 29 entrada | https://www.magazineluiza.com.br/busca/bicicleta+aro+26+mormaii/ | aro 29 alumínio entrada novo ~R$ 2.266 (teto núcleo) |
 | F-BIK.6 | Startse | 2021 | Tembici/Bike Itaú levanta R$ 420 mi | https://www.startse.com/artigos/bikes-eletricas-do-itau-tembici-levanta-rdollar-420-milhoes/ | ~R$ 16k/unidade de sistema — baliza, FORA da soma |
+| F-BIK.7 | ISP-RJ / Sind. Seguradoras-RJ-ES | 2025 | Roubo/Furto de Bicicleta — RJ 2021 a jun/2025 | https://sindicatodasseguradorasrj.org.br/wp-content/uploads/2025/08/RJ-ISP-Roubo-e-Furto-de-Bicicleta-2021-a-jun-25.pdf | furto+roubo bike RJ 4.208 (2024); **SEM coluna por tipo** (elétrica vs convencional) — lacuna do share de e-bike |
+| F-BIK.8 | Abraciclo / Agência Brasil | 2024 | Produção de bicicletas elétricas (Polo Industrial de Manaus) | https://agenciabrasil.ebc.com.br/economia/noticia/2024-12/producao-de-bicicletas-convencionais-cai-mas-das-eletricas-aumenta | e-bikes 19.147 un = **5,4% da produção 2024** (era 2,5% em 2023; +66,2%) `[proxy share]` |
+| F-BIK.9 | Aliança Bike | 2024–25 | Mercado Brasileiro de Bicicletas Elétricas 2024/2025 | https://aliancabike.org.br/mercado-brasileiro-de-bicicletas-eletricas-2024-2025/ | 53.591 e-bikes pedal-assist 2024; frota ~284 mil; ticket urbana R$ 5.871, E-MTB R$ 15.618 `[proxy share+preço]` |
+| F-BIK.10 | Agência Brasil | 2025 | PM-RJ usa app 190RJ contra roubo de bicicleta | https://agenciabrasil.ebc.com.br/geral/noticia/2025-06/pm-do-rio-usa-aplicativo-para-combater-roubo-e-furto-de-bicicletas | furto bike +59% estado / +106% capital (2025); cadastro de chassi "especialmente em modelos elétricos" (sobre-representação por valor) |
+| F-BIK.11 | Caloi; Oggi; Decathlon; Sense; Two Dogs; Magazine Luiza | 2026 | Preço de e-bike NOVA (varejo) | https://caloi.com/produtos/eletrica/ | novo: E-Vibe R$ 6.990; Explorer R$ 11.990–17.990; Oggi Big Wheel R$ 8.490–18.490; Decathlon E-100 R$ 5.999; entrada R$ 1.400–3.300 |
+| F-BIK.12 | Flash Bike; Pedalla; Buxa (seminovos) | 2026 | Preço de e-bike USADA/seminova | https://flashbike.com.br/bikes/semi-novas/ | usado: Caloi Mobylette R$ 5.600–5.850; E-Vibe R$ 6.990; Sense Impulse R$ 7.430; e-MTB usada até ~R$ 18.900; venda particular ~15–30% abaixo |
 
 ## T-COR — Cordão (forma assimétrica = acadêmica; composição = proxy + lacuna)
 
@@ -67,6 +75,6 @@
 
 ---
 
-**Resumo:** 13 celular + 10 moto + 6 bike + 6 cordão = **35 fontes** F-T.N (distribuição + usado + novo), com URL+valor+data. Pesos por item somam 1,00. Carry-through ao paper ≥ 80%.
+**Resumo:** 13 celular + 10 moto + 12 bike + 6 cordão = **41 fontes** F-T.N (distribuição + usado + novo), com URL+valor+data. Pesos por item somam 1,00. Carry-through ao paper ≥ 80%.
 
-**V3 — amostras de preço brutas:** além das fontes-âncora acima, a V3 coletou **470 observações de preço** (334 usado + 136 novo) por modelo, com `org`/`url`/`valor`/`data` por observação em `dados_distribuicao.json`. Fontes de usado predominantes: Trocafy/Trocafone (1 listagem = 1 preço) e FIPE por ano-modelo (Mobiauto/tabelafipebrasil); de novo: varejo (Magazine Luiza/Samsung/Apple/concessionárias) e joalherias por gramatura. OLX/Mercado Livre só por snippet (403 ao fetch). Validação adversarial do Workflow: `prices_real_ok=true` nos 4 itens.
+**V3 — amostras de preço brutas:** além das fontes-âncora acima, a V3 coletou **469 observações de preço** (321 usado + 148 novo) por modelo, com `org`/`url`/`valor`/`data` por observação em `dados_distribuicao.json` (inclui 34 observações de e-bike). Fontes de usado predominantes: Trocafy/Trocafone (1 listagem = 1 preço) e FIPE por ano-modelo (Mobiauto/tabelafipebrasil); de novo: varejo (Magazine Luiza/Samsung/Apple/concessionárias) e joalherias por gramatura. OLX/Mercado Livre só por snippet (403 ao fetch). Validação adversarial do Workflow: `prices_real_ok=true` nos 4 itens.

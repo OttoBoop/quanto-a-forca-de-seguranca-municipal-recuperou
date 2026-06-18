@@ -947,7 +947,7 @@
         "models": [
           {
             "name": "Caloi entrada aro 26 (Andes/Ventura)",
-            "weight": 0.5,
+            "weight": 0.465,
             "prices_used": [
               284,
               300,
@@ -1013,7 +1013,7 @@
           },
           {
             "name": "Outras nacionais entrada (Oggi/GTS/Mormaii/Houston)",
-            "weight": 0.18,
+            "weight": 0.1674,
             "prices_used": [
               600,
               700,
@@ -1077,7 +1077,7 @@
           },
           {
             "name": "Generica passeio aro 26 usada",
-            "weight": 0.15,
+            "weight": 0.1395,
             "prices_used": [
               80,
               100,
@@ -1127,7 +1127,7 @@
           },
           {
             "name": "MTB aro 29 aluminio entrada",
-            "weight": 0.1,
+            "weight": 0.093,
             "prices_used": [
               800,
               900,
@@ -1176,7 +1176,7 @@
           },
           {
             "name": "Infantil",
-            "weight": 0.07,
+            "weight": 0.0651,
             "prices_used": [
               80,
               100,
@@ -1220,6 +1220,88 @@
                 "url": "https://www.olx.com.br/anuncios/bike-infantil-aro-16",
                 "value_seen": "infantil aro 16 usada a partir de ~R$80-R$150 (modelos simples)",
                 "date_accessed": "2026-06-16"
+              }
+            ]
+          },
+          {
+            "name": "Bicicleta eletrica (e-bike de consumidor: entrada/urbana/E-MTB)",
+            "weight": 0.07,
+            "prices_used": [
+              1500,
+              1800,
+              2200,
+              2600,
+              3100,
+              3500,
+              3900,
+              4300,
+              4800,
+              5600,
+              5850,
+              6649,
+              6990,
+              7430,
+              9000,
+              12799
+            ],
+            "prices_new": [
+              1400,
+              1900,
+              2500,
+              2999,
+              3300,
+              3799,
+              4500,
+              4999,
+              5871,
+              5999,
+              6500,
+              6990,
+              7499,
+              8490,
+              9990,
+              11990,
+              13990,
+              17990
+            ],
+            "n_used": 16,
+            "n_new": 18,
+            "sources": [
+              {
+                "org": "Abraciclo / Agencia Brasil",
+                "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2024-12/producao-de-bicicletas-convencionais-cai-mas-das-eletricas-aumenta",
+                "value_seen": "eletricas 19.147 un = 5,4% da producao 2024 (era 2,5% em 2023, +66,2%)",
+                "date_accessed": "2026-06-17"
+              },
+              {
+                "org": "Alianca Bike",
+                "url": "https://aliancabike.org.br/mercado-brasileiro-de-bicicletas-eletricas-2024-2025/",
+                "value_seen": "53.591 e-bikes pedal-assist 2024; frota ~284 mil; ticket urbana R$5.871, E-MTB R$15.618",
+                "date_accessed": "2026-06-17"
+              },
+              {
+                "org": "ISP-RJ / Sindicato Seguradoras-RJ-ES",
+                "url": "https://sindicatodasseguradorasrj.org.br/wp-content/uploads/2025/08/RJ-ISP-Roubo-e-Furto-de-Bicicleta-2021-a-jun-25.pdf",
+                "value_seen": "furto+roubo bike RJ 4.208 (2024); SEM coluna por tipo (eletrica vs convencional)",
+                "date_accessed": "2026-06-17"
+              },
+              {
+                "org": "Agencia Brasil",
+                "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2025-06/pm-do-rio-usa-aplicativo-para-combater-roubo-e-furto-de-bicicletas",
+                "value_seen": "furto bike +59% estado/+106% capital (2025); app 190RJ cadastra chassi 'especialmente em modelos eletricos'",
+                "date_accessed": "2026-06-17"
+              },
+              {
+                "org": "Caloi/Oggi/Decathlon/Sense/Two Dogs/Magazine (novo)",
+                "url": "https://caloi.com/produtos/eletrica/",
+                "value_seen": "novo: E-Vibe R$6.990, Explorer R$11.990/17.990; Oggi Big Wheel R$8.490-18.490; Decathlon E-100 R$5.999; entrada R$1.400-3.300",
+                "date_accessed": "2026-06-17"
+              },
+              {
+                "org": "Flash Bike/Pedalla/Buxa (seminovos)",
+                "url": "https://flashbike.com.br/bikes/semi-novas/",
+                "value_seen": "usado/seminovo: Caloi Mobylette R$5.600-5.850; E-Vibe R$6.990; Sense Impulse R$7.430; e-MTB usada ate ~R$18.900",
+                "date_accessed": "2026-06-17"
               }
             ]
           }

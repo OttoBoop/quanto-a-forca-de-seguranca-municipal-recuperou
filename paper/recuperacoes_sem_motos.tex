@@ -26,16 +26,15 @@
 \maketitle
 
 \begin{abstract}
-\noindent Estimamos o valor monetário do patrimônio recuperado pela Força Municipal
-(SEGUR/Prefeitura do Rio) entre 15 de março e 8 de junho de 2026: 118 celulares, 19 bicicletas e
-15 cordões. Tratamos o valor de cada item recuperado como uma \emph{variável aleatória}:
-sorteia-se o modelo segundo a distribuição real do que é roubado na cidade (ponderada por
-frequência) e o preço a partir de uma amostra de preços de mercado, em duas bases ---
-\textbf{revenda} (usado) e \textbf{reposição} (novo). Agregando por simulação de Monte Carlo, o
-valor esperado do conjunto é de \textbf{\reais{163} mil} a preços de revenda (banda de 90\%:
-\reais{145}--\reais{181} mil) e \textbf{\reais{267} mil} a preços de reposição
-(\reais{237}--\reais{299} mil); o envelope extremo vai de \reais{44} mil a \reais{1{,}24} milhão.
-Os celulares concentram cerca de 88\% do valor. Todas as cifras têm fonte pública (coleta em
+\noindent O patrimônio recuperado pela Força Municipal (SEGUR/Prefeitura do Rio) entre 15 de março e
+8 de junho de 2026 --- 118 celulares, 19 bicicletas e 15 cordões --- é avaliado tratando o valor de
+cada item como uma \emph{variável aleatória}: sorteia-se o modelo segundo a distribuição real do que
+é roubado na cidade (ponderada por frequência) e o preço a partir de uma amostra de preços de
+mercado, em duas bases --- \textbf{revenda} (usado) e \textbf{reposição} (novo). Por simulação de
+Monte Carlo, o valor esperado do conjunto é de \textbf{\reais{169} mil} a preços de revenda (banda
+de 90\%: \reais{149}--\reais{190} mil) e \textbf{\reais{275} mil} a preços de reposição
+(\reais{242}--\reais{310} mil); o envelope extremo vai de \reais{12} mil a \reais{1{,}36} milhão.
+Os celulares concentram cerca de 85\% do valor. Todas as cifras têm fonte pública (coleta em
 16/06/2026).
 \end{abstract}
 
@@ -48,17 +47,16 @@ bicicletas e 15 cordões. Quanto vale, em reais, esse patrimônio?
 
 A resposta não é um número único. Um celular recuperado pode ser um aparelho de entrada usado de
 algumas centenas de reais ou um \emph{flagship} novo de mais de dez mil; um cordão pode ser uma
-semijoia folheada ou uma peça de ouro. Responder ``quanto vale'' exige, então, estimar a
-\emph{distribuição} de valores plausíveis --- a probabilidade de que um item recuperado valha
-cada quantia --- e não apenas uma média.
+semijoia folheada ou uma peça de ouro. O valor de cada item recuperado é, portanto, uma
+\emph{distribuição} de quantias plausíveis --- a probabilidade de que ele valha cada montante ---
+e não apenas uma média.
 
-A contribuição desta nota é tratar o valor recuperado como uma variável aleatória, cuja
-distribuição é construída a partir (i) da composição real do que é roubado na cidade e (ii) de
-preços de mercado coletados por modelo, nas bases de revenda (usado) e de reposição (novo). Por
-\emph{revenda} entende-se a compra do bem \emph{usado} (quanto ele valeria se revendido); por
-\emph{reposição}, a compra do equivalente \emph{novo} (o custo de repô-lo). Isso
-produz, para cada categoria, uma distribuição de probabilidade de valor, e, para o conjunto, uma
-estimativa com intervalo de confiança --- tudo referenciado a fontes públicas.
+Esse valor é uma variável aleatória, cuja distribuição se constrói a partir (i) da composição real
+do que é roubado na cidade e (ii) de preços de mercado coletados por modelo, em duas bases ---
+revenda (usado) e reposição (novo). Por \emph{revenda} entende-se a compra do bem \emph{usado}
+(quanto ele valeria se revendido); por \emph{reposição}, a compra do equivalente \emph{novo} (o
+custo de repô-lo). Cada categoria tem, assim, uma distribuição de probabilidade de valor, e o
+conjunto, uma estimativa com intervalo de confiança --- tudo referenciado a fontes públicas.
 
 % =====================================================================
 \section{Metodologia}
@@ -95,30 +93,68 @@ com $N_i$ a quantidade recuperada (painel da SEGUR). Nenhum ``fator de deprecia�
 aplicado: a base de revenda já é preço de usado (o mercado precifica o desgaste) e a de reposição
 é o preço de novo.
 
-\subsection{Distribuição de modelos por frequência}
-Os pesos $w_{i,m}$ vêm de \emph{fontes de frequência}, pois o item recuperado é o que se rouba na
-rua. Para celulares, a participação por marca é a do roubo (Anuário do Fórum Brasileiro de
-Segurança Pública: Samsung 37\%, Apple 25\%, Motorola 23\%, Xiaomi 10\%), ajustada pelo perfil
-socioeconômico (TIC Domicílios) em direção a modelos de entrada/intermediário. As bicicletas
-refletem o que \emph{pessoas físicas} compram e têm furtado --- bicicletas de varejo popular
-(Caloi/Mormaii) e usados do Rio (OLX-RJ, Caloi $\approx$70\%). Os cordões seguem a prevalência de
-folheado vs.\ ouro.
-
-\subsection{Coleta de preços e distribuições empíricas}
-Para cada modelo coletou-se uma \textbf{amostra de preços observados} (16/06/2026): 289
-observações entre usado e novo. As fontes de usado incluem o varejo de seminovos
-(Trocafy/Trocafone, cada listagem = um preço) e anúncios do Rio (OLX-RJ); as de novo, o varejo
-(Magazine Luiza, Samsung, Apple, Caloi/Mormaii) e joalherias por gramatura (cordões = peso
-$\times$ cotação do ouro 18k). OLX e Mercado Livre, que bloqueiam acesso automatizado, entraram
-apenas por trechos de busca. Cada amostra é, portanto, uma aproximação (não um censo); os tamanhos
-por modelo estão em \texttt{dados\_distribuicao.json}.
+\subsection{Pesos por frequência e bases de preço}
+O item recuperado é o que se rouba na rua, então o peso $w_{i,m}$ de cada modelo vem de uma
+\emph{fonte de frequência} (ranking de roubo, participação de mercado, mix de anúncios), e não de
+uma escolha. O preço de cada modelo é uma \textbf{amostra de valores observados} (16/06/2026;
+$n=323$: 216 de usado e 107 de novo), em duas bases --- revenda (usado) e reposição (novo) ---, com
+cada anúncio ou listagem contando como um preço. OLX e Mercado Livre, que bloqueiam acesso
+automatizado, entraram apenas por trechos de busca; os tamanhos por modelo estão em
+\texttt{dados\_distribuicao.json}. Celulares, bicicletas e cordões recebem tratamento próprio a
+seguir.
 
 \subsection{Agregação por Monte Carlo}\label{sec:mc}
 A distribuição de $V_i^b$ e de $V^b$ é obtida por simulação: sorteiam-se $N_i$ unidades por
 categoria segundo a Eq.~\eqref{eq:mix}, somam-se, e repete-se 50.000 vezes (semente fixa, para
 reprodutibilidade). Reporta-se o valor esperado e a banda de 90\% (percentis 5 e 95).
 
-\subsection{Caso especial: distribuição dos cordões}
+\subsection{Celulares}
+Os pesos por marca vêm da frequência de roubo (Anuário do Fórum Brasileiro de Segurança Pública:
+Samsung 37\%, Apple 25\%, Motorola 23\%, Xiaomi 10\%), ajustados pelo perfil socioeconômico (TIC
+Domicílios) em direção aos modelos de entrada e intermediários, que formam a maior parte do parque.
+Nove modelos representam a categoria, do Galaxy A0x ao iPhone Pro Max.
+
+Os preços de usado vêm de páginas de varejo de seminovos lidas diretamente (Trocafy e Trocafone), em
+que cada listagem é um preço --- 36 listagens do iPhone 11, 36 do iPhone 13, mais de 30 do Galaxy
+S23, além de Galaxy A14, Moto G54 e iPhone 13 Pro Max ---; os modelos legados entram por busca. Os
+preços de novo vêm do varejo (Magazine Luiza, Samsung, Apple). A distribuição é fortemente
+assimétrica à direita: a massa fica nos aparelhos de entrada (revenda de algumas centenas de reais)
+e a cauda nos \emph{flagships} (reposição acima de \reais{6.000}).
+
+\subsection{Bicicletas}
+As bicicletas são avaliadas como bens de uso pessoal --- as efetivamente compradas e furtadas de
+pessoas físicas. Os pesos das convencionais seguem o mix de usados do Rio (OLX-RJ: Caloi
+$\approx$70\%, à frente de Oggi e GTS): Caloi de entrada aro 26, outras nacionais, passeio genérica,
+MTB aro 29 e infantil. Os preços vêm de anúncios de usado do Rio (OLX-RJ) e de páginas de seminovos
+lidas diretamente (Las Magrelas, Decathlon), e do varejo no novo (Magazine Luiza, Mormaii, Caloi). A
+bicicleta de sistema compartilhado (Tembici) é custo de sistema e fica fora da soma.
+
+À mistura soma-se a \textbf{bicicleta elétrica}, que pode custar várias vezes mais que uma
+convencional --- de \reais{1.400} (entrada) a \reais{18.000} (E-MTB), com a urbana em torno de
+\reais{5.900} (varejo: Caloi, Oggi, Decathlon, Sense, Two Dogs); no usado, os seminovos vão de
+\reais{1.500} a cerca de \reais{12.800}. A e-bike entra com peso de \textbf{7\%} das bicicletas: o
+Instituto de Segurança Pública do RJ não separa elétrica de convencional no registro de furto, e a
+fração vem de aproximações --- as e-bikes são 5,4\% da produção nacional de bicicletas (Abraciclo,
+2024) e cerca de 2\% das vendas (Aliança Bike), com sobre-representação no roubo por alto valor (o
+furto de bicicleta no Rio subiu 59\% em 2025, e o aplicativo 190RJ da Polícia Militar cadastra o
+chassi ``especialmente em modelos elétricos''). A distribuição da bicicleta passa, assim, a ter
+corpo nas convencionais (\reais{80}--\reais{2.000}) e cauda longa nas e-bikes.
+
+Como o share de e-bikes não tem recorte oficial, o resultado é testado variando a fração $f_e$ em
+torno do caso-base ($\mathbb{E}[V_{\text{bike}}]=\reais{981}$ em revenda, Tabela~\ref{tab:itens}):
+\begin{center}\small
+\begin{tabular}{lccc}
+\toprule
+$f_e$ (fração de e-bikes) & 3\% & $\approx$7\% (base) & 14\% \\
+\midrule
+$\mathbb{E}[V_{\text{bike}}]$ (revenda) & \reais{802} & \reais{981} & \reais{1.293} \\
+\bottomrule
+\end{tabular}
+\end{center}
+Sem as motocicletas, a bicicleta responde por cerca de 11\% do patrimônio
+(Tabela~\ref{tab:contrib}); ainda assim, o total varia pouco com $f_e$ dentro dessa faixa.
+
+\subsection{Cordões}
 Entre os itens recuperados, o cordão é o de valor mais disperso, e por isso recebe tratamento
 próprio. Seu valor segue a forma canônica das distribuições de bens furtados: fortemente
 assimétrica à direita, com a massa em peças de baixo valor e uma cauda longa e fina nas peças mais
@@ -139,16 +175,16 @@ evita usar objetos de valor em público (IBGE, 2021: 42,8\%) ou retira joias ant
 coerente com a valorização do metal, que vem ampliando o roubo dirigido a joias (os roubos de
 aliança em São Paulo mais que dobraram entre 2023 e 2025).
 
-Como a participação do ouro é o parâmetro mais influente dessa categoria, avaliamos a robustez do
-resultado variando a fração $f$ em torno do caso-base ($\mathbb{E}[V_{\text{cord}}]=\reais{462}$ em
-revenda, Tabela~\ref{tab:itens}):
+A participação do ouro é o parâmetro mais influente dessa categoria; o resultado é testado variando
+a fração $f$ em torno do caso-base ($\mathbb{E}[V_{\text{cord}}]=\reais{462}$ em revenda,
+Tabela~\ref{tab:itens}):
 \begin{center}\small
 \begin{tabular}{lccc}
 \toprule
 $f$ (fração de ouro) & 15\% & $\approx$30\% (base) & 40\% \\
 \midrule
 $\mathbb{E}[V_{\text{cord}}]$ (revenda) & \reais{260} & \reais{462} & \reais{588} \\
-Total $V^{\text{rev}}$ & \reais{160} mil & \reais{163} mil & \reais{165} mil \\
+Total $V^{\text{rev}}$ & \reais{166} mil & \reais{169} mil & \reais{170} mil \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -165,17 +201,18 @@ cotação de $\approx$\reais{530}/g --- estão documentadas no inventário de fo
 \subsection{Distribuição de valor por item}
 A Figura~\ref{fig:itens} mostra a distribuição de valor de uma unidade recuperada de cada
 categoria, nas duas bases. As formas são informativas: o celular é fortemente assimétrico à
-direita (massa em aparelhos de entrada, cauda nos \emph{flagships}); o cordão é o mais assimétrico
---- a massa fica no folheado de baixo valor, com cauda longa e fina nas peças de ouro (média bem
-acima da mediana). A Tabela~\ref{tab:itens} resume os momentos.
+direita (massa em aparelhos de entrada, cauda nos \emph{flagships}); a bicicleta tem corpo nas
+convencionais e cauda longa nas elétricas; o cordão é o mais assimétrico --- a massa fica no
+folheado de baixo valor, com cauda longa e fina nas peças de ouro (média bem acima da mediana). A
+Tabela~\ref{tab:itens} resume os momentos.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{dist_itens}
   \caption{Distribuição de probabilidade do valor de uma unidade recuperada, por categoria
   (azul: revenda/usado; laranja: reposição/novo). Histograma das amostras com densidade KDE.
-  O painel dos cordões usa escala logarítmica no eixo $x$ para exibir o corpo (folheado) e a
-  cauda (ouro) simultaneamente.}
+  Os painéis de cordões e bicicletas usam escala logarítmica no eixo $x$ para exibir o corpo de
+  baixo valor e a cauda cara (ouro; e-bikes) simultaneamente.}
   \label{fig:itens}
 \end{figure}
 
@@ -187,8 +224,8 @@ acima da mediana). A Tabela~\ref{tab:itens} resume os momentos.
     \midrule
     Celulares  & revenda   & 1.212 & 944   & 530--3.500 \\
                & reposição & 1.964 & 1.641 & 619--6.500 \\
-    Bicicletas & revenda   & 668   & 472   & 120--1.800 \\
-               & reposição & 1.115 & 684   & 410--2.000 \\
+    Bicicletas & revenda   & 981   & 1.447 & 120--3.100 \\
+               & reposição & 1.513 & 1.964 & 410--4.490 \\
     Cordões    & revenda   & 462   & 804   & 20--2.400 \\
                & reposição & 936   & 1.486 & 40--5.000 \\
     \bottomrule
@@ -200,10 +237,10 @@ acima da mediana). A Tabela~\ref{tab:itens} resume os momentos.
 
 \subsection{Valor total recuperado}
 Agregando (Eq.~\eqref{eq:total}), o valor esperado do patrimônio recuperado é de
-\textbf{\reais{163} mil} a preços de revenda e \textbf{\reais{267} mil} a preços de reposição. A
+\textbf{\reais{169} mil} a preços de revenda e \textbf{\reais{275} mil} a preços de reposição. A
 Figura~\ref{fig:total} mostra as duas distribuições com suas bandas de 90\%
-(\reais{145}--\reais{181} mil e \reais{237}--\reais{299} mil). A Tabela~\ref{tab:contrib} detalha a
-contribuição por categoria: os \textbf{celulares} respondem por cerca de \textbf{88\%} do total.
+(\reais{149}--\reais{190} mil e \reais{242}--\reais{310} mil). A Tabela~\ref{tab:contrib} detalha a
+contribuição por categoria: os \textbf{celulares} respondem por cerca de \textbf{85\%} do total.
 
 \begin{figure}[H]
   \centering
@@ -219,11 +256,11 @@ contribuição por categoria: os \textbf{celulares} respondem por cerca de \text
     \toprule
     Item & $N_i$ & Contrib.\ revenda & Contrib.\ reposição & \% (revenda) \\
     \midrule
-    Celulares  & 118 & 143.016 & 231.752 & 87,9\% \\
-    Bicicletas & 19  & 12.692  & 21.185  & 7,8\% \\
-    Cordões    & 15  & 6.930   & 14.040  & 4,3\% \\
+    Celulares  & 118 & 143.016 & 231.752 & 84,8\% \\
+    Bicicletas & 19  & 18.639  & 28.747  & 11,1\% \\
+    Cordões    & 15  & 6.930   & 14.040  & 4,1\% \\
     \midrule
-    \textbf{Total} & — & \textbf{$\approx$162.638} & \textbf{$\approx$266.977} & 100\% \\
+    \textbf{Total} & — & \textbf{$\approx$168.585} & \textbf{$\approx$274.539} & 100\% \\
     \bottomrule
   \end{tabular}
   \caption{Contribuição por categoria ($N_i\cdot\mathbb{E}[V_i]$) e total (R\$).}
@@ -232,19 +269,19 @@ contribuição por categoria: os \textbf{celulares} respondem por cerca de \text
 
 \noindent A banda de 90\% reflete a incerteza de \emph{amostragem} do total. A incerteza
 \emph{estrutural} é capturada pela distância entre as bases de revenda e reposição
-(\reais{163}--\reais{267} mil) e pelo \textbf{envelope extremo} de \reais{44} mil (se cada item
-fosse o modelo usado mais barato) a \reais{1{,}24} milhão (se cada item fosse o modelo novo mais
+(\reais{169}--\reais{275} mil) e pelo \textbf{envelope extremo} de \reais{12} mil (se cada item
+fosse o modelo usado mais barato) a \reais{1{,}36} milhão (se cada item fosse o modelo novo mais
 caro).
 
 % =====================================================================
 \section{Conclusões}
 % =====================================================================
-O patrimônio recuperado pela Força Municipal no período vale, em valor esperado, entre \reais{163}
-mil (revenda) e \reais{267} mil (reposição), com envelope de \reais{44} mil a \reais{1{,}24}
-milhão. O resultado é dominado pelos celulares ($\approx$88\%). O tratamento probabilístico mostra
-não só um número, mas a \emph{distribuição} de valores plausíveis de cada item, ancorada na
-composição real do que se rouba na cidade e em preços de mercado verificáveis. A atualização para
-janelas futuras entra apenas trocando os $N_i$.
+O patrimônio recuperado pela Força Municipal no período vale, em valor esperado, entre \reais{169}
+mil (revenda) e \reais{275} mil (reposição), com envelope de \reais{12} mil a \reais{1{,}36}
+milhão. O resultado é dominado pelos celulares ($\approx$85\%). Cada item tem não só um número, mas
+uma \emph{distribuição} de valores plausíveis, ancorada na composição real do que se rouba na cidade
+e em preços de mercado verificáveis. Períodos futuros requerem apenas a atualização dos $N_i$
+(quantidades recuperadas).
 
 % =====================================================================
 \section*{Limitações}
@@ -255,8 +292,10 @@ janelas futuras entra apenas trocando os $N_i$.
         do Rio.
   \item \textbf{Amostras de preço, não censo:} OLX e Mercado Livre bloqueiam coleta automatizada;
         usaram-se varejo de seminovos, anúncios e joalherias.
-  \item \textbf{Bicicletas:} avaliadas como bens de uso pessoal (compradas por pessoas físicas),
-        que são as efetivamente furtadas; bicicletas de sistema compartilhado não entram na conta.
+  \item \textbf{Bicicletas:} avaliadas como bens de uso pessoal (varejo Caloi/Mormaii e usados
+        OLX-RJ); inclui-se a bicicleta elétrica, cujo peso no roubo é estimado por aproximações (o
+        ISP-RJ não separa elétrica de convencional) e testado por sensibilidade. Bicicletas de
+        sistema compartilhado não entram na conta.
 \end{itemize}
 
 % =====================================================================

@@ -12,8 +12,8 @@ No período, a Força Municipal recuperou/apreendeu **118 celulares, 113 motocic
 
 | PDF | Itens | Valor esperado | Envelope | Item dominante |
 |---|---|---|---|---|
-| [`paper/recuperacoes.pdf`](paper/recuperacoes.pdf) | celular, **moto**, bicicleta, cordão | **R$ 1,94 mi** (revenda) → **R$ 2,43 mi** (reposição) | R$ 0,7 – 4,9 mi | motocicletas (~90%) |
-| [`paper/recuperacoes_sem_motos.pdf`](paper/recuperacoes_sem_motos.pdf) | celular, bicicleta, cordão | **R$ 163 mil** (revenda) → **R$ 267 mil** (reposição) | R$ 44 mil – 1,24 mi | celulares (~88%) |
+| [`paper/recuperacoes.pdf`](paper/recuperacoes.pdf) | celular, **moto**, bicicleta, cordão | **R$ 1,94 mi** (revenda) → **R$ 2,44 mi** (reposição) | R$ 0,9 – 5,0 mi | motocicletas (~90%) |
+| [`paper/recuperacoes_sem_motos.pdf`](paper/recuperacoes_sem_motos.pdf) | celular, bicicleta, cordão | **R$ 169 mil** (revenda) → **R$ 275 mil** (reposição) | R$ 12 mil – 1,36 mi | celulares (~85%) |
 
 A **metodologia é idêntica** nas duas; a única diferença é o conjunto de itens.
 
@@ -21,16 +21,16 @@ A **metodologia é idêntica** nas duas; a única diferença é o conjunto de it
 
 O valor de uma unidade recuperada é uma **variável aleatória de mistura**: sorteia-se o modelo segundo a **frequência** com que é roubado na cidade, e o preço a partir de uma **amostra de preços de mercado** daquele modelo — em duas bases: **revenda** (usado) e **reposição** (novo). O total é agregado por **Monte Carlo** (50 mil iterações, semente fixa) → valor esperado + **banda de 90%**.
 
-- **Distribuição de modelos:** marca mais roubada (Anuário FBSP) + perfil socioeconômico (TIC); motos pelo ranking de roubo do Rio (Polícia Civil-RJ); bicicletas **de uso pessoal**; cordões pela prevalência folheado vs. ouro.
+- **Distribuição de modelos:** marca mais roubada (Anuário FBSP) + perfil socioeconômico (TIC); motos pelo ranking de roubo do Rio (Polícia Civil-RJ); bicicletas **de uso pessoal**, incluindo as **elétricas** (share estimado por proxies — Aliança Bike/Abraciclo — pois o ISP-RJ não separa o tipo); cordões pela prevalência folheado vs. ouro.
 - **Cordões — atenção especial:** distribuição **fortemente assimétrica à direita** (folheado/semijoia domina; ouro leve; cauda fina de ouro). Mediana no folheado (~R$ 50–80), média puxada pela cauda. Ver a **seção dedicada** em cada paper.
-- **Preços:** ~435 observações de mercado coletadas por modelo (usado e novo), em 16/06/2026.
-- **Fontes:** toda cifra é referenciada — ver [`dados/inventario_fontes.md`](dados/inventario_fontes.md) e [`dados/dados_distribuicao.json`](dados/dados_distribuicao.json).
+- **Preços:** 469 observações de mercado coletadas por modelo (usado e novo), em 16/06/2026.
+- **Fontes:** toda cifra é referenciada — ver [`dados/proveniencia_dados.md`](dados/proveniencia_dados.md) (como cada dado foi obtido, por item), [`dados/inventario_fontes.md`](dados/inventario_fontes.md) e [`dados/dados_distribuicao.json`](dados/dados_distribuicao.json).
 
 ## Estrutura do repositório
 
 ```
 paper/     papers LaTeX (com e sem motos) + PDFs + figuras (distribuições)
-dados/     amostras de preço (json), inventário de fontes, estatísticas
+dados/     proveniência por item, amostras de preço (json), inventário de fontes, estatísticas
 release/   textos curtos para imprensa (com e sem motos)
 scripts/   coleta/transcrição, Monte Carlo + gráficos, geração de PDF
 fonte/     foto do slide oficial da SEGUR (dado de origem)

@@ -145,14 +145,15 @@ def main():
         seen.add(lab)
         models = norm_models[key]
         ax = axes.flat[panel]; panel += 1
-        # cordão tem cauda muito pesada: escala log no eixo x mostra o corpo
-        # (folheado, R$15-250) E a cauda (ouro, ate R$5 mil) na mesma figura.
-        is_cord = norm(key) in ("cordao", "cordão")
+        # itens de cauda pesada (cordão: folheado->ouro; bicicleta: convencional->e-bike):
+        # escala log no eixo x mostra o corpo de baixo valor E a cauda cara na mesma figura.
+        is_heavy = norm(key) in ("cordao", "cordão", "bike", "bicicleta")
         for base, col, name in (("used", COL_REV, "revenda"), ("new", COL_REP, "reposição")):
             s = unit_sample(models, base, 200_000)
             s = s[np.isfinite(s)]
-            hi = np.percentile(s, 99.5)
-            if is_cord:
+            # heavy-tail: mostra ate o maximo real (log comprime a cauda cara: e-bike/ouro)
+            hi = float(s.max()) if is_heavy else np.percentile(s, 99.5)
+            if is_heavy:
                 lo = max(float(s.min()), 1.0)
                 bins = np.logspace(np.log10(lo), np.log10(hi), 40)
                 ax.hist(s, bins=bins, density=True, color=col, alpha=0.30)
@@ -173,12 +174,14 @@ def main():
                     ax.plot([], [], color=col, lw=1.9, label=name)
             stats_lines.append(f"| {lab} | {name} | {fmt(s.mean())} | {fmt(s.std())} | {fmt(np.percentile(s,5))} | {fmt(np.percentile(s,95))} |")
         ax.set_title(lab, fontsize=12, fontweight="bold", color="#2C3E50")
-        ax.set_xlabel("valor de uma unidade (R$)" + (" — escala log" if is_cord else ""), fontsize=9)
+        ax.set_xlabel("valor de uma unidade (R$)" + (" — escala log" if is_heavy else ""), fontsize=9)
         ax.set_ylabel("densidade", fontsize=9)
         ax.legend(fontsize=8, frameon=False)
-        if is_cord:
+        if is_heavy:
             ax.set_xscale("log")
-            ax.set_xticks([20, 50, 100, 250, 500, 1000, 2500, 5000])
+            x0, x1 = ax.get_xlim()
+            cand = [15, 20, 50, 100, 250, 500, 1000, 2500, 5000, 10000, 20000]
+            ax.set_xticks([t for t in cand if x0 <= t <= x1])
             ax.xaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{int(v)}"))
             ax.minorticks_off()
         else:
