@@ -1,12 +1,14 @@
 # Proveniência dos dados — como cada cifra foi obtida
 
+> **Escopo do estudo final (balanço de 100 dias, 15/03–23/06/2026):** valoração de **celulares (133)** e **cordões (15)**. As motocicletas (133 no balanço) ficam **fora da valoração** (contexto); as bicicletas foram **retiradas pelo órgão**. As seções de moto e bicicleta abaixo são mantidas como documentação dos dados (preservados em `dados_distribuicao.json`, fora da agregação) — incluindo a pesquisa de e-bikes feita para a versão anterior. Fonte dos itens e das áreas de atuação: slide oficial do balanço de 100 dias (SEGUR/Prefeitura do Rio).
+
 Por item recuperado: os **modelos** da mistura, o **peso** de cada um e sua **fonte de frequência**, o **método e as fontes de preço** (usado e novo), o tamanho da amostra e a **forma** da distribuição. As citações completas (org, URL, valor, data) estão em [inventario_fontes.md](inventario_fontes.md) (formato F-T.N). Coleta de preços: 16/06/2026; pesquisa de e-bikes: 17/06/2026. Amostras de preço brutas por modelo em [dados_distribuicao.json](dados_distribuicao.json).
 
 Princípio comum a todos os itens: o item recuperado é o que se **rouba na rua**, então o peso de cada modelo vem de uma **fonte de frequência** (ranking de roubo, participação de mercado, mix de anúncios) — não de uma escolha. O preço de cada modelo é uma **amostra observada** (cada anúncio/listagem = um preço), em duas bases: **revenda** (usado) e **reposição** (novo). Não se aplica fator de depreciação sobre o usado (o mercado de usado já precifica o desgaste).
 
 ---
 
-## Celular (118 unidades) — E[V]: revenda R$ 1.212 · reposição R$ 1.964
+## Celular (133 unidades) — E[V]: revenda R$ 1.212 · reposição R$ 1.964
 
 **Pesos (frequência de roubo).** Participação por marca no roubo (Anuário do Fórum Brasileiro de Segurança Pública: Samsung 37%, Apple 25%, Motorola 23%, Xiaomi 10% — F-CEL.1/F-CEL.2), com cross-check na participação de mercado (StatCounter — F-CEL.3) e ajuste pelo perfil socioeconômico (TIC Domicílios — F-CEL.4) em direção a aparelhos de entrada/intermediários, que são a maioria do parque.
 
@@ -28,7 +30,7 @@ Princípio comum a todos os itens: o item recuperado é o que se **rouba na rua*
 
 ---
 
-## Motocicleta (113 unidades) — E[V]: revenda R$ 15.698 · reposição R$ 19.161
+## Motocicleta — E[V]: revenda R$ 15.698 · reposição R$ 19.161  *(FORA do estudo final — contexto; balanço mostra 133 motos, não valoradas)*
 
 **Pesos (frequência de roubo).** Ranking de roubo do Rio (Polícia Civil-RJ/ISP-RJ — F-MOT.1/F-MOT.2), com a Honda CG 160 na liderança isolada, corroborado pelos emplacamentos (Abraciclo — F-MOT.3).
 
@@ -38,7 +40,7 @@ Princípio comum a todos os itens: o item recuperado é o que se **rouba na rua*
 
 ---
 
-## Bicicleta (19 unidades) — E[V]: revenda R$ 973 · reposição R$ 1.508
+## Bicicleta — E[V]: revenda R$ 973 · reposição R$ 1.508  *(FORA do estudo final — retirada pelo órgão; inclui a pesquisa de e-bikes, preservada como referência)*
 
 **Pesos (frequência).** As bicicletas **convencionais** seguem o mix de usados do Rio (OLX-RJ via Diário do Rio: Caloi 70,1%, Oggi 8,3%, GTS 5,4% — F-BIK.1/F-BIK.2), avaliadas como bens de **uso pessoal** (compradas por pessoa física). A **bicicleta elétrica (e-bike)** entra com peso **7%** — a fração estimada de e-bikes de consumidor entre as bicicletas furtadas/em circulação. Não há recorte oficial do roubo por tipo (a série do ISP-RJ registra furto/roubo de bicicleta sem separar elétrica de convencional — F-BIK.7); o peso é estimado por proxies: e-bikes são ~5,4% da produção nacional de bicicletas em 2024 (Abraciclo — F-BIK.8) e ~2% das vendas (Aliança Bike — F-BIK.9), com sobre-representação no roubo por alto valor (alta de +59% no furto de bicicleta no RJ em 2025; o app 190RJ da PM cadastra o chassi "especialmente em modelos elétricos" — F-BIK.10). A faixa plausível vai de 3% a 14% (eixo de sensibilidade no paper).
 
@@ -59,7 +61,7 @@ E-bike isolada: média usado ≈ R$ 5.126, novo ≈ R$ 6.706. Convencional isola
 
 ---
 
-## Cordão (15 unidades) — E[V]: revenda R$ 464 · reposição R$ 929
+## Cordão (15 unidades) — E[V]: revenda R$ 462 · reposição R$ 934
 
 **Pesos / composição.** Modelo único cuja amostra de preço embute a forma: folheado/semijoia dominando em número de peças, ouro como minoria que concentra o valor. Cerca de 30% das faixas amostradas são de ouro (as acima de R$ 250). A forma assimétrica à direita é fundamentada academicamente (Home Office RR81: valor de bens roubados com média ≫ mediana, 2% dos furtos = 46% do valor — F-COR.1; literatura atuarial de *loss distributions* — F-COR.2); a composição segue a distribuição de mercado (folheado lidera o volume — Euromonitor, Limeira/IBGM — F-COR.5/F-COR.9) com proxies de comportamento (IBGE PNAD 2021; FBSP/Datafolha — F-COR.10/F-COR.11).
 
@@ -69,11 +71,15 @@ E-bike isolada: média usado ≈ R$ 5.126, novo ≈ R$ 6.706. Convencional isola
 
 ---
 
-## Total recuperado (Monte Carlo, seed 20260616, 50 mil iterações)
+## Total recuperado — estudo final (Monte Carlo, seed 20260616, 50 mil iterações)
 
-| | revenda | reposição |
+Escopo: **celular (133) + cordão (15)**, balanço de 100 dias.
+
+| base | E[V] | banda 90% |
 |---|--:|--:|
-| **Com motos** (118 cel + 113 moto + 19 bike + 15 cord) | R$ 1,94 mi (banda 90%: 1,87–2,02) | R$ 2,44 mi (2,34–2,54) |
-| **Sem motos** (118 cel + 19 bike + 15 cord) | R$ 169 mil (149–190) | R$ 275 mil (242–310) |
+| revenda | R$ 168 mil | R$ 150–187 mil |
+| reposição | R$ 275 mil | R$ 244–309 mil |
 
-Envelope extremo (cada item no modelo usado mais barato → no novo mais caro): com motos ≈ R$ 0,9–5,0 mi; sem motos ≈ R$ 12 mil–1,36 mi (o teto subiu com a entrada das e-bikes).
+Celulares ≈ 96% do valor; cordões ≈ 4%. Envelope extremo (cada item no modelo usado mais barato → no novo mais caro): ≈ **R$ 12 mil – 1,14 milhão**.
+
+As motocicletas (133) e bicicletas seguem em `dados_distribuicao.json`, mas **fora desta agregação** (ver o banner no topo). As versões anteriores (com motos / com bicicletas) estão em `historico/`.

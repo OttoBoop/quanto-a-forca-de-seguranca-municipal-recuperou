@@ -1,6 +1,9 @@
 # inventario_fontes.md — V2 (F-T.N)
 
 > Formato F-T.N. Inclui fontes de **distribuição** (pesos por frequência) e de **preço usado + novo** por modelo. Coleta 16/06/2026; validado na FASE 5. `[proxy]` = nacional/Sudeste (sem recorte Rio).
+>
+> **V4 (balanço de 100 dias):** estudo final = **celular (133) + cordão (15)**. As tabelas T-MOT e T-BIK abaixo ficam como referência (motos e bicicletas fora da valoração final; dados preservados). Quantidades e áreas de atuação vêm do slide oficial:
+> **F-SEGUR.1** | SEGUR/Prefeitura do Rio | 2026 | Balanço de 100 dias da Força Municipal (slide oficial) | — | 133 celulares, 133 motocicletas, 15 cordões recuperados; 10 áreas (15/03–07/06); quedas de roubo/furto −41,7%/−8,5%/−11,4%; 6 mil abordagens; 771 conduções; 1 arma de fogo + 5 réplicas + 42 brancas.
 
 ## T-CEL — Celular (distribuição + preços)
 

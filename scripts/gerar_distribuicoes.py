@@ -46,8 +46,8 @@ FIG.mkdir(parents=True, exist_ok=True)
 DATA = CASE / "dados_distribuicao.json"
 STATS = CASE / _ARGS.stats
 
-# N_i (slide SEGUR) por chave normalizada de item
-N_BY = {"celular": 118, "moto": 113, "bicicleta": 19, "bike": 19, "cordao": 15, "cordão": 15}
+# N_i (slide SEGUR — balanço de 100 dias) por chave normalizada de item
+N_BY = {"celular": 133, "moto": 133, "bicicleta": 19, "bike": 19, "cordao": 15, "cordão": 15}
 LABEL = {"celular": "Celulares", "moto": "Motocicletas", "bicicleta": "Bicicletas",
          "bike": "Bicicletas", "cordao": "Cordões", "cordão": "Cordões"}
 COL_REV, COL_REP = "#2C6E9B", "#C9772E"  # revenda (azul), reposição (laranja)
@@ -130,9 +130,19 @@ def main():
 
     stats_lines = ["# dist_stats.md — distribuições de valor (Monte Carlo, seed %d)\n" % SEED]
 
-    # ---- Figura 1: distribuição de valor por item (2x2) ----
-    fig, axes = plt.subplots(2, 2, figsize=(11, 7.5), facecolor="white")
+    # ---- Figura 1: distribuição de valor por item (grade adaptável ao nº de itens) ----
     order = [k for k in ("celular", "moto", "bicicleta", "cordao", "cordão", "bike") if k in norm_models]
+    _uniq, _seen0 = [], set()
+    for _k in order:
+        _lab = LABEL[norm(_k)]
+        if _lab not in _seen0:
+            _seen0.add(_lab); _uniq.append(_k)
+    n_items = len(_uniq)
+    ncols = 2 if n_items > 1 else 1
+    nrows = (n_items + ncols - 1) // ncols
+    fig, axes = plt.subplots(nrows, ncols, figsize=(5.5 * ncols, 4.0 * nrows),
+                             facecolor="white", squeeze=False)
+    n_cells = nrows * ncols
     seen = set()
     panel = 0
     stats_lines.append("## Por item (valor de UMA unidade)\n")
@@ -186,7 +196,7 @@ def main():
             ax.minorticks_off()
         else:
             ax.ticklabel_format(style="plain", axis="x")
-    for k in range(panel, 4):
+    for k in range(panel, n_cells):
         axes.flat[k].axis("off")
     fig.suptitle("Distribuição de probabilidade do valor por item recuperado",
                  fontsize=14, fontweight="bold", color="#2C3E50")

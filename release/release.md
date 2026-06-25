@@ -1,28 +1,28 @@
-# Release — Patrimônio recuperado pela Força Municipal
+# Release — Patrimônio recuperado pela Força Municipal (100 dias)
 
-> Derivado do paper `paper/recuperacoes.tex` (auditado). As **motocicletas são sempre citadas à parte**, como componente adicional, separadas dos bens pessoais (celulares, bicicletas, cordões). Decisão de manchete (revenda vs reposição) é sua.
+> Derivado do paper `paper/recuperacoes.tex` (balanço de 100 dias; valoração de **celulares e cordões**). Motocicletas, armas e resultados operacionais entram como contexto, não valorados. Decisão de manchete (revenda vs reposição) é sua.
 
 ---
 
 ## ⬚ Manchete — VARIANTE A (revenda, conservador)
-**Força Municipal recuperou cerca de R$ 1,94 milhão em bens em menos de três meses no Rio — R$ 169 mil em itens pessoais e R$ 1,77 milhão em motocicletas**
+**Força Municipal recuperou cerca de R$ 168 mil em celulares e cordões nos primeiros 100 dias no Rio**
 
 ## ⬚ Manchete — VARIANTE B (reposição, maior impacto)
-**Recuperações da Força Municipal somam cerca de R$ 2,44 milhões no Rio — R$ 275 mil em itens pessoais e R$ 2,17 milhões em motocicletas**
+**Itens recuperados pela Força Municipal somam cerca de R$ 275 mil em 100 dias no Rio — o custo de repô-los por novos**
 
 ---
 
 ## Corpo
 
-Entre 15 de março e 8 de junho de 2026, a Força Municipal (SEGUR, Prefeitura do Rio) recuperou ou apreendeu 118 celulares, 19 bicicletas e 15 cordões — além de 113 motocicletas, contabilizadas à parte. A preços de mercado, os itens pessoais (celulares, bicicletas e cordões) valem, em valor esperado, entre R$ 169 mil (revenda dos usados) e R$ 275 mil (custo de repor por novos). As 113 motocicletas adicionam, separadamente, entre R$ 1,77 e R$ 2,17 milhões — elevando o conjunto a um total de R$ 1,94 a R$ 2,44 milhões (de R$ 0,9 milhão a R$ 5 milhões nos extremos).
+Nos primeiros 100 dias de atuação (15 de março a 23 de junho de 2026), a Força Municipal (SEGUR, Prefeitura do Rio) recuperou ou apreendeu 133 celulares e 15 cordões. A preços de mercado, esse patrimônio vale, em valor esperado, entre R$ 168 mil (revenda dos usados) e R$ 275 mil (custo de repor por novos) — podendo ir de R$ 12 mil a R$ 1,14 milhão nos extremos.
 
-Entre os itens pessoais, o grosso está nos celulares: as 118 unidades respondem por cerca de 85%, valendo de R$ 143 mil a R$ 232 mil — de ~R$ 350 o aparelho usado mais barato a ~R$ 9.490 o flagship novo, com média de R$ 1.212 a R$ 1.964 por aparelho. A conta segue a distribuição das marcas mais roubadas no país (Samsung, Apple, Motorola, Xiaomi). As 19 bicicletas — agora incluindo as elétricas, que vão de R$ 1.400 a R$ 18 mil e puxam a cauda do valor — e os 15 cordões completam os itens pessoais.
+O grosso do valor está nos celulares: as 133 unidades respondem por cerca de 96% do total, valendo entre R$ 161 mil (revenda) e R$ 261 mil (reposição) — de ~R$ 350 o aparelho de entrada usado a milhares de reais o flagship novo, com média de R$ 1.212 a R$ 1.964 por aparelho. A conta segue a distribuição das marcas mais roubadas no país (Samsung, Apple, Motorola, Xiaomi) e os preços de mercado de cada modelo, do usado ao zero-quilômetro. Os 15 cordões respondem pelos demais ~4%.
 
-As motocicletas, tratadas à parte, são o maior componente isolado de todo o patrimônio recuperado. A conta parte da distribuição real do que mais se rouba no Rio (Honda CG 160 à frente, ranking da Polícia Civil-RJ) e da Tabela FIPE de cada modelo, do usado ao zero-quilômetro, com valor esperado de R$ 15,7 mil (revenda) a R$ 19,2 mil (reposição) por moto.
+A atuação se deu em 10 áreas, com implantação escalonada — da Rodoviária do Rio (desde 15 de março) ao Méier-Cachambi (desde 7 de junho). No mesmo período, o balanço oficial registra queda de roubos e furtos nas três primeiras áreas (Rodoviária e entorno −41,7%; Jardim de Alah −8,5%; Presidente Vargas e entorno −11,4%), mais de 6 mil abordagens, 771 conduções a delegacias, 133 motocicletas recuperadas e a retirada de 1 arma de fogo, 5 réplicas e 42 armas brancas das ruas — itens não incluídos na valoração acima.
 
-**Ressalva.** O total é dominado pelas motocicletas, e parte delas pode ter sido apreendida com restrição (documento ou chassi remarcado), que vale menos na revenda; além disso, a composição exata dos bens recuperados não foi divulgada — o mix vem da frequência de roubo na cidade, e os valores podem oscilar conforme os modelos efetivamente apreendidos.
+**Ressalva.** A composição exata dos bens recuperados não foi divulgada: o mix vem da frequência de roubo e venda na cidade, e os preços são amostras de mercado (não um censo) — os valores podem oscilar conforme os modelos efetivamente apreendidos. Como as 10 áreas entraram em datas diferentes, o total acumulado não corresponde a 100 dias uniformes em toda a cidade.
 
-Os valores são estimativas a preços de mercado, calculadas a partir de fontes públicas (FIPE, anúncios de usados, varejo, cotação do ouro) e um modelo probabilístico com 469 preços coletados. A metodologia completa está no estudo técnico que acompanha este material.
+Os valores são estimativas a preços de mercado, calculadas a partir de fontes públicas (anúncios de usados, varejo e cotação do ouro) e um modelo probabilístico com 215 preços coletados por modelo. A metodologia completa está no estudo técnico que acompanha este material.
 
 No método, o valor de cada bem recuperado é uma variável aleatória: sorteia-se primeiro o modelo, segundo a frequência com que é roubado na cidade, e depois o preço, a partir de uma amostra real de valores daquele modelo — em duas bases, revenda (usado) e reposição (novo). Somando os bens por simulação de Monte Carlo (50 mil repetições), obtém-se não apenas o valor esperado, mas toda a distribuição de resultados possíveis e uma faixa de 90% de confiança. Nenhum desconto arbitrário é aplicado: o preço de usado já reflete o desgaste e o de novo é o custo de repor o bem.
 
