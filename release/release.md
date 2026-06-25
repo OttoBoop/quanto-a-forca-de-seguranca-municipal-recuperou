@@ -1,6 +1,6 @@
 # Release — Patrimônio recuperado pela Força Municipal (100 dias)
 
-> Derivado do paper `paper/recuperacoes.tex` (balanço de 100 dias; valoração de **celulares e cordões**). Motocicletas, armas e resultados operacionais entram como contexto, não valorados. Decisão de manchete (revenda vs reposição) é sua.
+> Derivado do paper `paper/recuperacoes.tex` (balanço de 100 dias; valoração de **celulares e cordões**). Decisão de manchete (revenda vs reposição) é sua.
 
 ---
 
@@ -18,7 +18,7 @@ Nos primeiros 100 dias de atuação (15 de março a 23 de junho de 2026), a For�
 
 O grosso do valor está nos celulares: as 133 unidades respondem por cerca de 96% do total, valendo entre R$ 161 mil (revenda) e R$ 261 mil (reposição) — de ~R$ 350 o aparelho de entrada usado a milhares de reais o flagship novo, com média de R$ 1.212 a R$ 1.964 por aparelho. A conta segue a distribuição das marcas mais roubadas no país (Samsung, Apple, Motorola, Xiaomi) e os preços de mercado de cada modelo, do usado ao zero-quilômetro. Os 15 cordões respondem pelos demais ~4%.
 
-A atuação se deu em 10 áreas, com implantação escalonada — da Rodoviária do Rio (desde 15 de março) ao Méier-Cachambi (desde 7 de junho). No mesmo período, o balanço oficial registra queda de roubos e furtos nas três primeiras áreas (Rodoviária e entorno −41,7%; Jardim de Alah −8,5%; Presidente Vargas e entorno −11,4%), mais de 6 mil abordagens, 771 conduções a delegacias, 133 motocicletas recuperadas e a retirada de 1 arma de fogo, 5 réplicas e 42 armas brancas das ruas — itens não incluídos na valoração acima.
+A atuação se deu em 10 áreas, com implantação escalonada — da Rodoviária do Rio (desde 15 de março) ao Méier-Cachambi (desde 7 de junho). No mesmo período, o balanço oficial registra queda de roubos e furtos nas três primeiras áreas (Rodoviária e entorno −41,7%; Jardim de Alah −8,5%; Presidente Vargas e entorno −11,4%), mais de 6 mil abordagens e 771 conduções a delegacia.
 
 **Ressalva.** A composição exata dos bens recuperados não foi divulgada: o mix vem da frequência de roubo e venda na cidade, e os preços são amostras de mercado (não um censo) — os valores podem oscilar conforme os modelos efetivamente apreendidos. Como as 10 áreas entraram em datas diferentes, o total acumulado não corresponde a 100 dias uniformes em toda a cidade.
 
