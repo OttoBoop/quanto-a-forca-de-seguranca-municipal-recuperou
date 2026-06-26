@@ -1,0 +1,291 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{setspace}
+\onehalfspacing
+\graphicspath{{figuras/}}
+
+\newcommand{\reais}[1]{R\$\,#1}
+
+\title{\textbf{Valor monetário do patrimônio recuperado pela Força Municipal}\\[0.3em]
+\large Um modelo probabilístico com distribuição de modelos e preços de mercado\\(Rio de Janeiro --- primeiros 100 dias, 15/03 a 23/06 de 2026)}
+\author{Prefeitura do Rio --- Secretaria Municipal de Desenvolvimento Econômico \& COMPSTAT RIO}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent Nos primeiros 100 dias de atuação da Força Municipal (SEGUR/Prefeitura do Rio --- 15 de
+março a 23 de junho de 2026) foram recuperados, entre outros itens, \textbf{133 celulares e 15
+cordões}. O valor monetário desses dois itens é avaliado tratando cada unidade como uma
+\emph{variável aleatória}: sorteia-se o modelo segundo a distribuição real do que é roubado na
+cidade (ponderada por frequência) e o preço a partir de uma amostra de preços de mercado, em duas
+bases --- \textbf{revenda} (usado) e \textbf{reposição} (novo). Por simulação de Monte Carlo, o
+valor esperado do conjunto é de \textbf{\reais{168} mil} a preços de revenda (banda de 90\%:
+\reais{150}--\reais{187} mil) e \textbf{\reais{275} mil} a preços de reposição
+(\reais{244}--\reais{309} mil); o envelope extremo vai de \reais{12} mil a \reais{1{,}14} milhão.
+Os celulares concentram cerca de 96\% do valor. Todas as cifras têm fonte pública (preços
+coletados em 16/06/2026).
+\end{abstract}
+
+% =====================================================================
+\section{Introdução}
+% =====================================================================
+Nos primeiros 100 dias de atuação, a Força Municipal (Secretaria Especial de Segurança Urbana ---
+SEGUR, Prefeitura do Rio de Janeiro) reportou a recuperação de 133 celulares e 15 cordões, entre
+outros itens. Quanto vale, em reais, esse patrimônio?
+
+A resposta não é um número único. Um celular recuperado pode ser um aparelho de entrada usado de
+algumas centenas de reais ou um \emph{flagship} novo de mais de dez mil; um cordão pode ser uma
+semijoia folheada ou uma peça de ouro. O valor de cada item recuperado é, portanto, uma
+\emph{distribuição} de quantias plausíveis --- a probabilidade de que ele valha cada montante ---
+e não apenas uma média.
+
+Esse valor é uma variável aleatória, cuja distribuição se constrói a partir (i) da composição real
+do que é roubado na cidade e (ii) de preços de mercado coletados por modelo, em duas bases ---
+revenda (usado) e reposição (novo). Por \emph{revenda} entende-se a compra do bem \emph{usado}
+(quanto ele valeria se revendido); por \emph{reposição}, a compra do equivalente \emph{novo} (o
+custo de repô-lo). Cada categoria tem, assim, uma distribuição de probabilidade de valor, e o
+conjunto, uma estimativa com intervalo de confiança --- tudo referenciado a fontes públicas.
+
+No período, a Força atuou em \textbf{10 áreas}, com implantação \emph{escalonada}: as primeiras
+(Rodoviária do Rio--Terminal Gentileza--Estação Leopoldina e Jardim de Alah) desde 15 de março, e
+as demais ao longo dos 100 dias (Presidente Vargas--Campo de Santana--Central--Cinelândia em 29/03;
+Campo Grande em 12/04; Tijuca em 26/04; três corredores de Botafogo em 10/05; Calçadão de
+Bangu em 24/05; Méier--Cachambi em 07/06) --- de modo que nem toda área esteve ativa o período
+inteiro. O balanço oficial registra ainda queda de roubos e furtos nas três primeiras áreas
+(Rodoviária e entorno $-41{,}7\%$; Jardim de Alah $-8{,}5\%$; Presidente Vargas e entorno
+$-11{,}4\%$), mais de 6 mil abordagens e 771 conduções a delegacia. O presente estudo valora apenas
+os \textbf{celulares e cordões} recuperados.
+
+% =====================================================================
+\section{Metodologia}
+% =====================================================================
+
+\subsection{Modelo probabilístico}
+Seja $i$ uma categoria de item ($\text{cel}$, $\text{cord}$) e
+$b\in\{\text{rev},\text{rep}\}$ a base de valor (revenda ou reposição). O valor de uma unidade
+recuperada da categoria $i$ é a variável aleatória de \textbf{mistura}
+\begin{equation}
+  V_i^{\,b}\;\sim\;\sum_{m\in\mathcal{M}_i} w_{i,m}\,\hat F_{i,m}^{\,b},
+  \label{eq:mix}
+\end{equation}
+em que $\mathcal{M}_i$ é o conjunto de modelos representativos, $w_{i,m}$ é o peso do modelo $m$
+($\sum_m w_{i,m}=1$) e $\hat F_{i,m}^{\,b}$ é a distribuição empírica dos preços coletados para o
+modelo $m$ na base $b$. Sorteia-se um modelo segundo os pesos e, em seguida, um preço a partir das
+observações daquele modelo. Seu valor esperado e variância são
+\begin{equation}
+  \mathbb{E}[V_i^{b}]=\sum_m w_{i,m}\,\bar p_{i,m}^{\,b},
+  \qquad
+  \mathrm{Var}(V_i^{b})=\sum_m w_{i,m}\Big(\sigma_{i,m}^{b\,2}+\big(\bar p_{i,m}^{b}-\mathbb{E}[V_i^b]\big)^2\Big).
+  \label{eq:moments}
+\end{equation}
+O valor total recuperado é a soma sobre todas as unidades:
+\begin{equation}
+  V^{\,b}=\sum_{i}\sum_{k=1}^{N_i} V_{i,k}^{\,b},
+  \qquad
+  \mathbb{E}[V^{b}]=\sum_i N_i\,\mathbb{E}[V_i^{b}],
+  \qquad
+  \mathrm{Var}(V^{b})=\sum_i N_i\,\mathrm{Var}(V_i^{b}),
+  \label{eq:total}
+\end{equation}
+com $N_i$ a quantidade recuperada (painel da SEGUR: $N_{\text{cel}}=133$, $N_{\text{cord}}=15$).
+Nenhum ``fator de depreciação'' arbitrário é aplicado: a base de revenda já é preço de usado (o
+mercado precifica o desgaste) e a de reposição é o preço de novo.
+
+\subsection{Pesos por frequência e bases de preço}
+O item recuperado é o que se rouba na rua, então o peso $w_{i,m}$ de cada modelo vem de uma
+\emph{fonte de frequência} (ranking de roubo, participação de mercado, mix de anúncios), e não de
+uma escolha. O preço de cada modelo é uma \textbf{amostra de valores observados} (16/06/2026;
+$n=215$: 150 de usado e 65 de novo), em duas bases --- revenda (usado) e reposição (novo) ---, com
+cada anúncio ou listagem contando como um preço. OLX e Mercado Livre, que bloqueiam acesso
+automatizado, entraram apenas por trechos de busca; os tamanhos por modelo estão em
+\texttt{dados\_distribuicao.json}. Celulares e cordões são detalhados a seguir.
+
+\subsection{Agregação por Monte Carlo}\label{sec:mc}
+A distribuição de $V_i^b$ e de $V^b$ é obtida por simulação: sorteiam-se $N_i$ unidades por
+categoria segundo a Eq.~\eqref{eq:mix}, somam-se, e repete-se 50.000 vezes (semente fixa, para
+reprodutibilidade). Reporta-se o valor esperado e a banda de 90\% (percentis 5 e 95).
+
+\subsection{Celulares}
+Os pesos por marca vêm da frequência de roubo (Anuário do Fórum Brasileiro de Segurança Pública:
+Samsung 37\%, Apple 25\%, Motorola 23\%, Xiaomi 10\%), ajustados pelo perfil socioeconômico (TIC
+Domicílios) em direção aos modelos de entrada e intermediários, que formam a maior parte do parque.
+Nove modelos representam a categoria, do Galaxy A0x ao iPhone Pro Max.
+
+Os preços de usado vêm de páginas de varejo de seminovos lidas diretamente (Trocafy e Trocafone), em
+que cada listagem é um preço --- 36 listagens do iPhone 11, 36 do iPhone 13, mais de 30 do Galaxy
+S23, além de Galaxy A14, Moto G54 e iPhone 13 Pro Max ---; os modelos legados entram por busca. Os
+preços de novo vêm do varejo (Magazine Luiza, Samsung, Apple). A distribuição é fortemente
+assimétrica à direita: a massa fica nos aparelhos de entrada (revenda de algumas centenas de reais)
+e a cauda nos \emph{flagships} (reposição acima de \reais{6.000}).
+
+\subsection{Cordões}
+O valor do cordão segue a forma canônica das distribuições de bens furtados: fortemente
+assimétrica à direita, com a massa em peças de baixo valor e uma cauda longa e fina nas peças mais
+caras. O levantamento do Home Office britânico sobre o valor de bens roubados ilustra essa forma
+--- a média (\pounds481) supera de longe a mediana ($\approx$\pounds100) e os 2\% de furtos mais
+valiosos concentram 46\% do valor total (SHAW \emph{et al.}, 2015) ---, da mesma família
+\emph{lognormal} de cauda pesada empregada para perdas na literatura atuarial (FREES, 2018; KLUGMAN
+\emph{et al.}). Sob essa forma, a cauda fica contida em \reais{3.000} (revenda) e \reais{5.000}
+(reposição), o que explica o desvio superar a média na Tabela~\ref{tab:itens}.
+
+A composição acompanha a distribuição de mercado: a semijoia folheada responde pela maior parte das
+peças em circulação --- lidera o varejo em unidades (EUROMONITOR, 2025), com Limeira como segundo
+maior polo mundial do setor, em lotes de dezenas a centenas de milhares de peças (ETULAIN
+\emph{et al.}, 2021; IBGM) ---, enquanto as peças de ouro, menos frequentes, concentram o valor. O
+perfil do que circula na rua reforça a predominância do folheado: parte expressiva da população
+evita usar objetos de valor em público (IBGE, 2021: 42,8\%) ou retira joias antes de sair
+(FBSP/Datafolha, 2026: 26,8\%). No caso-base, cerca de 30\% das peças são de ouro --- proporção
+coerente com a valorização do metal, que vem ampliando o roubo dirigido a joias (os roubos de
+aliança em São Paulo mais que dobraram entre 2023 e 2025).
+
+A participação do ouro é o parâmetro mais influente dessa categoria; o resultado é testado variando
+a fração $f$ em torno do caso-base ($\mathbb{E}[V_{\text{cord}}]=\reais{462}$ em revenda,
+Tabela~\ref{tab:itens}):
+\begin{center}\small
+\begin{tabular}{lccc}
+\toprule
+$f$ (fração de ouro) & 15\% & $\approx$30\% (base) & 40\% \\
+\midrule
+$\mathbb{E}[V_{\text{cord}}]$ (revenda) & \reais{260} & \reais{462} & \reais{588} \\
+Total $V^{\text{rev}}$ & \reais{165} mil & \reais{168} mil & \reais{170} mil \\
+\bottomrule
+\end{tabular}
+\end{center}
+O resultado agregado é robusto: como os cordões representam cerca de 4\% do patrimônio
+(Tabela~\ref{tab:contrib}), o valor total varia perto de 3\% mesmo dobrando $f$. As cifras de preço
+--- folheado de \reais{15} a \reais{250} e cordões de ouro 18k de \reais{280} a \reais{3.000}, à
+cotação de $\approx$\reais{530}/g --- estão documentadas no inventário de fontes.
+
+
+% =====================================================================
+\section{Resultados}
+% =====================================================================
+
+\subsection{Distribuição de valor por item}
+A Figura~\ref{fig:itens} mostra a distribuição de valor de uma unidade recuperada de cada
+categoria, nas duas bases. As formas são informativas: o celular é fortemente assimétrico à
+direita (massa em aparelhos de entrada, cauda nos \emph{flagships}); o cordão concentra a massa no
+folheado de baixo valor, com cauda longa e fina nas peças de ouro (média bem acima da mediana). A
+Tabela~\ref{tab:itens} resume os momentos.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{dist_itens}
+  \caption{Distribuição de probabilidade do valor de uma unidade recuperada, por categoria
+  (azul: revenda/usado; laranja: reposição/novo). Histograma das amostras com densidade KDE.
+  O painel dos cordões usa escala logarítmica no eixo $x$ para exibir o corpo (folheado) e a
+  cauda (ouro) simultaneamente.}
+  \label{fig:itens}
+\end{figure}
+
+\begin{table}[H]
+  \centering\small
+  \begin{tabular}{llrrr}
+    \toprule
+    Item & base & $\mathbb{E}[V_i]$ & desvio & faixa p5--p95 \\
+    \midrule
+    Celulares & revenda   & 1.212 & 944   & 530--3.500 \\
+              & reposição & 1.964 & 1.641 & 619--6.500 \\
+    Cordões   & revenda   & 462   & 804   & 20--2.400 \\
+              & reposição & 934   & 1.485 & 40--5.000 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Momentos da distribuição de valor por unidade (R\$), por base. Fonte: amostras de
+  preço de mercado; simulação de Monte Carlo.}
+  \label{tab:itens}
+\end{table}
+
+\subsection{Valor total recuperado}
+Agregando (Eq.~\eqref{eq:total}), o valor esperado do patrimônio recuperado é de
+\textbf{\reais{168} mil} a preços de revenda e \textbf{\reais{275} mil} a preços de reposição. A
+Figura~\ref{fig:total} mostra as duas distribuições com suas bandas de 90\%
+(\reais{150}--\reais{187} mil e \reais{244}--\reais{309} mil). A Tabela~\ref{tab:contrib} detalha a
+contribuição por categoria: os \textbf{celulares} respondem por cerca de \textbf{96\%} do total.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.92\linewidth]{dist_total}
+  \caption{Distribuição do valor total recuperado por simulação de Monte Carlo (50.000 iterações);
+  linha = valor esperado, faixa sombreada = banda de 90\%.}
+  \label{fig:total}
+\end{figure}
+
+\begin{table}[H]
+  \centering\small
+  \begin{tabular}{lrrrr}
+    \toprule
+    Item & $N_i$ & Contrib.\ revenda & Contrib.\ reposição & \% (revenda) \\
+    \midrule
+    Celulares & 133 & 161.196 & 261.212 & 95,9\% \\
+    Cordões   & 15  & 6.930   & 14.010  & 4,1\% \\
+    \midrule
+    \textbf{Total} & — & \textbf{$\approx$168.126} & \textbf{$\approx$275.222} & 100\% \\
+    \bottomrule
+  \end{tabular}
+  \caption{Contribuição por categoria ($N_i\cdot\mathbb{E}[V_i]$) e total (R\$).}
+  \label{tab:contrib}
+\end{table}
+
+\noindent A banda de 90\% reflete a incerteza de \emph{amostragem} do total. A incerteza
+\emph{estrutural} é capturada pela distância entre as bases de revenda e reposição
+(\reais{168}--\reais{275} mil) e pelo \textbf{envelope extremo} de \reais{12} mil (se cada item
+fosse o modelo usado mais barato) a \reais{1{,}14} milhão (se cada item fosse o modelo novo mais
+caro).
+
+% =====================================================================
+\section{Conclusões}
+% =====================================================================
+O patrimônio recuperado pela Força Municipal nos primeiros 100 dias vale, em valor esperado, entre
+\reais{168} mil (revenda) e \reais{275} mil (reposição), com envelope de \reais{12} mil a
+\reais{1{,}14} milhão. O resultado é dominado pelos celulares ($\approx$96\%). Cada item tem não só
+um número, mas uma \emph{distribuição} de valores plausíveis, ancorada na composição real do que se
+rouba na cidade e em preços de mercado verificáveis. A atualização para janelas futuras requer
+apenas a troca dos $N_i$ (quantidades recuperadas).
+
+% =====================================================================
+\section*{Limitações}
+% =====================================================================
+\begin{itemize}\setlength\itemsep{0.1em}
+  \item \textbf{Distribuição é proxy:} o \emph{mix} exato dos itens recuperados não foi divulgado;
+        os pesos vêm da frequência de roubo/vendas, e a maioria das cifras é nacional, não recorte
+        do Rio.
+  \item \textbf{Amostras de preço, não censo:} OLX e Mercado Livre bloqueiam coleta automatizada;
+        usaram-se varejo de seminovos, anúncios e joalherias.
+  \item \textbf{Cobertura escalonada:} as 10 áreas entraram em datas diferentes (15/03 a 07/06), de
+        modo que o total acumulado não corresponde a 100 dias uniformes em toda a cidade.
+\end{itemize}
+
+% =====================================================================
+\section*{Fontes}
+% =====================================================================
+\small
+\noindent Preços coletados em 16/06/2026. Inventário (formato F-T.N) em \texttt{inventario\_fontes.md};
+amostras de preço por modelo (com $n$ e URL) em \texttt{dados\_distribuicao.json}.
+(SEGUR/PREFEITURA DO RIO. ``Balanço de 100 dias da Força Municipal'' (slide oficial; itens recuperados e áreas de atuação), 2026) ·
+(FÓRUM BRAS.\ DE SEGURANÇA PÚBLICA. ``Marcas de celulares mais roubadas'', via Exame/InfoMoney, 2024) ·
+(STATCOUNTER. ``Mobile Vendor Share Brazil'', 2026) ·
+(CETIC.BR. ``TIC Domicílios'', 2024) ·
+(TROCAFY/TROCAFONE. ``Seminovos por listagem'', 2026) ·
+(MAGAZINE LUIZA; SAMSUNG; APPLE. ``Preços de varejo (novo)'', 2026) ·
+(OLX. ``Celulares usados, RJ'', 2024--2026) ·
+(OURO RIO DE JANEIRO. ``Cotação do ouro 18k'', 2026) ·
+(SHEKINAH; PRATA PURA. ``Cordões folheados (preço)'', 2026; DR JOIAS. ``Ouro 18k leve 1,8--8\,g'', 2026) ·
+(SHAW, O.\ \emph{et al.} ``Crime and the value of stolen goods'', Home Office Research Report 81, 2015) ·
+(FREES, E.\ (ed.). ``Loss Data Analytics'', International Actuarial Association, 2018; KLUGMAN \emph{et al.} ``Loss Models'') ·
+(IBGE. ``PNAD Vitimização 2021'', 2022; FBSP/DATAFOLHA. ``Mudança de hábitos por insegurança'', 2026; EUROMONITOR. ``Jewellery in Brazil'', 2025) ·
+(ETULAIN, C.\ \emph{et al.} ``Produção de semijoias em Limeira'', UNICAMP, 2021; IBGM).
+
+\end{document}

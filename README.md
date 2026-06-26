@@ -16,6 +16,8 @@ No balanço de 100 dias, a Força Municipal recuperou/apreendeu **133 celulares 
 
 **Escopo.** O estudo valora **celulares e cordões**. As **133 motocicletas**, as armas e os demais resultados operacionais do balanço entram como **contexto, não valorados**. As **bicicletas foram retiradas** do balanço pelo órgão (a pesquisa anterior, com bicicletas elétricas, segue documentada nos dados e nas versões históricas).
 
+**Estrutura.** O documento abre com o contexto — *Segurança pública e desenvolvimento econômico* (revisão da literatura: economia do crime, custos da violência) e *O Sistema de Segurança Municipal e a Força Municipal* (arranjo institucional) — e então apresenta a **metodologia e os resultados** da valoração. A versão só da valoração (sem o contexto) está em [`historico/recuperacoes_valoracao_pura.pdf`](historico/recuperacoes_valoracao_pura.pdf).
+
 ## Contexto operacional (100 dias)
 
 Atuação em **10 áreas**, com implantação escalonada (Rodoviária do Rio desde 15/03 … Méier-Cachambi desde 07/06). O balanço oficial registra queda de roubos/furtos nas três primeiras áreas (−41,7% / −8,5% / −11,4%), >6 mil abordagens, 771 conduções, 133 motocicletas recuperadas e a retirada de 1 arma de fogo, 5 réplicas e 42 armas brancas. Fonte: [`fonte/slide_100dias.jpeg`](fonte/slide_100dias.jpeg).

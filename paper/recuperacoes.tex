@@ -17,7 +17,8 @@
 
 \newcommand{\reais}[1]{R\$\,#1}
 
-\title{\textbf{Valor monetário do patrimônio recuperado pela Força Municipal}\\[0.3em]
+\title{\includegraphics[width=0.45\linewidth]{logo_prefeitura}\\[1.2em]
+\textbf{Valor monetário do patrimônio recuperado pela Força Municipal}\\[0.3em]
 \large Um modelo probabilístico com distribuição de modelos e preços de mercado\\(Rio de Janeiro --- primeiros 100 dias, 15/03 a 23/06 de 2026)}
 \author{Prefeitura do Rio --- Secretaria Municipal de Desenvolvimento Econômico \& COMPSTAT RIO}
 \date{\today}
@@ -42,6 +43,13 @@ coletados em 16/06/2026).
 % =====================================================================
 \section{Introdução}
 % =====================================================================
+A segurança pública é, também, uma questão econômica: a violência impõe custos elevados ao
+desenvolvimento --- estimados em torno de 5,9\% do PIB no Brasil --- e foi para enfrentá-la nas ruas
+que a Prefeitura do Rio criou a Divisão de Elite da Guarda Municipal --- Força Municipal. A
+Seção~\ref{sec:economia} situa essa relação na literatura econômica e a Seção~\ref{sec:institucional}
+descreve o arranjo institucional; este relatório então \textbf{quantifica o valor monetário do
+patrimônio recuperado} pela Força.
+
 Nos primeiros 100 dias de atuação, a Força Municipal (Secretaria Especial de Segurança Urbana ---
 SEGUR, Prefeitura do Rio de Janeiro) reportou a recuperação de 133 celulares e 15 cordões, entre
 outros itens. Quanto vale, em reais, esse patrimônio?
@@ -59,15 +67,163 @@ revenda (usado) e reposição (novo). Por \emph{revenda} entende-se a compra do 
 custo de repô-lo). Cada categoria tem, assim, uma distribuição de probabilidade de valor, e o
 conjunto, uma estimativa com intervalo de confiança --- tudo referenciado a fontes públicas.
 
-No período, a Força atuou em \textbf{10 áreas}, com implantação \emph{escalonada}: as primeiras
-(Rodoviária do Rio--Terminal Gentileza--Estação Leopoldina e Jardim de Alah) desde 15 de março, e
-as demais ao longo dos 100 dias (Presidente Vargas--Campo de Santana--Central--Cinelândia em 29/03;
-Campo Grande em 12/04; Tijuca em 26/04; três corredores de Botafogo em 10/05; Calçadão de
+% =====================================================================
+\section{Segurança pública e desenvolvimento econômico}\label{sec:economia}
+% =====================================================================
+A relação entre desenvolvimento econômico e segurança pública constitui um dos temas centrais da
+Economia do Crime, campo consolidado na literatura internacional desde os trabalhos clássicos de
+Willem Bonger no início do século XX. Bonger já argumentava que o crime é profundamente condicionado
+por fatores socioeconômicos, especialmente desigualdade e condições materiais de vida, tese que
+permanece amplamente corroborada por estudos empíricos contemporâneos. Essa abordagem foi
+posteriormente refinada por modelos econômicos baseados na racionalidade individual, nos quais o
+crime é tratado como uma escolha sob restrições, influenciada por incentivos, oportunidades e riscos.
+
+Na literatura econômica moderna, há amplo consenso de que variáveis como renda, desigualdade,
+desemprego e educação exercem influência significativa sobre as taxas de criminalidade. Um dos
+trabalhos mais influentes dessa literatura é o de Pablo Fajnzylber, Daniel Lederman e Norman Loayza,
+publicado no \emph{Journal of Law and Economics} (2002). Nesse estudo, os autores analisam dados de
+diversos países e também painéis ao longo do tempo para testar a relação entre desigualdade de renda
+e criminalidade. O argumento central é que a desigualdade --- medida principalmente pelo índice de
+Gini --- exerce um efeito causal positivo sobre taxas de homicídio e roubo, mesmo após controlar por
+renda média, educação e urbanização. A principal contribuição do artigo está em mostrar que não se
+trata apenas de pobreza absoluta, mas da disparidade relativa entre indivíduos que aumenta
+incentivos ao crime, seja por frustração econômica, menor custo de oportunidade ou enfraquecimento
+da coesão social.
+
+Além da desigualdade, a literatura destaca o papel das oportunidades econômicas. Modelos teóricos
+indicam que, em contextos de baixo crescimento e alta informalidade, o retorno esperado de
+atividades ilegais pode superar o das atividades legais, incentivando o crime. Estudos empíricos no
+Brasil mostram que os ``retornos do crime'' e a ausência de oportunidades formais são fatores
+relevantes para o aumento da criminalidade. Um estudo particularmente relevante para esse argumento
+é o de Daniel Ricardo de Castro Cerqueira, publicado pelo Instituto de Pesquisa Econômica Aplicada
+(2019). Este trabalho desenvolve e testa empiricamente um modelo no qual indivíduos decidem entre
+atividades legais e ilegais com base no retorno esperado de cada uma. Utilizando dados brasileiros,
+Cerqueira mostra que a baixa remuneração no mercado formal, combinada com alta informalidade e baixa
+probabilidade de punição, eleva o atrativo econômico do crime, especialmente entre jovens homens com
+baixa escolaridade. O estudo também evidencia forte persistência temporal da criminalidade --- ou
+seja, regiões com altos níveis de crime tendem a permanecer violentas ao longo do tempo --- e
+efeitos espaciais, nos quais o crime se difunde entre áreas vizinhas. A principal contribuição do
+trabalho é demonstrar que o crime responde a incentivos econômicos de forma sistemática, reforçando
+a interpretação de que políticas de geração de emprego, aumento da renda e melhoria das instituições
+de justiça podem alterar significativamente o ``cálculo econômico'' que sustenta a atividade
+criminosa.
+
+Por outro lado, a literatura empírica demonstra de forma consistente que a violência impõe custos
+econômicos significativos e mensuráveis. Um estudo do Banco Interamericano de Desenvolvimento estima
+que o custo do crime na América Latina e Caribe alcança, em média, cerca de 3,5\% do PIB regional,
+considerando gastos públicos, privados e perdas de produtividade. No caso do Brasil, o Fórum
+Brasileiro de Segurança Pública aponta que a violência chegou a custar aproximadamente 5,9\% do PIB
+em 2017, incluindo despesas com segurança, sistema prisional e perdas econômicas indiretas. Além
+disso, evidências do Banco Mundial indicam que empresas em ambientes de alta criminalidade enfrentam
+maior incerteza, elevam gastos com segurança privada e reduzem investimentos produtivos, o que
+compromete a eficiência e a inovação. Esse conjunto de evidências reforça a ideia de que a violência
+atua como um ``imposto invisível'', reduzindo a competitividade econômica e limitando o crescimento
+de longo prazo.
+
+No plano internacional, os dados reforçam essa associação entre desenvolvimento, desigualdade e
+criminalidade. Países como Alemanha e Japão apresentam taxas de homicídio extremamente baixas ---
+cerca de 0,8 e 0,2 por 100 mil habitantes, respectivamente, segundo o \emph{United Nations Office on
+Drugs and Crime} --- ao mesmo tempo em que exibem níveis relativamente baixos de desigualdade
+(coeficiente de Gini em torno de 0,31 na Alemanha e 0,33 no Japão, conforme dados do Banco Mundial).
+Em contraste, os Estados Unidos, embora tenham alta renda \emph{per capita}, apresentam maior
+desigualdade (Gini próximo de 0,41) e uma taxa de homicídios significativamente superior, cerca de 6
+a 7 por 100 mil habitantes, com forte concentração espacial em áreas urbanas segregadas. Estudos
+como o de Richard Wilkinson e Kate Pickett, publicado na \emph{Social Science \& Medicine},
+demonstram que sociedades mais desiguais tendem a apresentar maiores níveis de violência, mesmo
+controlando para renda média, sugerindo que a distribuição de renda --- e não apenas o nível de
+riqueza --- é um fator central para explicar diferenças internacionais nos níveis de criminalidade.
+
+Além disso, o impacto econômico da violência no Brasil é expressivo e bem documentado. Segundo o
+Fórum Brasileiro de Segurança Pública, os custos da violência no país atingiram aproximadamente
+\reais{373} bilhões em 2017, o equivalente a cerca de 5,9\% do PIB nacional. Esse valor inclui não
+apenas gastos públicos com segurança e sistema prisional, mas também perdas associadas à redução da
+produtividade, mortalidade precoce e retração de investimentos. Um estudo de Laura Jaitman, publicado
+pelo Banco Interamericano de Desenvolvimento, estima que a criminalidade reduz a produtividade das
+empresas latino-americanas em até 9\% e impõe custos significativos ao ambiente de negócios,
+sobretudo em setores intensivos em capital. Em conjunto, essas evidências quantitativas demonstram
+que a violência não apenas reflete desigualdades estruturais, mas também atua como um entrave direto
+ao desenvolvimento econômico, afetando decisões de investimento, eficiência produtiva e crescimento
+de longo prazo.
+
+O caso do Rio de Janeiro ilustra de forma particularmente clara a interação entre desigualdade,
+dinâmica urbana e violência. Dados do Instituto de Segurança Pública indicam que o estado do Rio
+registrou taxas de homicídio em torno de 20 a 25 por 100 mil habitantes na última década, com forte
+concentração espacial em áreas periféricas e favelas. Um estudo empírico de João Manoel Pinho de
+Mello e Alexandre Schneider, publicado na revista EconomiA (2010), mostra que a desigualdade
+intraurbana --- medida pela variação de renda entre bairros --- está positivamente associada às
+taxas de homicídio no município, mesmo controlando por fatores como escolaridade e densidade
+populacional. Os autores encontram evidências de que áreas com maior disparidade socioeconômica
+apresentam níveis significativamente mais elevados de violência letal, reforçando a hipótese de que
+a segregação espacial amplifica os efeitos da desigualdade sobre o crime.
+
+Por fim, a revisão da literatura aponta para a necessidade de abordagens integradas. Políticas
+exclusivamente repressivas tendem a ter eficácia limitada se não forem acompanhadas por medidas
+econômicas e sociais. A evidência empírica internacional sugere que estratégias mais eficazes
+combinam investimentos em educação, redução da desigualdade, geração de emprego e melhorias
+institucionais. Assim, o desenvolvimento econômico e a segurança pública devem ser tratados como
+dimensões interdependentes de um mesmo processo.
+
+% =====================================================================
+\section{O Sistema de Segurança Municipal e a Força Municipal}\label{sec:institucional}
+% =====================================================================
+\subsection{Sistema de Segurança Municipal}
+A Prefeitura do Rio regulamentou oficialmente, em setembro de 2025, o Sistema de Segurança Municipal
+(SSM)\footnote{\url{https://prefeitura.rio/casa-civil/sistema-de-seguranca-municipal-e-regulamentado-no-rio/}},
+definindo as normas gerais para a organização, o funcionamento e a articulação entre os órgãos
+envolvidos. O SSM tem como principal objetivo coordenar a Política Municipal de Segurança Pública,
+promovendo a integração das ações municipais voltadas à segurança e criando estratégias mais
+eficazes para o combate à violência nas ruas da cidade, com base em dados e evidências.
+
+O Sistema é vinculado diretamente ao Gabinete do Prefeito e tem um secretário-geral responsável pela
+coordenação de todas as ações relacionadas à segurança pública na cidade --- organizando reuniões
+periódicas, elaborando relatórios de desempenho, acompanhando os indicadores da área e difundindo
+boas práticas. Fazem parte do SSM o Gabinete do Prefeito, a Casa Civil, a Secretaria Municipal de
+Ordem Pública (SEOP), a Guarda Municipal, a Divisão de Elite da GM-Rio --- Força Municipal e a
+Central de Inteligência, Vigilância e Tecnologia de Apoio à Segurança Pública (CIVITAS).
+
+O modelo do SSM é sustentado por três pilares: \textbf{CompStat} Municipal, Política Municipal de
+Segurança Pública e Política de Governança de Informação. O \textbf{CompStat Municipal} é um
+instrumento de gestão estratégica e operacional, baseado na análise de dados e indicadores de
+segurança. Inspirado no sistema de gerenciamento policial da Polícia de Nova Iorque, visa otimizar
+as ações de segurança por meio de reuniões periódicas entre as autoridades municipais, sob a
+liderança do Prefeito, nas quais se analisam dados, definem-se prioridades e formulam-se estratégias.
+
+\subsection{Divisão de Elite --- Força Municipal}
+Com a decisão do Supremo Tribunal Federal que ampliou a competência dos municípios na segurança
+pública, a Prefeitura do Rio assumiu um novo papel. A Divisão de Elite da Guarda Municipal --- Força
+Municipal\footnote{\url{https://forcamunicipal.prefeitura.rio/2025/08/06/prefeitura-apresenta-a-divisao-de-elite-da-guarda-municipal-forca-municipal/}, \url{https://forcamunicipal.prefeitura.rio/2025/09/02/prefeitura-inaugura-academia-de-formacao-de-agentes-da-divisao-de-elite-da-gm-rio-forca-municipal/} e \url{https://forcamunicipal.prefeitura.rio/}}
+é um grupamento especializado, formado por agentes treinados e armados, voltados ao enfrentamento de
+delitos urbanos --- especialmente roubos e furtos --- por meio de atuação preventiva e ostensiva em
+áreas de grande circulação, como vias públicas, praças e estações de transporte coletivo. Suas ações
+são baseadas em dados e evidências científicas, com intervenções estratégicas nas áreas de maior
+incidência de delitos, adaptadas a cada região e integradas a outros órgãos de segurança.
+
+O modelo foi desenvolvido a partir de um diagnóstico que apontou a necessidade de ações qualificadas
+em segurança e ordenamento urbano: 65\% dos cariocas consideram ter chance média ou alta de serem
+assaltados com violência nas ruas e, segundo estudo da Fundação Getúlio Vargas, 50\% dos roubos e
+furtos de rua concentram-se em 5,3\% da cidade.
+
+Nenhum agente atua sem missão definida: todos saem às ruas com um Quadro de Missão Diária (QMD),
+geolocalização ativada e atuação mapeada com base na mancha criminal de cada região. Os agentes não
+atendem ocorrências pelo 190 ou 1746, não realizam operações contra o crime organizado nem
+investigações criminais e não fazem fiscalização de ordem pública ou controle de multidões. Operam
+com câmeras corporais e rádios que não podem ser desligados, monitorados por GPS, sob um modelo com
+corregedoria, ouvidoria e diálogo permanente com o Ministério Público e a sociedade.
+
+A gestão segue o \textbf{CompStat}: o Prefeito reúne-se regularmente com a cúpula da Força e com
+gestores municipais para, a partir de relatórios de dados, discutir os problemas prioritários e
+definir estratégias de controle, em parceria com as forças de segurança estaduais e os órgãos de
+Justiça.
+
+Nos primeiros 100 dias, a Força atuou em \textbf{10 áreas}, com implantação \emph{escalonada}: as
+primeiras (Rodoviária do Rio--Terminal Gentileza--Estação Leopoldina e Jardim de Alah) desde 15 de
+março, e as demais ao longo do período (Presidente Vargas--Campo de Santana--Central--Cinelândia em
+29/03; Campo Grande em 12/04; Tijuca em 26/04; três corredores de Botafogo em 10/05; Calçadão de
 Bangu em 24/05; Méier--Cachambi em 07/06) --- de modo que nem toda área esteve ativa o período
-inteiro. O balanço oficial registra ainda queda de roubos e furtos nas três primeiras áreas
-(Rodoviária e entorno $-41{,}7\%$; Jardim de Alah $-8{,}5\%$; Presidente Vargas e entorno
-$-11{,}4\%$), mais de 6 mil abordagens e 771 conduções a delegacia. O presente estudo valora apenas
-os \textbf{celulares e cordões} recuperados.
+inteiro. O balanço oficial registra queda de roubos e furtos nas três primeiras áreas (Rodoviária e
+entorno $-41{,}7\%$; Jardim de Alah $-8{,}5\%$; Presidente Vargas e entorno $-11{,}4\%$), mais de 6
+mil abordagens e 771 conduções a delegacia. É o patrimônio recuperado nesse período --- celulares e
+cordões --- que as seções seguintes valoram.
 
 % =====================================================================
 \section{Metodologia}
@@ -252,8 +408,11 @@ O patrimônio recuperado pela Força Municipal nos primeiros 100 dias vale, em v
 \reais{168} mil (revenda) e \reais{275} mil (reposição), com envelope de \reais{12} mil a
 \reais{1{,}14} milhão. O resultado é dominado pelos celulares ($\approx$96\%). Cada item tem não só
 um número, mas uma \emph{distribuição} de valores plausíveis, ancorada na composição real do que se
-rouba na cidade e em preços de mercado verificáveis. A atualização para janelas futuras requer
-apenas a troca dos $N_i$ (quantidades recuperadas).
+rouba na cidade e em preços de mercado verificáveis. Ainda que modesto diante do custo da violência
+discutido na Seção~\ref{sec:economia} --- da ordem de bilhões de reais ao ano ---, o patrimônio
+recuperado é um retorno concreto e mensurável da atuação preventiva da Força, que se soma à queda de
+roubos e furtos observada nas áreas atendidas. A atualização para janelas futuras requer apenas a
+troca dos $N_i$ (quantidades recuperadas).
 
 % =====================================================================
 \section*{Limitações}
@@ -269,7 +428,40 @@ apenas a troca dos $N_i$ (quantidades recuperadas).
 \end{itemize}
 
 % =====================================================================
-\section*{Fontes}
+\section*{Referências}
+% =====================================================================
+\begingroup\small\setlength{\parindent}{0pt}\setlength{\parskip}{3pt}
+
+BANCO INTERAMERICANO DE DESENVOLVIMENTO (BID). \emph{Crime and growth in Latin America}. Washington, DC: BID, [s.d.].
+
+BANCO INTERAMERICANO DE DESENVOLVIMENTO --- BID (2017). \emph{The costs of crime and violence: new evidence and insights in Latin America and the Caribbean}. Washington, DC: Inter-American Development Bank.
+
+BONGER, Willem Adriaan (1916). \emph{Criminality and economic conditions}. Boston: Little, Brown and Company.
+
+CERQUEIRA, Daniel Ricardo de Castro; MOURA, Rodrigo Leandro de (2019). ``Oportunidades laborais, educacionais e homicídios no Brasil''. Texto para Discussão, n. 2514. Brasília: Instituto de Pesquisa Econômica Aplicada (IPEA).
+
+DE NADAI, Marco \emph{et al.} (2020). \emph{Socio-economic and urban factors of crime}. arXiv preprint.
+
+FAJNZYLBER, Pablo; LEDERMAN, Daniel; LOAYZA, Norman (2002). ``Inequality and violent crime''. \emph{Journal of Law and Economics}, Chicago, v. 45, n. 1, p. 1--40. DOI: 10.1086/338347.
+
+FÓRUM BRASILEIRO DE SEGURANÇA PÚBLICA (2019). \emph{Anuário brasileiro de segurança pública 2019}. São Paulo: FBSP.
+
+INSTITUTO DE PESQUISA ECONÔMICA APLICADA (IPEA); FÓRUM BRASILEIRO DE SEGURANÇA PÚBLICA. \emph{Atlas da violência}. Brasília: IPEA; FBSP, várias edições.
+
+JAITMAN, Laura (ed.) (2017). \emph{The costs of crime and violence: new evidence and insights in Latin America and the Caribbean}. Washington, DC: Inter-American Development Bank.
+
+RESENDE, João Paulo de (2011). ``Desigualdade de renda e criminalidade''. \emph{Estudos Econômicos}, São Paulo, v. 41, n. 4, p. 731--753.
+
+RUFRANCOS, Hector \emph{et al.} (2013). ``Income inequality and crime: a systematic review''. \emph{Aggression and Violent Behavior}, v. 18, n. 2, p. 218--233.
+
+SANTOS, Marcelo Justus dos; KASSOUF, Ana Lúcia (2008). ``Estudos econômicos das causas da criminalidade no Brasil''. \emph{EconomiA}, Brasília, v. 9, n. 2, p. 343--372.
+
+WORLD BANK (2011). \emph{Crime and violence as development issues in Latin America and the Caribbean}. Washington, DC: World Bank.
+
+\endgroup
+
+% =====================================================================
+\section*{Fontes de dados}
 % =====================================================================
 \small
 \noindent Preços coletados em 16/06/2026. Inventário (formato F-T.N) em \texttt{inventario\_fontes.md};
